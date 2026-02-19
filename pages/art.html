@@ -24,11 +24,11 @@ body.hover #cur-ring{width:48px;height:48px;border-color:var(--accent)}
 #prog{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:1000;width:0%;transition:width .1s linear}
 nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;display:flex;align-items:center;background:rgba(249,247,244,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1.5px solid var(--border);border-radius:100px;padding:8px 8px 8px 20px;white-space:nowrap;box-shadow:0 2px 20px rgba(0,0,0,.07)}
 .nav-logo{font-family:var(--fd);font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:-.01em;margin-right:20px}
-.nav-links{display:flex;gap:2px;list-style:none;margin-right:10px;align-items:center}.nav-links li{display:flex;align-items:center}
-.nav-links a{font-size:13px;font-weight:400;color:var(--ink-3);text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s;display:inline-flex;align-items:center;line-height:1}
+.nav-links{display:flex;gap:2px;list-style:none;margin-right:10px;align-items:center}.nav-links li{display:flex;align-items:center;height:32px}
+.nav-links a{font-size:13px;font-weight:400;color:var(--ink-3);text-decoration:none;padding:0 12px;border-radius:100px;transition:color .2s,background .2s;display:flex;align-items:center;height:32px;line-height:1}
 .nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(0,0,0,.05)}
 .nav-dd{position:relative}
-.nav-dd-label{font-size:13px;font-weight:400;color:var(--ink-3);padding:6px 12px;border-radius:100px;cursor:none;transition:color .2s,background .2s;display:inline-flex;align-items:center;gap:4px;user-select:none;line-height:1}
+.nav-dd-label{font-size:13px;font-weight:400;color:var(--ink-3);padding:0 12px;border-radius:100px;cursor:none;transition:color .2s,background .2s;display:flex;align-items:center;height:32px;gap:4px;user-select:none;line-height:1}
 .nav-dd-label:hover{color:var(--ink);background:rgba(0,0,0,.05)}
 .nav-dd-arrow{font-size:9px;transition:transform .2s}
 .nav-dd-menu{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);background:rgba(249,247,244,.98);border:1.5px solid var(--border);border-radius:14px;padding:6px;min-width:160px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
