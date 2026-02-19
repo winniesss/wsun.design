@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Visual Arts — Liting Sun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+.case-hero{padding:160px 60px 80px;max-width:900px}
+.case-tag{font-size:11px;font-weight:500;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+.case-h1{font-family:var(--fd);font-size:clamp(36px,5vw,72px);font-weight:300;letter-spacing:-.04em;line-height:1.05;margin-bottom:24px;color:var(--ink)}
+.case-sub{font-size:clamp(17px,1.6vw,21px);font-weight:400;color:var(--ink-2);line-height:1.7;max-width:620px}
+.case-meta{display:flex;flex-wrap:wrap;gap:0;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);margin:0 0 0}
+.case-meta-item{padding:28px 48px;border-right:1.5px solid var(--border);flex:1;min-width:140px}
+.case-meta-item:last-child{border-right:none}
+.case-meta-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.case-meta-val{font-size:16px;font-weight:500;color:var(--ink);line-height:1.4}
+.case-img{width:100%;background:var(--bg-2);display:block;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);overflow:hidden;text-align:center;padding:60px}
+.case-img img{max-width:100%;border-radius:8px;box-shadow:0 16px 64px rgba(0,0,0,.12)}
+.case-body{max-width:760px;margin:0 auto;padding:0 60px}
+.case-body h2{font-family:var(--fd);font-size:clamp(24px,3vw,38px);font-weight:400;letter-spacing:-.03em;line-height:1.2;margin:72px 0 20px;color:var(--ink)}
+.case-body h3{font-family:var(--fd);font-size:clamp(18px,2vw,24px);font-weight:500;letter-spacing:-.02em;margin:48px 0 14px;color:var(--ink)}
+.case-body p{font-size:17px;font-weight:400;color:var(--ink-2);line-height:1.85;margin-bottom:20px}
+.case-body ul{margin:0 0 20px 0;padding-left:24px}
+.case-body li{font-size:17px;color:var(--ink-2);line-height:1.75;margin-bottom:8px}
+.case-body strong{font-weight:600;color:var(--ink)}
+.case-body em{font-style:italic;color:var(--ink-3)}
+.case-callout{background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.2);border-radius:12px;padding:28px 32px;margin:40px 0}
+.case-callout p{color:var(--ink-2);margin-bottom:0}
+.case-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin:40px 0}
+.case-stat{padding:28px 24px;border-right:1.5px solid var(--border);text-align:center}
+.case-stat:last-child{border-right:none}
+.case-stat-num{font-family:var(--fd);font-size:36px;font-weight:300;letter-spacing:-.04em;color:var(--accent);line-height:1;margin-bottom:6px}
+.case-stat-num span{font-size:22px}
+.case-stat-label{font-size:13px;color:var(--ink-4);line-height:1.4}
+.case-next{border-top:1.5px solid var(--border);padding:60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.case-next-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.case-next-title{font-family:var(--fd);font-size:28px;font-weight:400;letter-spacing:-.03em;color:var(--ink);text-decoration:none;display:block;transition:color .2s}
+.case-next-title:hover{color:var(--accent)}
+@media(max-width:960px){
+  .case-hero{padding:120px 24px 48px}
+  .case-meta-item{padding:20px 24px;min-width:120px}
+  .case-body{padding:0 24px}
+  .case-img{padding:24px}
+  .case-stat-grid{grid-template-columns:1fr 1fr}
+  .case-next{padding:40px 24px}
+}
+</style>
+<style>
+.art-hero{padding:160px 60px 80px;border-bottom:1.5px solid var(--border)}
+.art-hero-text{max-width:700px}
+.art-grid{
+  columns:3;
+  column-gap:3px;
+  gap:3px;
+  padding:3px;
+}
+.art-item{
+  break-inside:avoid;
+  margin-bottom:3px;
+  overflow:hidden;
+  background:var(--bg-2);
+}
+.art-item img{
+  width:100%;
+  display:block;
+  transition:transform .6s ease;
+}
+.art-item:hover img{
+  transform:scale(1.03);
+}
+@media(max-width:768px){
+  .art-hero{padding:120px 24px 48px}
+  .art-grid{columns:2}
+}
+@media(max-width:480px){
+  .art-grid{columns:1}
+}
+</style>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:17px;scroll-behavior:smooth}
+:root{
+  --bg:#f9f7f4;--bg-2:#f2efe9;--bg-3:#e8e4dc;
+  --ink:#111111;--ink-2:#333333;--ink-3:#555555;--ink-4:#767676;
+  --border:#d8d4cc;
+  --accent:#0a7a5f;--accent-bg:#e6f4f0;--accent-2:#1059a8;
+  --fd:'Sora',sans-serif;--fb:'DM Sans',sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);font-weight:300;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased}
+#cur{position:fixed;width:8px;height:8px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),background .3s}
+#cur-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(17,17,17,.2);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),border-color .3s}
+body.hover #cur{width:5px;height:5px;background:var(--accent)}
+body.hover #cur-ring{width:48px;height:48px;border-color:var(--accent)}
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:1000;width:0%;transition:width .1s linear}
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;display:flex;align-items:center;background:rgba(249,247,244,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1.5px solid var(--border);border-radius:100px;padding:8px 8px 8px 20px;white-space:nowrap;box-shadow:0 2px 20px rgba(0,0,0,.07)}
+.nav-logo{font-family:var(--fd);font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:-.01em;margin-right:20px}
+.nav-links{display:flex;gap:2px;list-style:none;margin-right:10px}
+.nav-links a{font-size:13px;font-weight:400;color:var(--ink-3);text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(0,0,0,.05)}
+.nav-dd{position:relative}
+.nav-dd-label{font-size:13px;font-weight:400;color:var(--ink-3);padding:6px 12px;border-radius:100px;cursor:none;transition:color .2s,background .2s;display:flex;align-items:center;gap:4px;user-select:none}
+.nav-dd-label:hover{color:var(--ink);background:rgba(0,0,0,.05)}
+.nav-dd-arrow{font-size:9px;transition:transform .2s}
+.nav-dd:hover .nav-dd-arrow{transform:rotate(180deg)}
+.nav-dd-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(249,247,244,.98);border:1.5px solid var(--border);border-radius:14px;padding:6px;min-width:160px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.nav-dd:hover .nav-dd-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dd-menu a{display:block;font-size:12px;color:var(--ink-3);text-decoration:none;padding:8px 12px;border-radius:8px;transition:background .15s,color .15s}
+.nav-dd-menu a:hover{background:rgba(0,0,0,.05);color:var(--ink)}
+.nav-cta{font-size:13px;font-weight:500;color:#fff;background:var(--accent);text-decoration:none;padding:8px 18px;border-radius:100px;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.btn-primary{font-family:var(--fb);font-size:15px;font-weight:500;color:#fff;background:var(--accent);border-radius:100px;padding:14px 28px;text-decoration:none;cursor:none;transition:opacity .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary:hover{opacity:.85}
+.btn-secondary{font-family:var(--fb);font-size:15px;font-weight:400;color:var(--ink-2);background:var(--bg);border:1.5px solid var(--border);border-radius:100px;padding:14px 28px;text-decoration:none;cursor:none;transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-secondary:hover{border-color:var(--ink-3);background:var(--bg-2)}
+.btn-ghost{font-family:var(--fb);font-size:14px;font-weight:400;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.btn-ghost:hover{gap:10px}
+.r{opacity:0;transform:translateY(24px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.r.on{opacity:1;transform:translateY(0)}
+.r[data-d="1"]{transition-delay:.1s}.r[data-d="2"]{transition-delay:.2s}.r[data-d="3"]{transition-delay:.3s}.r[data-d="4"]{transition-delay:.4s}
+.section{padding:100px 60px}
+.section-sm{padding:64px 60px}
+.section-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:48px;display:flex;align-items:center;gap:14px}
+.section-label::before{content:'';width:20px;height:1.5px;background:var(--accent)}
+.divider{border:none;border-top:1.5px solid var(--border)}
+footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;background:var(--bg-2)}
+.footer-name{font-family:var(--fd);font-size:20px;font-weight:400;letter-spacing:-.03em;color:var(--ink)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-link{font-size:13px;font-weight:400;color:var(--ink-3);text-decoration:none;transition:color .2s}
+.footer-link:hover{color:var(--ink)}
+.footer-credit{font-size:12px;color:var(--ink-4)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@media(max-width:960px){
+  nav{padding:8px 8px 8px 14px}
+  .nav-links .nav-dd,.nav-links li:not(:first-child){display:none}
+  .section{padding:64px 24px}
+  .section-sm{padding:48px 24px}
+  footer{padding:40px 24px;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div id="prog"></div>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Liting Sun</a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <span class="nav-dd-label">Product Design <span class="nav-dd-arrow">▾</span></span>
+      <div class="nav-dd-menu">
+        <a href="../pages/aws.html">AWS Libra</a>
+        <a href="../pages/liveperson.html">LivePerson</a>
+        <a href="../pages/joyrun.html">Joyrun</a>
+      </div>
+    </li>
+    <li class="nav-dd">
+      <span class="nav-dd-label">AI Products <span class="nav-dd-arrow">▾</span></span>
+      <div class="nav-dd-menu">
+        <a href="../pages/mindflux.html">Mind Flux</a>
+        <a href="../pages/referlink.html">ReferLink</a>
+        <a href="../pages/tinycloset.html">Tiny Closet</a>
+      </div>
+    </li>
+    <li><a href="../pages/art.html" class="active">Art</a></li>
+    <li><a href="../pages/about.html" >About</a></li>
+  </ul>
+  <a href="mailto:litingsun312@gmail.com" class="nav-cta">Say hello</a>
+</nav>
+
+<div class="case-hero r" style="animation:fadeUp .9s .2s var(--ease) forwards;opacity:0">
+  <div class="case-tag">Visual Arts</div>
+  <h1 class="case-h1">Art & Illustration</h1>
+  <p class="case-sub">Paintings, illustrations, and visual explorations from my art practice. Studied Visual Art & Mathematics at University of Washington.</p>
+</div>
+<div style="padding:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-top:1.5px solid var(--border)">
+  <div class="r" style="aspect-ratio:1;background:linear-gradient(135deg,#c8391a 0%,#e8856a 100%);border-radius:0"></div>
+  <div class="r" data-d="1" style="aspect-ratio:1;background:linear-gradient(135deg,#1059a8 0%,#4a90d9 100%)"></div>
+  <div class="r" data-d="2" style="aspect-ratio:1;background:linear-gradient(135deg,#0a7a5f 0%,#4fb89a 100%)"></div>
+  <div class="r" data-d="3" style="aspect-ratio:1;background:linear-gradient(135deg,#8a6a2a 0%,#c4a85a 100%)"></div>
+  <div class="r" data-d="1" style="aspect-ratio:1;background:linear-gradient(135deg,#3a1a5f 0%,#8a5ab8 100%)"></div>
+  <div class="r" data-d="2" style="aspect-ratio:1;background:linear-gradient(135deg,#1a4f3a 0%,#4a9a7a 100%)"></div>
+</div>
+<div style="padding:60px;border-top:1.5px solid var(--border)">
+  <p style="font-family:var(--fd);font-size:18px;font-weight:300;letter-spacing:-.02em;line-height:1.7;color:var(--ink-2);max-width:600px">Visual work coming soon. Visit <a href="https://www.litingsun.com/visual-arts" target="_blank" style="color:var(--accent);text-decoration:none">litingsun.com/visual-arts ↗</a> to see the current collection.</p>
+</div>
+
+
+<footer>
+  <div class="footer-name">Liting Sun</div>
+  <div class="footer-links">
+    <a href="mailto:litingsun312@gmail.com" class="footer-link">litingsun312@gmail.com</a>
+    <a href="https://www.linkedin.com/in/litingsun/" class="footer-link" target="_blank">LinkedIn</a>
+    <a href="../pages/art.html" class="footer-link">Art</a>
+    <a href="../pages/about.html" class="footer-link">About</a>
+  </div>
+  <div class="footer-credit">© 2025 Liting Sun</div>
+</footer>
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function tick(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})();
+document.querySelectorAll('a,button,.proj,.hover-target').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hover'));
+});
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+</script>
+</body>
+</html<div class="art-hero">
+  <div class="art-hero-text">
+    <div class="case-tag">Visual Arts</div>
+    <h1 class="case-h1">Paintings &<br/>Illustrations</h1>
+    <p class="case-sub">A collection of paintings, illustrations, and visual explorations from my ongoing art practice — where I explore color, form, and expression outside the digital canvas.</p>
+  </div>
+</div>
+
+<div class="art-grid">
+  <div class="art-item"><img src="../images/art/art-01.jpg" alt="Artwork 1" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-02.jpg" alt="Artwork 2" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-03.jpg" alt="Artwork 3" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-04.jpg" alt="Artwork 4" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-05.jpg" alt="Artwork 5" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-06.jpg" alt="Artwork 6" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-07.jpg" alt="Artwork 7" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-08.jpg" alt="Artwork 8" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-09.jpg" alt="Artwork 9" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-10.jpg" alt="Artwork 10" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-11.jpg" alt="Artwork 11" loading="lazy"/></div>
+  <div class="art-item"><img src="../images/art/art-12.jpg" alt="Artwork 12" loading="lazy"/></div>
+</div>
+
+<div class="case-next">
+  <div>
+    <div class="case-next-label">Back to</div>
+    <a href="../index.html" class="case-next-title">← All Projects</a>
+  </div>
+</div>
+ html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Visual Arts — Liting Sun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+.case-hero{padding:160px 60px 80px;max-width:900px}
+.case-tag{font-size:11px;font-weight:500;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+.case-h1{font-family:var(--fd);font-size:clamp(36px,5vw,72px);font-weight:300;letter-spacing:-.04em;line-height:1.05;margin-bottom:24px;color:var(--ink)}
+.case-sub{font-size:clamp(17px,1.6vw,21px);font-weight:400;color:var(--ink-2);line-height:1.7;max-width:620px}
+.case-meta{display:flex;flex-wrap:wrap;gap:0;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);margin:0 0 0}
+.case-meta-item{padding:28px 48px;border-right:1.5px solid var(--border);flex:1;min-width:140px}
+.case-meta-item:last-child{border-right:none}
+.case-meta-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.case-meta-val{font-size:16px;font-weight:500;color:var(--ink);line-height:1.4}
+.case-img{width:100%;background:var(--bg-2);display:block;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);overflow:hidden;text-align:center;padding:60px}
+.case-img img{max-width:100%;border-radius:8px;box-shadow:0 16px 64px rgba(0,0,0,.12)}
+.case-body{max-width:760px;margin:0 auto;padding:0 60px}
+.case-body h2{font-family:var(--fd);font-size:clamp(24px,3vw,38px);font-weight:400;letter-spacing:-.03em;line-height:1.2;margin:72px 0 20px;color:var(--ink)}
+.case-body h3{font-family:var(--fd);font-size:clamp(18px,2vw,24px);font-weight:500;letter-spacing:-.02em;margin:48px 0 14px;color:var(--ink)}
+.case-body p{font-size:17px;font-weight:400;color:var(--ink-2);line-height:1.85;margin-bottom:20px}
+.case-body ul{margin:0 0 20px 0;padding-left:24px}
+.case-body li{font-size:17px;color:var(--ink-2);line-height:1.75;margin-bottom:8px}
+.case-body strong{font-weight:600;color:var(--ink)}
+.case-body em{font-style:italic;color:var(--ink-3)}
+.case-callout{background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.2);border-radius:12px;padding:28px 32px;margin:40px 0}
+.case-callout p{color:var(--ink-2);margin-bottom:0}
+.case-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin:40px 0}
+.case-stat{padding:28px 24px;border-right:1.5px solid var(--border);text-align:center}
+.case-stat:last-child{border-right:none}
+.case-stat-num{font-family:var(--fd);font-size:36px;font-weight:300;letter-spacing:-.04em;color:var(--accent);line-height:1;margin-bottom:6px}
+.case-stat-num span{font-size:22px}
+.case-stat-label{font-size:13px;color:var(--ink-4);line-height:1.4}
+.case-next{border-top:1.5px solid var(--border);padding:60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.case-next-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.case-next-title{font-family:var(--fd);font-size:28px;font-weight:400;letter-spacing:-.03em;color:var(--ink);text-decoration:none;display:block;transition:color .2s}
+.case-next-title:hover{color:var(--accent)}
+@media(max-width:960px){
+  .case-hero{padding:120px 24px 48px}
+  .case-meta-item{padding:20px 24px;min-width:120px}
+  .case-body{padding:0 24px}
+  .case-img{padding:24px}
+  .case-stat-grid{grid-template-columns:1fr 1fr}
+  .case-next{padding:40px 24px}
+}
+</style>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:17px;scroll-behavior:smooth}
+:root{
+  --bg:#f9f7f4;--bg-2:#f2efe9;--bg-3:#e8e4dc;
+  --ink:#111111;--ink-2:#333333;--ink-3:#555555;--ink-4:#767676;
+  --border:#d8d4cc;
+  --accent:#0a7a5f;--accent-bg:#e6f4f0;--accent-2:#1059a8;
+  --fd:'Sora',sans-serif;--fb:'DM Sans',sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);font-weight:300;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased}
+#cur{position:fixed;width:8px;height:8px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),background .3s}
+#cur-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(17,17,17,.2);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),border-color .3s}
+body.hover #cur{width:5px;height:5px;background:var(--accent)}
+body.hover #cur-ring{width:48px;height:48px;border-color:var(--accent)}
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:1000;width:0%;transition:width .1s linear}
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;display:flex;align-items:center;background:rgba(249,247,244,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1.5px solid var(--border);border-radius:100px;padding:8px 8px 8px 20px;white-space:nowrap;box-shadow:0 2px 20px rgba(0,0,0,.07)}
+.nav-logo{font-family:var(--fd);font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:-.01em;margin-right:20px}
+.nav-links{display:flex;gap:2px;list-style:none;margin-right:10px}
+.nav-links a{font-size:13px;font-weight:400;color:var(--ink-3);text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(0,0,0,.05)}
+.nav-dd{position:relative}
+.nav-dd-label{font-size:13px;font-weight:400;color:var(--ink-3);padding:6px 12px;border-radius:100px;cursor:none;transition:color .2s,background .2s;display:flex;align-items:center;gap:4px;user-select:none}
+.nav-dd-label:hover{color:var(--ink);background:rgba(0,0,0,.05)}
+.nav-dd-arrow{font-size:9px;transition:transform .2s}
+.nav-dd:hover .nav-dd-arrow{transform:rotate(180deg)}
+.nav-dd-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(249,247,244,.98);border:1.5px solid var(--border);border-radius:14px;padding:6px;min-width:160px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.nav-dd:hover .nav-dd-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dd-menu a{display:block;font-size:12px;color:var(--ink-3);text-decoration:none;padding:8px 12px;border-radius:8px;transition:background .15s,color .15s}
+.nav-dd-menu a:hover{background:rgba(0,0,0,.05);color:var(--ink)}
+.nav-cta{font-size:13px;font-weight:500;color:#fff;background:var(--accent);text-decoration:none;padding:8px 18px;border-radius:100px;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.btn-primary{font-family:var(--fb);font-size:15px;font-weight:500;color:#fff;background:var(--accent);border-radius:100px;padding:14px 28px;text-decoration:none;cursor:none;transition:opacity .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary:hover{opacity:.85}
+.btn-secondary{font-family:var(--fb);font-size:15px;font-weight:400;color:var(--ink-2);background:var(--bg);border:1.5px solid var(--border);border-radius:100px;padding:14px 28px;text-decoration:none;cursor:none;transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-secondary:hover{border-color:var(--ink-3);background:var(--bg-2)}
+.btn-ghost{font-family:var(--fb);font-size:14px;font-weight:400;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.btn-ghost:hover{gap:10px}
+.r{opacity:0;transform:translateY(24px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.r.on{opacity:1;transform:translateY(0)}
+.r[data-d="1"]{transition-delay:.1s}.r[data-d="2"]{transition-delay:.2s}.r[data-d="3"]{transition-delay:.3s}.r[data-d="4"]{transition-delay:.4s}
+.section{padding:100px 60px}
+.section-sm{padding:64px 60px}
+.section-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:48px;display:flex;align-items:center;gap:14px}
+.section-label::before{content:'';width:20px;height:1.5px;background:var(--accent)}
+.divider{border:none;border-top:1.5px solid var(--border)}
+footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;background:var(--bg-2)}
+.footer-name{font-family:var(--fd);font-size:20px;font-weight:400;letter-spacing:-.03em;color:var(--ink)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-link{font-size:13px;font-weight:400;color:var(--ink-3);text-decoration:none;transition:color .2s}
+.footer-link:hover{color:var(--ink)}
+.footer-credit{font-size:12px;color:var(--ink-4)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@media(max-width:960px){
+  nav{padding:8px 8px 8px 14px}
+  .nav-links .nav-dd,.nav-links li:not(:first-child){display:none}
+  .section{padding:64px 24px}
+  .section-sm{padding:48px 24px}
+  footer{padding:40px 24px;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div id="prog"></div>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Liting Sun</a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <span class="nav-dd-label">Product Design <span class="nav-dd-arrow">▾</span></span>
+      <div class="nav-dd-menu">
+        <a href="../pages/aws.html">AWS Libra</a>
+        <a href="../pages/liveperson.html">LivePerson</a>
+        <a href="../pages/joyrun.html">Joyrun</a>
+      </div>
+    </li>
+    <li class="nav-dd">
+      <span class="nav-dd-label">AI Products <span class="nav-dd-arrow">▾</span></span>
+      <div class="nav-dd-menu">
+        <a href="../pages/mindflux.html">Mind Flux</a>
+        <a href="../pages/referlink.html">ReferLink</a>
+        <a href="../pages/tinycloset.html">Tiny Closet</a>
+      </div>
+    </li>
+    <li><a href="../pages/art.html" class="active">Art</a></li>
+    <li><a href="../pages/about.html" >About</a></li>
+  </ul>
+  <a href="mailto:litingsun312@gmail.com" class="nav-cta">Say hello</a>
+</nav>
+
+<div class="case-hero r" style="animation:fadeUp .9s .2s var(--ease) forwards;opacity:0">
+  <div class="case-tag">Visual Arts</div>
+  <h1 class="case-h1">Art & Illustration</h1>
+  <p class="case-sub">Paintings, illustrations, and visual explorations from my art practice. Studied Visual Art & Mathematics at University of Washington.</p>
+</div>
+<div style="padding:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-top:1.5px solid var(--border)">
+  <div class="r" style="aspect-ratio:1;background:linear-gradient(135deg,#c8391a 0%,#e8856a 100%);border-radius:0"></div>
+  <div class="r" data-d="1" style="aspect-ratio:1;background:linear-gradient(135deg,#1059a8 0%,#4a90d9 100%)"></div>
+  <div class="r" data-d="2" style="aspect-ratio:1;background:linear-gradient(135deg,#0a7a5f 0%,#4fb89a 100%)"></div>
+  <div class="r" data-d="3" style="aspect-ratio:1;background:linear-gradient(135deg,#8a6a2a 0%,#c4a85a 100%)"></div>
+  <div class="r" data-d="1" style="aspect-ratio:1;background:linear-gradient(135deg,#3a1a5f 0%,#8a5ab8 100%)"></div>
+  <div class="r" data-d="2" style="aspect-ratio:1;background:linear-gradient(135deg,#1a4f3a 0%,#4a9a7a 100%)"></div>
+</div>
+<div style="padding:60px;border-top:1.5px solid var(--border)">
+  <p style="font-family:var(--fd);font-size:18px;font-weight:300;letter-spacing:-.02em;line-height:1.7;color:var(--ink-2);max-width:600px">Visual work coming soon. Visit <a href="https://www.litingsun.com/visual-arts" target="_blank" style="color:var(--accent);text-decoration:none">litingsun.com/visual-arts ↗</a> to see the current collection.</p>
+</div>
+
+
+<footer>
+  <div class="footer-name">Liting Sun</div>
+  <div class="footer-links">
+    <a href="mailto:litingsun312@gmail.com" class="footer-link">litingsun312@gmail.com</a>
+    <a href="https://www.linkedin.com/in/litingsun/" class="footer-link" target="_blank">LinkedIn</a>
+    <a href="../pages/art.html" class="footer-link">Art</a>
+    <a href="../pages/about.html" class="footer-link">About</a>
+  </div>
+  <div class="footer-credit">© 2025 Liting Sun</div>
+</footer>
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function tick(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})();
+document.querySelectorAll('a,button,.proj,.hover-target').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hover'));
+});
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

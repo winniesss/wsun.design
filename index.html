@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Home — Liting Sun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 100px;position:relative;overflow:hidden;background:var(--bg)}
+.orb{position:absolute;width:700px;height:700px;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at center,rgba(10,122,95,.09) 0%,rgba(16,89,168,.05) 40%,transparent 70%);animation:orbPulse 9s ease-in-out infinite;pointer-events:none}
+.orb-2{position:absolute;width:1100px;height:1100px;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at center,rgba(10,122,95,.04) 0%,transparent 60%);animation:orbPulse 14s 3s ease-in-out infinite;pointer-events:none}
+@keyframes orbPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.07)}}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.055) 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,black,transparent);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:400;color:var(--ink-3);border:1.5px solid var(--border);border-radius:100px;background:var(--bg);padding:7px 18px;margin-bottom:52px;opacity:0;animation:fadeUp .8s .2s var(--ease) forwards}
+.badge-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:blink 2.2s ease-in-out infinite}
+.hero-h1{font-family:var(--fd);font-size:clamp(52px,8vw,108px);font-weight:300;line-height:1.01;letter-spacing:-.04em;color:var(--ink);margin-bottom:28px;opacity:0;animation:fadeUp .9s .35s var(--ease) forwards}
+.hero-h1 em{font-style:italic;color:var(--accent);font-weight:300}
+.hero-h1 strong{font-weight:600}
+.hero-sub{font-size:clamp(17px,1.7vw,21px);font-weight:400;color:var(--ink-2);line-height:1.72;max-width:520px;margin:0 auto 52px;opacity:0;animation:fadeUp .8s .5s var(--ease) forwards}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .65s var(--ease) forwards}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.12em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeUp 1s 1.2s ease forwards}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--ink-4))}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);background:var(--bg)}
+.stat-item{padding:44px 40px;border-right:1.5px solid var(--border);transition:background .3s}
+.stat-item:last-child{border-right:none}
+.stat-item:hover{background:var(--bg-2)}
+.stat-num{font-family:var(--fd);font-size:46px;font-weight:300;letter-spacing:-.04em;color:var(--ink);line-height:1;margin-bottom:8px;display:block}
+.stat-num span{color:var(--accent)}
+.stat-label{font-size:14px;font-weight:400;color:var(--ink-3);line-height:1.5}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px}
+.proj{display:block;text-decoration:none;color:inherit;background:var(--bg-2);position:relative;overflow:hidden;cursor:none;border:1.5px solid var(--border);transition:border-color .3s,background .3s}
+.proj:hover{border-color:var(--ink-3);background:var(--bg-3)}
+.proj:hover .proj-vi{transform:scale(1.025)}
+.proj:hover .proj-arrow{opacity:1;transform:translate(0,0)}
+.proj.wide{grid-column:span 2}
+.proj.wide .proj-visual{aspect-ratio:16/9}
+.proj-visual{width:100%;aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg-2);position:relative}
+.proj-vi{display:flex;align-items:center;justify-content:center;width:100%;height:100%;transition:transform .7s var(--ease)}
+.proj-aws .proj-visual{background:#eef3f0}
+.proj-lp  .proj-visual{background:#eef0f6}
+.proj-joy .proj-visual{background:#f4efef}
+.proj-mf  .proj-visual{background:#eef3f0}
+.proj-rl  .proj-visual{background:#eef1f6}
+.proj-tc  .proj-visual{background:#f4f0ee}
+.proj-oba .proj-visual{background:#f0f0f4}
+.proj-info{padding:28px 32px 32px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1.5px solid var(--border)}
+.proj-cat{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.proj-title{font-family:var(--fd);font-size:22px;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:5px;line-height:1.2}
+.proj-desc{font-size:14px;font-weight:400;color:var(--ink-3);line-height:1.6;max-width:320px}
+.proj-arrow{font-size:18px;color:var(--accent);opacity:0;transform:translate(-6px,6px);transition:opacity .3s,transform .3s var(--ease);flex-shrink:0;margin-left:20px}
+/* animated visuals */
+.vis-meeting{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:58%}
+.m-cell{aspect-ratio:4/3;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.08);border-radius:6px;position:relative;overflow:hidden}
+.m-cell::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left}
+.m-cell.s1::after{animation:speak 3.2s 0s ease-in-out infinite}
+.m-cell.s2::after{animation:speak 3.2s .8s ease-in-out infinite}
+.m-cell.s3::after{animation:speak 3.2s 1.6s ease-in-out infinite}
+.m-cell.s4::after{animation:speak 3.2s 2.4s ease-in-out infinite}
+@keyframes speak{0%,100%{transform:scaleX(0)}30%,70%{transform:scaleX(1)}}
+.vis-ai-strip{position:absolute;right:10%;top:16%;bottom:16%;width:19%;background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.2);border-radius:8px;padding:12px 10px;display:flex;flex-direction:column;gap:8px}
+.ai-lbl{font-size:7px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.ai-line{height:6px;background:rgba(10,122,95,.12);border-radius:3px;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+.vis-chat{display:flex;flex-direction:column;gap:10px;width:60%;padding:18px;background:#fff;border:1.5px solid var(--border);border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.05)}
+.cm{display:flex;gap:8px;align-items:flex-end}
+.cm.r{flex-direction:row-reverse}
+.cm-av{width:22px;height:22px;border-radius:50%;background:var(--bg-3);flex-shrink:0}
+.cm-bub{height:10px;background:var(--bg-3);border-radius:10px;flex:1;max-width:65%}
+.cm.r .cm-bub{background:rgba(16,89,168,.15)}
+.cm-typing{display:flex;gap:4px;align-items:center;padding:8px 12px;background:var(--bg-3);border-radius:10px;width:fit-content}
+.td{width:5px;height:5px;background:var(--ink-4);border-radius:50%;animation:bounce 1.2s ease-in-out infinite}
+.td:nth-child(2){animation-delay:.15s}.td:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.vis-ring{position:relative;width:100px;height:100px}
+.vis-ring svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:var(--bg-3);stroke-width:8}
+.ring-fill{fill:none;stroke:url(#rg);stroke-width:8;stroke-linecap:round;stroke-dasharray:264;stroke-dashoffset:264;animation:fillRing 2.5s .5s var(--ease) forwards}
+@keyframes fillRing{to{stroke-dashoffset:72}}
+.ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.ring-num{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--ink);line-height:1}
+.ring-sub{font-size:9px;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+.vis-joy-stats{display:flex;flex-direction:column;gap:16px;margin-left:28px}
+.jst{display:flex;flex-direction:column;gap:5px}
+.jst-val{font-size:12px;font-weight:600;color:var(--ink-2)}
+.jst-bar-bg{width:90px;height:4px;background:var(--bg-3);border-radius:2px;overflow:hidden}
+.jst-bar{height:100%;border-radius:2px;background:linear-gradient(to right,var(--accent),var(--accent-2));width:0;animation:growBar 2s var(--ease) forwards}
+@keyframes growBar{to{width:var(--w)}}
+.jst-lbl{font-size:10px;font-weight:400;color:var(--ink-4)}
+.vis-mind{display:flex;flex-direction:column;gap:10px;width:64%}
+.mc{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:14px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.mc-tag{font-size:9px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;font-weight:600;display:flex;align-items:center;gap:6px}
+.mc-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;animation:blink 1.8s ease-in-out infinite}
+.mc-line{height:6px;background:var(--bg-3);border-radius:4px;margin-bottom:5px;animation:pulse 2.5s ease-in-out infinite}
+.mc-line:last-child{margin-bottom:0;width:60%}
+.vis-rl{display:flex;flex-direction:column;align-items:center;gap:12px;width:70%;padding:20px}
+.rl-score-big{font-family:var(--fd);font-size:48px;font-weight:300;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.rl-score-big span{font-size:26px;color:var(--accent)}
+.rl-hdr{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2)}
+.rl-conns{display:flex;flex-direction:column;gap:8px;width:100%}
+.rl-conn{display:flex;align-items:center;gap:8px}
+.rl-node{font-size:10px;font-weight:600;padding:4px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.rn-you{background:var(--bg-3);color:var(--ink-3)}
+.rn-co{background:rgba(10,122,95,.12);color:var(--accent)}
+.rn-co2{background:rgba(16,89,168,.12);color:var(--accent-2)}
+.rl-line{flex:1;height:2px;background:var(--bg-3);border-radius:2px;overflow:hidden}
+.rl-fill{height:100%;background:linear-gradient(to right,var(--accent),var(--accent-2));width:0;animation:flowLine 2.4s ease-in-out infinite}
+.rl-fill.d2{animation-delay:.7s}
+@keyframes flowLine{0%{width:0;opacity:0}20%{opacity:1}80%{opacity:1}100%{width:100%;opacity:0}}
+.rl-badge{font-size:11px;font-weight:600;color:var(--accent);background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.2);border-radius:100px;padding:5px 14px;animation:fbadge 2.4s 1.2s ease-in-out infinite}
+@keyframes fbadge{0%,100%{opacity:0;transform:translateY(4px)}30%,70%{opacity:1;transform:translateY(0)}}
+.vis-tc{display:flex;flex-direction:column;gap:8px;width:64%}
+.tc-card{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:14px;box-shadow:0 2px 12px rgba(0,0,0,.04);display:flex;gap:10px;align-items:center}
+.tc-img{width:36px;height:44px;background:var(--bg-3);border-radius:4px;flex-shrink:0}
+.tc-lines{flex:1;display:flex;flex-direction:column;gap:5px}
+.tc-line{height:6px;background:var(--bg-3);border-radius:3px;animation:pulse 2.5s ease-in-out infinite}
+.tc-badge{font-size:9px;font-weight:600;color:var(--accent-2);background:rgba(16,89,168,.1);border-radius:4px;padding:2px 6px;width:fit-content}
+.vis-oba{display:flex;flex-direction:column;gap:10px;width:60%}
+.oba-bar{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:14px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.oba-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.oba-row:last-child{margin-bottom:0}
+.oba-time{font-size:11px;font-weight:600;color:var(--ink-2);width:36px;text-align:right;flex-shrink:0}
+.oba-track{flex:1;height:8px;background:var(--bg-3);border-radius:4px;overflow:hidden}
+.oba-fill{height:100%;border-radius:4px;animation:growBar 2s var(--ease) forwards}
+.oba-fill.a{background:var(--accent);--w:90%}
+.oba-fill.b{background:var(--accent-2);--w:55%;animation-delay:.2s}
+.oba-fill.c{background:var(--accent);--w:72%;animation-delay:.4s}
+.oba-route{font-size:9px;color:var(--ink-4);flex-shrink:0}
+/* approach */
+.approach{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--border)}
+.app-left{padding:100px 80px 100px 60px;border-right:1.5px solid var(--border)}
+.app-right{padding:100px 60px 100px 80px}
+.approach-h2{font-family:var(--fd);font-size:clamp(30px,3.5vw,50px);font-weight:300;letter-spacing:-.03em;line-height:1.15;margin-bottom:24px;color:var(--ink)}
+.approach-body{font-size:17px;font-weight:400;color:var(--ink-2);line-height:1.85;max-width:400px}
+.approach-body+.approach-body{margin-top:16px}
+.principles{display:flex;flex-direction:column}
+.principle{padding:28px 0;border-bottom:1.5px solid var(--border);display:grid;grid-template-columns:44px 1fr;gap:16px}
+.principle:first-child{border-top:1.5px solid var(--border)}
+.principle-num{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;padding-top:2px}
+.principle-title{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.principle-body{font-size:14px;font-weight:400;color:var(--ink-3);line-height:1.65}
+/* about strip */
+.about-strip{border-top:1.5px solid var(--border);display:grid;grid-template-columns:1fr 1fr}
+.asl{padding:80px 80px 80px 60px;border-right:1.5px solid var(--border)}
+.asr{padding:80px 60px 80px 80px;display:flex;flex-direction:column;justify-content:center}
+.about-h2{font-family:var(--fd);font-size:clamp(28px,3vw,42px);font-weight:300;letter-spacing:-.03em;line-height:1.2;margin-bottom:24px;color:var(--ink)}
+.about-body{font-size:16px;font-weight:400;color:var(--ink-2);line-height:1.85;max-width:380px}
+.about-body+.about-body{margin-top:14px}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+.about-tag{font-size:12px;font-weight:400;color:var(--ink-3);border:1.5px solid var(--border);border-radius:100px;padding:6px 14px;transition:border-color .2s,color .2s,background .2s}
+.about-tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
+.aside-item{margin-bottom:36px}
+.aside-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.aside-label::before{content:'';width:14px;height:1.5px;background:var(--accent)}
+.aside-val{font-family:var(--fd);font-size:17px;font-weight:400;letter-spacing:-.02em;color:var(--ink-2);line-height:1.4}
+@media(max-width:960px){
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .stat-item{padding:32px 24px}
+  .projects-grid{grid-template-columns:1fr}
+  .proj.wide{grid-column:span 1}
+  .proj.wide .proj-visual{aspect-ratio:4/3}
+  .approach{grid-template-columns:1fr}
+  .app-left{border-right:none;border-bottom:1.5px solid var(--border);padding:60px 24px}
+  .app-right{padding:60px 24px}
+  .about-strip{grid-template-columns:1fr}
+  .asl{border-right:none;border-bottom:1.5px solid var(--border);padding:60px 24px}
+  .asr{padding:60px 24px}
+}
+</style>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:17px;scroll-behavior:smooth}
+:root{
+  --bg:#f9f7f4;--bg-2:#f2efe9;--bg-3:#e8e4dc;
+  --ink:#111111;--ink-2:#333333;--ink-3:#555555;--ink-4:#767676;
+  --border:#d8d4cc;
+  --accent:#0a7a5f;--accent-bg:#e6f4f0;--accent-2:#1059a8;
+  --fd:'Sora',sans-serif;--fb:'DM Sans',sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);font-weight:300;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased}
+#cur{position:fixed;width:8px;height:8px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),background .3s}
+#cur-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(17,17,17,.2);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),border-color .3s}
+body.hover #cur{width:5px;height:5px;background:var(--accent)}
+body.hover #cur-ring{width:48px;height:48px;border-color:var(--accent)}
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:1000;width:0%;transition:width .1s linear}
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;display:flex;align-items:center;background:rgba(249,247,244,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1.5px solid var(--border);border-radius:100px;padding:8px 8px 8px 20px;white-space:nowrap;box-shadow:0 2px 20px rgba(0,0,0,.07)}
+.nav-logo{font-family:var(--fd);font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:-.01em;margin-right:20px}
+.nav-links{display:flex;gap:2px;list-style:none;margin-right:10px}
+.nav-links a{font-size:13px;font-weight:400;color:var(--ink-3);text-decoration:none;padding:6px 12px;border-radius:100px;transition:color .2s,background .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(0,0,0,.05)}
+.nav-dd{position:relative}
+.nav-dd-label{font-size:13px;font-weight:400;color:var(--ink-3);padding:6px 12px;border-radius:100px;cursor:none;transition:color .2s,background .2s;display:flex;align-items:center;gap:4px;user-select:none}
+.nav-dd-label:hover{color:var(--ink);background:rgba(0,0,0,.05)}
+.nav-dd-arrow{font-size:9px;transition:transform .2s}
+.nav-dd:hover .nav-dd-arrow{transform:rotate(180deg)}
+.nav-dd-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(249,247,244,.98);border:1.5px solid var(--border);border-radius:14px;padding:6px;min-width:160px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.nav-dd:hover .nav-dd-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dd-menu a{display:block;font-size:12px;color:var(--ink-3);text-decoration:none;padding:8px 12px;border-radius:8px;transition:background .15s,color .15s}
+.nav-dd-menu a:hover{background:rgba(0,0,0,.05);color:var(--ink)}
+.nav-cta{font-size:13px;font-weight:500;color:#fff;background:var(--accent);text-decoration:none;padding:8px 18px;border-radius:100px;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.btn-primary{font-family:var(--fb);font-size:15px;font-weight:500;color:#fff;background:var(--accent);border-radius:100px;padding:14px 28px;text-decoration:none;cursor:none;transition:opacity .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary:hover{opacity:.85}
+.btn-secondary{font-family:var(--fb);font-size:15px;font-weight:400;color:var(--ink-2);background:var(--bg);border:1.5px solid var(--border);border-radius:100px;padding:14px 28px;text-decoration:none;cursor:none;transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-secondary:hover{border-color:var(--ink-3);background:var(--bg-2)}
+.btn-ghost{font-family:var(--fb);font-size:14px;font-weight:400;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.btn-ghost:hover{gap:10px}
+.r{opacity:0;transform:translateY(24px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.r.on{opacity:1;transform:translateY(0)}
+.r[data-d="1"]{transition-delay:.1s}.r[data-d="2"]{transition-delay:.2s}.r[data-d="3"]{transition-delay:.3s}.r[data-d="4"]{transition-delay:.4s}
+.section{padding:100px 60px}
+.section-sm{padding:64px 60px}
+.section-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:48px;display:flex;align-items:center;gap:14px}
+.section-label::before{content:'';width:20px;height:1.5px;background:var(--accent)}
+.divider{border:none;border-top:1.5px solid var(--border)}
+footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;background:var(--bg-2)}
+.footer-name{font-family:var(--fd);font-size:20px;font-weight:400;letter-spacing:-.03em;color:var(--ink)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-link{font-size:13px;font-weight:400;color:var(--ink-3);text-decoration:none;transition:color .2s}
+.footer-link:hover{color:var(--ink)}
+.footer-credit{font-size:12px;color:var(--ink-4)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@media(max-width:960px){
+  nav{padding:8px 8px 8px 14px}
+  .nav-links .nav-dd,.nav-links li:not(:first-child){display:none}
+  .section{padding:64px 24px}
+  .section-sm{padding:48px 24px}
+  footer{padding:40px 24px;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div id="prog"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Liting Sun</a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <span class="nav-dd-label">Product Design <span class="nav-dd-arrow">▾</span></span>
+      <div class="nav-dd-menu">
+        <a href="pages/aws.html">AWS Libra</a>
+        <a href="pages/liveperson.html">LivePerson</a>
+        <a href="pages/joyrun.html">Joyrun</a>
+      </div>
+    </li>
+    <li class="nav-dd">
+      <span class="nav-dd-label">AI Products <span class="nav-dd-arrow">▾</span></span>
+      <div class="nav-dd-menu">
+        <a href="pages/mindflux.html">Mind Flux</a>
+        <a href="pages/referlink.html">ReferLink</a>
+        <a href="pages/tinycloset.html">Tiny Closet</a>
+      </div>
+    </li>
+    <li><a href="pages/art.html" >Art</a></li>
+    <li><a href="pages/about.html" >About</a></li>
+  </ul>
+  <a href="mailto:litingsun312@gmail.com" class="nav-cta">Say hello</a>
+</nav>
+
+<section class="hero">
+  <div class="orb"></div><div class="orb-2"></div>
+  <div class="hero-content" style="position:relative;z-index:1;max-width:880px">
+    <div class="hero-badge"><div class="badge-dot"></div>Open to new roles · Seattle, WA</div>
+    <h1 class="hero-h1">Designing AI<br/>that feels <em>human.</em></h1>
+    <p class="hero-sub">Hi, I'm Winnie — Senior Product Designer & Builder with 8+ years at Amazon and AWS, making AI experiences that amplify people rather than replace them.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">View work ↓</a>
+      <a href="pages/about.html" class="btn-secondary">About me</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<div class="stats-bar r">
+  <div class="stat-item"><span class="stat-num">13<span>%</span></span><span class="stat-label">SCAT score improvement<br/>at AWS (~$2.8M pipeline)</span></div>
+  <div class="stat-item"><span class="stat-num">97<span>%</span></span><span class="stat-label">AI-matched candidates<br/>advanced at LivePerson</span></div>
+  <div class="stat-item"><span class="stat-num">400<span>+</span></span><span class="stat-label">Design system<br/>components built</span></div>
+  <div class="stat-item"><span class="stat-num">30<span>+</span></span><span class="stat-label">Beta users on<br/>Mind Flux</span></div>
+</div>
+
+<section id="work">
+  <div class="section-label r" style="padding:80px 60px 48px">Selected work</div>
+  <div class="projects-grid">
+
+    <a href="pages/aws.html" class="proj wide r proj-aws">
+      <div class="proj-visual" style="background:#eef3f0;aspect-ratio:8/3">
+        <div class="proj-vi">
+          <div class="vis-meeting">
+            <div class="m-cell s1"></div><div class="m-cell s2"></div>
+            <div class="m-cell s3"></div><div class="m-cell"></div>
+            <div class="m-cell s4"></div><div class="m-cell s1"></div>
+            <div class="m-cell"></div><div class="m-cell s2"></div>
+          </div>
+          <div class="vis-ai-strip"><div class="ai-lbl">AI ▸</div><div class="ai-line"></div><div class="ai-line" style="width:70%;animation-delay:.3s"></div><div class="ai-line" style="width:85%;animation-delay:.6s"></div><div class="ai-line" style="width:50%;background:rgba(10,122,95,.28);animation-delay:.9s"></div></div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div><div class="proj-cat">Product Design · Amazon Web Services</div><div class="proj-title">AWS Project Libra</div><div class="proj-desc">Inclusive hybrid meeting system — AI assistant, join flow redesign, accessibility-first. 13% SCAT improvement, $2.8M pipeline.</div></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+    </a>
+
+    <a href="pages/liveperson.html" class="proj r proj-lp">
+      <div class="proj-visual" style="background:#eef0f6">
+        <div class="proj-vi">
+          <div class="vis-chat">
+            <div class="cm"><div class="cm-av"></div><div class="cm-bub" style="width:80%"></div></div>
+            <div class="cm r"><div class="cm-av" style="background:rgba(16,89,168,.12)"></div><div class="cm-bub" style="width:55%"></div></div>
+            <div class="cm"><div class="cm-av"></div><div class="cm-bub" style="width:70%"></div></div>
+            <div class="cm r"><div class="cm-av" style="background:rgba(16,89,168,.12)"></div><div class="cm-typing"><div class="td"></div><div class="td"></div><div class="td"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div><div class="proj-cat">Product Design · LivePerson</div><div class="proj-title">AI Career Site & Dashboard</div><div class="proj-desc">Resume-based AI matching + recruiter analytics. 97% candidate advancement, 25K+ monthly traffic.</div></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+    </a>
+
+    <a href="pages/joyrun.html" class="proj r proj-joy">
+      <svg style="display:none"><defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#0a7a5f"/><stop offset="100%" style="stop-color:#1059a8"/></linearGradient></defs></svg>
+      <div class="proj-visual" style="background:#f4efef">
+        <div class="proj-vi">
+          <div class="vis-ring">
+            <svg width="100" height="100" viewBox="0 0 100 100"><circle class="ring-bg" cx="50" cy="50" r="42"/><circle class="ring-fill" cx="50" cy="50" r="42"/></svg>
+            <div class="ring-center"><div class="ring-num">73%</div><div class="ring-sub">Goal</div></div>
+          </div>
+          <div class="vis-joy-stats">
+            <div class="jst"><div class="jst-val">5.2 km</div><div class="jst-bar-bg"><div class="jst-bar" style="--w:75%"></div></div><div class="jst-lbl">Today's run</div></div>
+            <div class="jst"><div class="jst-val">Day 23</div><div class="jst-bar-bg"><div class="jst-bar" style="--w:60%;animation-delay:.5s"></div></div><div class="jst-lbl">Streak</div></div>
+            <div class="jst"><div class="jst-val">5M+ users</div><div class="jst-bar-bg"><div class="jst-bar" style="--w:90%;animation-delay:.8s"></div></div><div class="jst-lbl">Community</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div><div class="proj-cat">Product Design · Joyrun</div><div class="proj-title">Social Fitness App</div><div class="proj-desc">Gamification design for 5M+ users — fun, unique engagement through social running.</div></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+    </a>
+
+    <a href="pages/mindflux.html" class="proj r proj-mf">
+      <div class="proj-visual" style="background:#eef3f0">
+        <div class="proj-vi">
+          <div class="vis-mind">
+            <div class="mc"><div class="mc-tag"><div class="mc-dot"></div>Today's reflection</div><div class="mc-line"></div><div class="mc-line" style="animation-delay:.2s"></div><div class="mc-line" style="animation-delay:.4s;width:65%"></div></div>
+            <div class="mc" style="background:var(--accent-bg);border-color:rgba(10,122,95,.2)"><div class="mc-tag" style="margin-bottom:5px">AI insight</div><div class="mc-line" style="background:rgba(10,122,95,.18);animation-delay:.1s"></div><div class="mc-line" style="background:rgba(10,122,95,.1);animation-delay:.3s;width:55%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div><div class="proj-cat">AI Product · Solo Builder</div><div class="proj-title">Mind Flux</div><div class="proj-desc">Stoic-philosophy-based mental health app. Swipe to triage worries, AI reframes. 30+ beta users.</div></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+    </a>
+
+    <a href="pages/referlink.html" class="proj r proj-rl">
+      <div class="proj-visual" style="background:#eef1f6">
+        <div class="proj-vi">
+          <div class="vis-rl">
+            <div class="rl-hdr">AI Match Score</div>
+            <div class="rl-score-big">94<span>%</span></div>
+            <div class="rl-conns">
+              <div class="rl-conn"><div class="rl-node rn-you">You</div><div class="rl-line"><div class="rl-fill"></div></div><div class="rl-node rn-co">Meta</div></div>
+              <div class="rl-conn"><div class="rl-node rn-you">You</div><div class="rl-line"><div class="rl-fill d2"></div></div><div class="rl-node rn-co2">Microsoft</div></div>
+            </div>
+            <div class="rl-badge">3 referrers found ✓</div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div><div class="proj-cat">AI Product · Solo Builder</div><div class="proj-title">ReferLink</div><div class="proj-desc">AI job referral marketplace — finds insiders at your target companies automatically.</div></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+    </a>
+
+    <a href="pages/tinycloset.html" class="proj r proj-tc">
+      <div class="proj-visual" style="background:#f4f0ee">
+        <div class="proj-vi">
+          <div class="vis-tc">
+            <div class="tc-card"><div class="tc-img"></div><div class="tc-lines"><div class="tc-badge">AI styled</div><div class="tc-line" style="width:80%"></div><div class="tc-line" style="width:55%;animation-delay:.3s"></div></div></div>
+            <div class="tc-card"><div class="tc-img" style="background:var(--accent-bg)"></div><div class="tc-lines"><div class="tc-badge" style="color:var(--accent);background:rgba(10,122,95,.1)">Recommended</div><div class="tc-line" style="width:70%;animation-delay:.2s"></div><div class="tc-line" style="width:45%;animation-delay:.5s"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div><div class="proj-cat">AI Product · Solo Builder</div><div class="proj-title">Tiny Closet</div><div class="proj-desc">AI wardrobe assistant that turns kids' clothing chaos into daily styling inspiration.</div></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+    </a>
+
+    <a href="pages/art.html" class="proj wide r" style="background:var(--bg-2)">
+      <div class="proj-visual" style="background:#1a1a1a;overflow:hidden;aspect-ratio:8/3">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr;height:100%;gap:2px">
+          <img src="images/art/art-09.jpg" style="width:100%;height:100%;object-fit:cover" alt="Art"/>
+          <img src="images/art/art-10.jpg" style="width:100%;height:100%;object-fit:cover" alt="Art"/>
+          <img src="images/art/art-07.jpg" style="width:100%;height:100%;object-fit:cover" alt="Art"/>
+          <img src="images/art/art-11.jpg" style="width:100%;height:100%;object-fit:cover" alt="Art"/>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div><div class="proj-cat">Visual Arts</div><div class="proj-title">Art & Illustration</div><div class="proj-desc">Paintings, illustrations, and visual explorations from my art practice.</div></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<div class="approach r">
+  <div class="app-left">
+    <div class="section-label">Philosophy</div>
+    <h2 class="approach-h2">AI should amplify,<br/>not announce itself.</h2>
+    <p class="approach-body">The best AI experiences are ones users can't quite describe — because the intelligence felt so natural they didn't notice it working. I design for that invisible moment.</p>
+    <p class="approach-body">My background in Visual Art and Mathematics gives me an unusual lens: I see systems as compositions and compositions as systems. That dual perspective shapes every product decision.</p>
+  </div>
+  <div class="app-right">
+    <div class="section-label">Principles</div>
+    <div class="principles">
+      <div class="principle"><span class="principle-num">01</span><div><div class="principle-title">Ambient over assistive</div><div class="principle-body">AI that works without demanding attention earns more trust than AI that constantly announces what it's doing.</div></div></div>
+      <div class="principle"><span class="principle-num">02</span><div><div class="principle-title">Trust lives in the details</div><div class="principle-body">Error messages, loading states, edge cases — the unsexy work is where user trust is built or broken.</div></div></div>
+      <div class="principle"><span class="principle-num">03</span><div><div class="principle-title">Accessibility is good design</div><div class="principle-body">100% of accessibility users preferred Libra over traditional conference rooms. Inclusion produces better products for everyone.</div></div></div>
+      <div class="principle"><span class="principle-num">04</span><div><div class="principle-title">Build to understand</div><div class="principle-body">I prototype in React using Claude Code and Cursor. Understanding the material makes every design decision sharper.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="about-strip r">
+  <div class="asl">
+    <h2 class="about-h2">Product designer<br/>who builds.<br/>Builder who designs.</h2>
+    <p class="about-body">8+ years at Amazon, AWS, and LivePerson designing AI-first enterprise products. I also ship my own AI side products — Mind Flux, ReferLink, and Tiny Closet.</p>
+    <p class="about-body">My goal is simple: to add value. I focus on solving user problems while aligning with business objectives, creating experiences that work for everyone.</p>
+    <div class="about-tags">
+      <span class="about-tag">AI/ML Products</span><span class="about-tag">Design Systems</span><span class="about-tag">Enterprise UX</span><span class="about-tag">Accessibility</span><span class="about-tag">Figma</span><span class="about-tag">React</span><span class="about-tag">Claude Code</span>
+    </div>
+  </div>
+  <div class="asr">
+    <div class="aside-item"><div class="aside-label">Currently</div><div class="aside-val" style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:var(--accent);border-radius:50%;display:inline-block;animation:blink 2s ease-in-out infinite"></span>Open to new roles</div></div>
+    <div class="aside-item"><div class="aside-label">Based in</div><div class="aside-val">Seattle, Washington</div></div>
+    <div class="aside-item"><div class="aside-label">Email</div><div class="aside-val" style="font-size:15px"><a href="mailto:litingsun312@gmail.com" style="color:var(--ink-2);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--ink-2)'">litingsun312@gmail.com</a></div></div>
+    <a href="pages/about.html" class="btn-secondary" style="display:inline-flex;margin-top:8px">Full biography →</a>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-name">Liting Sun</div>
+  <div class="footer-links">
+    <a href="mailto:litingsun312@gmail.com" class="footer-link">litingsun312@gmail.com</a>
+    <a href="https://www.linkedin.com/in/litingsun/" class="footer-link" target="_blank">LinkedIn</a>
+    <a href="pages/art.html" class="footer-link">Art</a>
+    <a href="pages/about.html" class="footer-link">About</a>
+  </div>
+  <div class="footer-credit">© 2025 Liting Sun</div>
+</footer>
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function tick(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})();
+document.querySelectorAll('a,button,.proj,.hover-target').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hover'));
+});
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
