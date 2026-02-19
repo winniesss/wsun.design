@@ -122,107 +122,199 @@
     </ul>
     <a href="mailto:litingsun312@gmail.com" class="nav-cta">Get in touch</a>
   </nav>
-  <div class="page">
 
-    <div class="cs-hero r">
-      <div class="cs-tag">AI Product · Solo Designer &amp; Builder</div>
-      <h1 class="cs-h1">ReferLink —<br />AI Job Hunting Platform</h1>
-      <p class="cs-intro">A platform connecting job seekers with employees who can provide referrals when your network comes up empty. An intelligent agent that runs your entire job search on autopilot — finding opportunities, tailoring resumes, identifying referral paths, and tracking applications.</p>
-      <div class="cs-meta">
-        <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Solo Designer &amp; Builder</span></div>
-        <div class="cs-meta-item"><span class="cs-meta-label">Status</span><span class="cs-meta-val">In development</span></div>
-        <div class="cs-meta-item"><span class="cs-meta-label">Tools</span><span class="cs-meta-val">Cursor, Claude Code</span></div>
-      </div>
-    </div>
+<div class="cs-hero r" style="animation:fadeUp .9s .2s var(--ease) forwards;opacity:0">
+  <div class="cs-tag">AI Product · Solo Designer &amp; Builder</div>
+  <h1 class="cs-h1">ReferLink —<br/>AI Job Hunting Platform</h1>
+  <p class="cs-intro">A two-phase system solving the job search problem: a referral marketplace connecting job seekers with employees, layered with an AI agent that autonomously scrapes jobs, matches semantically, tailors resumes, and runs your search 24/7.</p>
+  <div class="cs-meta">
+    <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Solo Designer &amp; Builder</span></div>
+    <div class="cs-meta-item"><span class="cs-meta-label">Status</span><span class="cs-meta-val">In development</span></div>
+    <div class="cs-meta-item"><span class="cs-meta-label">Tools</span><span class="cs-meta-val">Cursor, Claude Code</span></div>
+  </div>
+</div>
 
 <div style="border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);background:var(--bg-2);padding:48px 60px;text-align:center">
   <img src="../images/referlink/referlink-05.png" alt="ReferLink app" style="max-width:800px;width:100%;border-radius:12px;box-shadow:0 12px 48px rgba(0,0,0,.12)"/>
 </div>
 
-    <div class="cs-body">
+<div class="cs-body">
 
-      <div class="cs-section r">
-        <div class="cs-section-label">The Problem</div>
-        <h2 class="cs-h2">Job searching shouldn't be a full-time job.</h2>
-        <p class="cs-p">Most job seekers apply to hundreds of postings through portals and get no response. The real path to employment runs through referrals — but 80% of people don't have a contact at the companies they want to work at. Meanwhile, employees who provide referrals earn bonuses but have no easy way to connect with qualified candidates outside their immediate network.</p>
-        <div class="cs-2col">
-          <div class="cs-card"><div class="cs-card-label">Candidate problem</div><div class="cs-card-title">"I apply but never hear back"</div><div class="cs-card-body">Resumes submitted through portals are screened by ATS systems before any human sees them. Referrals bypass this filter entirely — referred candidates are 4x more likely to be hired.</div></div>
-          <div class="cs-card"><div class="cs-card-label">Referrer problem</div><div class="cs-card-title">"I want to refer but don't know who to refer"</div><div class="cs-card-body">Employees earn $1–5K referral bonuses but their network is limited to people they already know. ReferLink expands that pool to qualified candidates they've never met.</div></div>
+  <div class="cs-section r">
+    <div class="cs-section-label">The Research</div>
+    <h2 class="cs-h2">Two universal frustrations revealed a bigger opportunity</h2>
+    <p class="cs-p">While job searching myself, I talked to others going through the same process to understand if my frustrations were universal or just mine.</p>
+    <div class="cs-2col">
+      <div>
+        <p class="cs-p">The phrase <strong>"hard to find referral opportunities"</strong> came up repeatedly. People knew referrals were important — 70% of jobs are filled that way — but their networks didn't overlap with the companies they wanted to work for.</p>
+        <p class="cs-p">The deeper pattern: job searching takes an enormous amount of time. Most of it is repetitive work: checking job boards, tailoring resumes, searching for connections, tracking applications.</p>
+      </div>
+      <div>
+        <div class="cs-card" style="margin-bottom:16px">
+          <div class="cs-card-label">What job seekers said</div>
+          <div class="cs-card-body">"I feel weird asking strangers for help"<br><br>"I lose track of where I applied"<br><br>"I just want someone to tell me the 3 roles to apply to today"</div>
+        </div>
+        <div class="cs-card">
+          <div class="cs-card-label">What referrers said</div>
+          <div class="cs-card-body">They'll help strangers, but only with enough candidate info — shaped two-way visibility<br><br>They're worried about spam — influenced limiting simultaneous requests</div>
         </div>
       </div>
+    </div>
+  </div>
 
-
-      <div style="margin:32px 0;text-align:center">
-        <img src="../images/referlink/referlink-03.png" alt="ReferLink problem" style="max-width:680px;width:100%;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+  <div class="cs-section r">
+    <div class="cs-section-label">The Strategy</div>
+    <h2 class="cs-h2">Solve both problems, but in sequence</h2>
+    <p class="cs-p">The strategic insight: you need to solve referral access AND search automation, but the order matters.</p>
+    <div class="cs-3col">
+      <div class="cs-card">
+        <div class="cs-card-label">Phase 1</div>
+        <div class="cs-card-title">Referral Marketplace + Dashboard</div>
+        <div class="cs-card-body">Connect job seekers with employees who can refer. Give both sides a unified place to track everything. Solve the access problem first — create the infrastructure Phase 2 needs.</div>
       </div>
-      <div class="cs-section r">
-        <div class="cs-section-label">The Solution</div>
-        <h2 class="cs-h2">AI matching + human referrals</h2>
-        <p class="cs-p">ReferLink's AI agent analyzes a candidate's resume and experience, identifies companies that match their profile, finds employees at those companies who have referral capacity, and facilitates warm introductions — all automated.</p>
+      <div class="cs-card">
+        <div class="cs-card-label">Phase 2</div>
+        <div class="cs-card-title">AI Agent (In Development)</div>
+        <div class="cs-card-body">Autonomous job discovery across 50+ sources. Semantic resume tailoring per job. Referral path finding. Application tracking. Runs 24/7 — you check the dashboard, not the job boards.</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-label">Why this order</div>
+        <div class="cs-card-title">Infrastructure before intelligence</div>
+        <div class="cs-card-body">You can't automate referral discovery without first having a referral network to tap into. Phase 1 creates the infrastructure. Phase 2 adds the intelligence layer on top.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin:32px 0;text-align:center">
+    <img src="../images/referlink/referlink-03.png" alt="ReferLink problem research" style="max-width:680px;width:100%;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+  </div>
+
+  <div class="cs-section r">
+    <div class="cs-section-label">Phase 1 — The Marketplace</div>
+    <h2 class="cs-h2">This isn't a networking problem. It's a matching problem.</h2>
+    <p class="cs-p">Employees would love to help people finding new jobs — and earn referral bonuses. Job seekers need introductions. Both sides want the same outcome. The platform matches them efficiently without requiring months of relationship-building first.</p>
+    <div class="cs-2col">
+      <div>
+        <h3 class="cs-h3">For job seekers</h3>
         <ul class="cs-ul">
-          <li><strong>Autopilot job search</strong> — AI finds relevant opportunities daily, no manual searching required</li>
-          <li><strong>Resume tailoring</strong> — AI adapts resume language to match each job description</li>
-          <li><strong>Referral path finding</strong> — identifies employees at target companies who can refer</li>
-          <li><strong>Application tracking</strong> — unified dashboard for all applications, status, and follow-ups</li>
-          <li><strong>Match scoring</strong> — transparent AI scores showing why each opportunity is a fit</li>
+          <li>Browse employees at target companies willing to refer</li>
+          <li>Send low-stakes introduction requests (limit on simultaneous requests reduces spam)</li>
+          <li>Track all referral conversations in one dashboard</li>
+          <li>Combine with application tracking — one product for the entire search</li>
         </ul>
       </div>
-
-
-      <div style="margin:32px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-        <img src="../images/referlink/referlink-08.jpg" alt="ReferLink screen 1" style="width:100%;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.08)"/>
-        <img src="../images/referlink/referlink-09.jpg" alt="ReferLink screen 2" style="width:100%;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.08)"/>
-        <img src="../images/referlink/referlink-10.jpg" alt="ReferLink screen 3" style="width:100%;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.08)"/>
+      <div>
+        <h3 class="cs-h3">For referrers</h3>
+        <ul class="cs-ul">
+          <li>See full candidate profile before agreeing to refer</li>
+          <li>Match score shows why this person fits their company</li>
+          <li>Control over who you help — no obligation to refer everyone</li>
+          <li>Referral bonus tracking built in</li>
+        </ul>
       </div>
-      <div class="cs-section r">
-        <div class="cs-section-label">Design Principles</div>
-        <h2 class="cs-h2">Transparency at every step</h2>
-        <p class="cs-p">Learning from the LivePerson experience: AI recommendations only work if users trust them. Every match shows a clear explanation — which skills matched, which experience gaps exist, and why this role was surfaced. No black-box recommendations.</p>
-        <div class="cs-3col">
-          <div class="cs-card"><div class="cs-card-label">For candidates</div><div class="cs-card-body">See exactly why each job was matched. Control the search parameters. Review and approve before anything is sent.</div></div>
-          <div class="cs-card"><div class="cs-card-label">For referrers</div><div class="cs-card-body">See candidate profile, match score, and why this person was selected for their company — before agreeing to refer.</div></div>
-          <div class="cs-card"><div class="cs-card-label">For both</div><div class="cs-card-body">Human review at every critical step. AI does the legwork, humans make the decisions.</div></div>
+    </div>
+  </div>
+
+  <div style="margin:32px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+    <img src="../images/referlink/referlink-08.jpg" alt="ReferLink screen 1" style="width:100%;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.08)"/>
+    <img src="../images/referlink/referlink-09.jpg" alt="ReferLink screen 2" style="width:100%;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.08)"/>
+    <img src="../images/referlink/referlink-10.jpg" alt="ReferLink screen 3" style="width:100%;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.08)"/>
+  </div>
+
+  <div class="cs-section r">
+    <div class="cs-section-label">Phase 2 — The AI Agent</div>
+    <h2 class="cs-h2">Autonomous job search that runs while you sleep</h2>
+    <p class="cs-p">Phase 1 solves referral access and tracking. But job searching still requires hours of daily manual work: searching across 50+ sources, reading descriptions, tailoring resumes, finding connections.</p>
+    <div class="cs-2col">
+      <div>
+        <h3 class="cs-h3">What the agent does</h3>
+        <ul class="cs-ul">
+          <li><strong>Autonomous job discovery</strong> — continuously scrapes LinkedIn, Greenhouse, Lever, company career pages, detects opportunities within hours of publication</li>
+          <li><strong>Semantic matching</strong> — alerts only to high-priority matches, not every posting</li>
+          <li><strong>Resume tailoring</strong> — AI adapts resume language to match each job description automatically</li>
+          <li><strong>Referral path finding</strong> — identifies employees at target companies who can refer</li>
+          <li><strong>Application tracking</strong> — unified dashboard, status, and follow-ups</li>
+        </ul>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-label">The stickiness insight</div>
+        <div class="cs-card-body">Referrals are episodic — you need one, then you're done until your next job search. The real challenge: how do you create daily engagement in a product people only need occasionally?<br><br>The AI agent solves stickiness. If it runs daily and surfaces opportunities, people check the dashboard daily. The sequencing isn't just technical — it's business model.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin:32px 0;text-align:center">
+    <img src="../images/referlink/referlink-06.png" alt="ReferLink AI agent" style="max-width:800px;width:100%;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+  </div>
+
+  <div class="cs-section r">
+    <div class="cs-section-label">Design Principles</div>
+    <h2 class="cs-h2">Transparency at every step</h2>
+    <p class="cs-p">Learning from the LivePerson experience: AI recommendations only work if users trust them. Every match shows a clear explanation — which skills matched, which experience gaps exist, and why this role was surfaced. No black-box recommendations.</p>
+    <div class="cs-3col">
+      <div class="cs-card"><div class="cs-card-label">For candidates</div><div class="cs-card-body">See exactly why each job was matched. Control the search parameters. Review and approve before anything is sent.</div></div>
+      <div class="cs-card"><div class="cs-card-label">For referrers</div><div class="cs-card-body">See candidate profile, match score, and why this person was selected for their company — before agreeing to refer.</div></div>
+      <div class="cs-card"><div class="cs-card-label">For both</div><div class="cs-card-body">Human review at every critical step. AI does the legwork, humans make the decisions.</div></div>
+    </div>
+  </div>
+
+  <div class="cs-section r">
+    <div class="cs-section-label">What I Learned</div>
+    <h2 class="cs-h2">Key learnings from building a two-sided marketplace</h2>
+    <div class="cs-2col">
+      <div>
+        <h3 class="cs-h3">Business strategy means thinking beyond features</h3>
+        <p class="cs-p">Building a two-sided marketplace forced me to think about retention, not just functionality. This insight shaped the entire Phase 2 strategy.</p>
+        <h3 class="cs-h3">Rapid prototyping ≠ shipping a real product</h3>
+        <p class="cs-p">Lovable got me to a working prototype in days. Building the actual deployed product took weeks. I learned when to prototype (test unclear assumptions) versus when to just build (requirements are clear, execution matters).</p>
+      </div>
+      <div>
+        <div class="cs-card">
+          <div class="cs-card-label">The biggest learning</div>
+          <div class="cs-card-body">Build, ship, learn, iterate beats plan, plan, plan.<br><br>Actually putting something in front of users teaches you things interviews can't. Speed to learning matters more than speed to perfection.</div>
         </div>
       </div>
-
     </div>
-
-    <div class="cs-next">
-      <a href="mindflux.html" class="cs-next-item">
-        <span class="cs-next-label">Previous AI project</span>
-        <span class="cs-next-title">Mind Flux</span>
-        <span class="cs-next-arrow">←</span>
-      </a>
-      <a href="tinycloset.html" class="cs-next-item">
-        <span class="cs-next-label">Next AI project</span>
-        <span class="cs-next-title">Tiny Closet</span>
-        <span class="cs-next-arrow">→</span>
-      </a>
-    </div>
-
   </div>
-  <footer>
-    <div class="footer-name">Liting Sun</div>
-    <div class="footer-links">
-      <a href="mailto:litingsun312@gmail.com" class="footer-link">litingsun312@gmail.com</a>
-      <a href="https://www.litingsun.com" class="footer-link" target="_blank">litingsun.com</a>
-      <a href="../index.html" class="footer-link">Home</a>
-      <a href="about.html" class="footer-link">About</a>
-    </div>
-    <div class="footer-credit">© 2025 Liting Sun</div>
-  </footer>
-  <script>
-    const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-    (function tick(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hover'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hover'));});
-    const prog=document.getElementById('prog');
-    window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';},{passive:true});
-    const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.07});
-    document.querySelectorAll('.r').forEach(el=>io.observe(el));
 
-// Dropdown click toggle
+</div>
+
+<div class="cs-next">
+  <a href="mindflux.html" class="cs-next-item">
+    <span class="cs-next-label">Previous AI project</span>
+    <span class="cs-next-title">Mind Flux</span>
+    <span class="cs-next-arrow">←</span>
+  </a>
+  <a href="tinycloset.html" class="cs-next-item">
+    <span class="cs-next-label">Next AI project</span>
+    <span class="cs-next-title">Tiny Closet</span>
+    <span class="cs-next-arrow">→</span>
+  </a>
+</div>
+
+<footer>
+  <div class="footer-name">Liting Sun</div>
+  <div class="footer-links">
+    <a href="mailto:litingsun312@gmail.com" class="footer-link">litingsun312@gmail.com</a>
+    <a href="https://www.linkedin.com/in/litingsun/" class="footer-link" target="_blank">LinkedIn</a>
+    <a href="../index.html" class="footer-link">Home</a>
+    <a href="about.html" class="footer-link">About</a>
+  </div>
+  <div class="footer-credit">© 2025 Liting Sun</div>
+</footer>
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function tick(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})();
+document.querySelectorAll('a,button,.proj,.hover-target').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hover'));
+});
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
 document.querySelectorAll('.nav-dd').forEach(dd => {
   const label = dd.querySelector('.nav-dd-label');
   const menu = dd.querySelector('.nav-dd-menu');
@@ -238,7 +330,6 @@ document.addEventListener('click', () => {
   document.querySelectorAll('.nav-dd-menu').forEach(m => m.classList.remove('open'));
   document.querySelectorAll('.nav-dd').forEach(d => d.classList.remove('open'));
 });
-
 </script>
 </body>
 </html>
