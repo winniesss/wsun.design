@@ -36,12 +36,12 @@
 .proj.wide .proj-visual{aspect-ratio:16/9}
 .proj-visual{width:100%;aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg-2);position:relative}
 .proj-vi{display:flex;align-items:center;justify-content:center;width:100%;height:100%;transition:transform .7s var(--ease)}
-.proj-aws .proj-visual{background:#eef3f0}
-.proj-lp  .proj-visual{background:#eef0f6}
-.proj-joy .proj-visual{background:#f4efef}
-.proj-mf  .proj-visual{background:#eef3f0}
-.proj-rl  .proj-visual{background:#eef1f6}
-.proj-tc  .proj-visual{background:#f4f0ee}
+.proj-aws .proj-visual{background:#FFF5E6}
+.proj-lp  .proj-visual{background:#EEF1FD}
+.proj-joy .proj-visual{background:#F9EDF0}
+.proj-mf  .proj-visual{background:#EDEDF8}
+.proj-rl  .proj-visual{background:#EDEDF8}
+.proj-tc  .proj-visual{background:#FFF4EE}
 .proj-oba .proj-visual{background:#f0f0f4}
 .proj-info{padding:28px 32px 32px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1.5px solid var(--border)}
 .proj-cat{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
@@ -286,16 +286,8 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
   <div class="projects-grid">
 
     <a href="pages/aws.html" class="proj wide r proj-aws">
-      <div class="proj-visual" style="background:#eef3f0;aspect-ratio:8/3">
-        <div class="proj-vi">
-          <div class="vis-meeting">
-            <div class="m-cell s1"></div><div class="m-cell s2"></div>
-            <div class="m-cell s3"></div><div class="m-cell"></div>
-            <div class="m-cell s4"></div><div class="m-cell s1"></div>
-            <div class="m-cell"></div><div class="m-cell s2"></div>
-          </div>
-          <div class="vis-ai-strip"><div class="ai-lbl">AI ▸</div><div class="ai-line"></div><div class="ai-line" style="width:70%;animation-delay:.3s"></div><div class="ai-line" style="width:85%;animation-delay:.6s"></div><div class="ai-line" style="width:50%;background:rgba(10,122,95,.28);animation-delay:.9s"></div></div>
-        </div>
+      <div class="proj-visual" style="background:#FFF5E6;aspect-ratio:8/3;overflow:hidden;">
+        <img src="../images/aws-meeting-hero.png" alt="AWS Project Libra — meeting interface with AI assistant panel" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .7s cubic-bezier(0.16,1,0.3,1);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
       </div>
       <div class="proj-info">
         <div><div class="proj-cat">Product Design · Amazon Web Services</div><div class="proj-title">AWS Project Libra</div><div class="proj-desc">Inclusive hybrid meeting system — AI assistant, join flow redesign, accessibility-first. 13% SCAT improvement, $2.8M pipeline.</div></div>
@@ -304,7 +296,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     </a>
 
     <a href="pages/liveperson.html" class="proj r proj-lp">
-      <div class="proj-visual" style="background:#eef0f6">
+      <div class="proj-visual" style="background:#EEF1FD">
         <div class="proj-vi">
           <div class="vis-chat">
             <div class="cm"><div class="cm-av"></div><div class="cm-bub" style="width:80%"></div></div>
@@ -322,7 +314,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 
     <a href="pages/joyrun.html" class="proj r proj-joy">
       <svg style="display:none"><defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#0a7a5f"/><stop offset="100%" style="stop-color:#1059a8"/></linearGradient></defs></svg>
-      <div class="proj-visual" style="background:#f4efef">
+      <div class="proj-visual" style="background:#F9EDF0">
         <div class="proj-vi">
           <div class="vis-ring">
             <svg width="100" height="100" viewBox="0 0 100 100"><circle class="ring-bg" cx="50" cy="50" r="42"/><circle class="ring-fill" cx="50" cy="50" r="42"/></svg>
@@ -342,7 +334,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     </a>
 
     <a href="pages/mindflux.html" class="proj r proj-mf">
-      <div class="proj-visual" style="background:#eef3f0">
+      <div class="proj-visual" style="background:#EDEDF8">
         <div class="proj-vi">
           <div class="vis-mind">
             <div class="mc"><div class="mc-tag"><div class="mc-dot"></div>Today's reflection</div><div class="mc-line"></div><div class="mc-line" style="animation-delay:.2s"></div><div class="mc-line" style="animation-delay:.4s;width:65%"></div></div>
@@ -357,7 +349,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     </a>
 
     <a href="pages/referlink.html" class="proj r proj-rl">
-      <div class="proj-visual" style="background:#eef1f6">
+      <div class="proj-visual" style="background:#EDEDF8">
         <div class="proj-vi">
           <div class="vis-rl">
             <div class="rl-hdr">AI Match Score</div>
@@ -377,7 +369,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     </a>
 
     <a href="pages/tinycloset.html" class="proj r proj-tc">
-      <div class="proj-visual" style="background:#f4f0ee">
+      <div class="proj-visual" style="background:#FFF4EE">
         <div class="proj-vi">
           <div class="vis-tc">
             <div class="tc-card"><div class="tc-img"></div><div class="tc-lines"><div class="tc-badge">AI styled</div><div class="tc-line" style="width:80%"></div><div class="tc-line" style="width:55%;animation-delay:.3s"></div></div></div>
