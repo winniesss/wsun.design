@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AI Agent · ReferLink</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:17px;scroll-behavior:smooth}
+:root{
+  --bg:#f9f7f4;--bg-2:#f2efe9;--bg-3:#e8e4dc;
+  --ink:#111111;--ink-2:#333333;--ink-3:#555555;--ink-4:#767676;
+  --border:#d8d4cc;
+  --accent:#0a7a5f;--accent-bg:#e6f4f0;--accent-2:#1059a8;
+  --fd:'Sora',sans-serif;--fb:'DM Sans',sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);font-weight:300;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased}
+#cur{position:fixed;width:8px;height:8px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),background .3s}
+#cur-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(17,17,17,.2);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),border-color .3s}
+body.hover #cur{width:5px;height:5px;background:var(--accent)}
+body.hover #cur-ring{width:48px;height:48px;border-color:var(--accent)}
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:1000;width:0%;transition:width .1s linear}
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;display:flex;align-items:center;background:rgba(249,247,244,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1.5px solid var(--border);border-radius:100px;padding:8px 8px 8px 20px;white-space:nowrap;box-shadow:0 2px 20px rgba(0,0,0,.07)}
+.nav-logo{font-family:var(--fd);font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:-.01em;margin-right:20px}
+.nav-links{display:flex;gap:2px;list-style:none;margin-right:10px;align-items:center}.nav-links li{display:flex;align-items:center;height:32px}
+.nav-links a{font-size:13px;font-weight:400;color:var(--ink-3);text-decoration:none;padding:0 12px;border-radius:100px;transition:color .2s,background .2s;display:flex;align-items:center;height:32px;line-height:1}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(0,0,0,.05)}
+.nav-dd{position:relative}
+.nav-dd-label{font-size:13px;font-weight:400;color:var(--ink-3);padding:0 12px;border-radius:100px;cursor:none;transition:color .2s,background .2s;display:flex;align-items:center;height:32px;gap:4px;user-select:none;line-height:1}
+.nav-dd-label:hover{color:var(--ink);background:rgba(0,0,0,.05)}
+.nav-dd-arrow{font-size:9px;transition:transform .2s}
+.nav-dd-menu{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);background:rgba(249,247,244,.98);border:1.5px solid var(--border);border-radius:14px;padding:6px;min-width:180px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.nav-dd-menu.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dd.open .nav-dd-arrow{transform:rotate(180deg)}
+.nav-dd-menu a{display:block;font-size:12px;color:var(--ink-3);text-decoration:none;padding:8px 12px;border-radius:8px;transition:background .15s,color .15s}
+.nav-dd-menu a:hover{background:rgba(0,0,0,.05);color:var(--ink)}
+.nav-dd-menu .sub-group{font-size:10px;font-weight:600;color:var(--ink-4);letter-spacing:.08em;text-transform:uppercase;padding:8px 12px 4px;margin-top:2px}
+.nav-dd-menu .sub-link{padding-left:20px;font-size:11px}
+.nav-cta{font-size:13px;font-weight:500;color:#fff;background:var(--accent);text-decoration:none;padding:8px 18px;border-radius:100px;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.chapter-nav{position:sticky;top:60px;z-index:800;background:rgba(249,247,244,.96);backdrop-filter:blur(16px);border-bottom:1.5px solid var(--border);display:flex;overflow-x:auto;padding:0 60px;-ms-overflow-style:none;scrollbar-width:none}
+.chapter-nav::-webkit-scrollbar{display:none}
+.chapter-nav a{font-size:12px;font-weight:500;color:var(--ink-4);text-decoration:none;padding:14px 18px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s;flex-shrink:0}
+.chapter-nav a:hover{color:var(--ink)}
+.chapter-nav a.active{color:var(--accent);border-bottom-color:var(--accent)}
+.case-hero{padding:160px 60px 80px;max-width:900px}
+.case-tag{font-size:11px;font-weight:500;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+.case-h1{font-family:var(--fd);font-size:clamp(36px,5vw,72px);font-weight:300;letter-spacing:-.04em;line-height:1.05;margin-bottom:24px;color:var(--ink)}
+.case-sub{font-size:clamp(17px,1.6vw,21px);font-weight:400;color:var(--ink-2);line-height:1.7;max-width:620px}
+.case-meta{display:flex;flex-wrap:wrap;gap:0;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);margin:0}
+.case-meta-item{padding:28px 48px;border-right:1.5px solid var(--border);flex:1;min-width:140px}
+.case-meta-item:last-child{border-right:none}
+.case-meta-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.case-meta-val{font-size:16px;font-weight:500;color:var(--ink);line-height:1.4}
+.case-body{max-width:760px;margin:0 auto;padding:0 60px}
+.case-body h2{font-family:var(--fd);font-size:clamp(24px,3vw,38px);font-weight:400;letter-spacing:-.03em;line-height:1.2;margin:72px 0 20px;color:var(--ink)}
+.case-body h3{font-family:var(--fd);font-size:clamp(18px,2vw,24px);font-weight:500;letter-spacing:-.02em;margin:48px 0 14px;color:var(--ink)}
+.case-body p{font-size:17px;font-weight:400;color:var(--ink-2);line-height:1.85;margin-bottom:20px}
+.case-body ul{margin:0 0 20px 0;padding-left:24px}
+.case-body li{font-size:17px;color:var(--ink-2);line-height:1.75;margin-bottom:8px}
+.case-body strong{font-weight:600;color:var(--ink)}
+.case-body em{font-style:italic;color:var(--ink-3)}
+.case-callout{background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.2);border-radius:12px;padding:28px 32px;margin:40px 0}
+.case-callout p{color:var(--ink-2);margin-bottom:0}
+.case-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin:40px 0}
+.case-stat{padding:28px 24px;border-right:1.5px solid var(--border);text-align:center}
+.case-stat:last-child{border-right:none}
+.case-stat-num{font-family:var(--fd);font-size:36px;font-weight:300;letter-spacing:-.04em;color:var(--accent);line-height:1;margin-bottom:6px}
+.case-stat-num span{font-size:22px}
+.case-stat-label{font-size:13px;color:var(--ink-4);line-height:1.4}
+.case-img-full{width:100%;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);overflow:hidden}
+.case-img-full img{width:100%;display:block}
+.case-img-inset{margin:40px 0;border-radius:12px;overflow:hidden;border:1.5px solid var(--border)}
+.case-img-inset img{width:100%;display:block}
+.case-img-grid{margin:48px 0;display:grid;gap:3px}
+.case-img-grid.col2{grid-template-columns:1fr 1fr}
+.case-img-grid.col3{grid-template-columns:1fr 1fr 1fr}
+.case-img-grid img{width:100%;display:block;border-radius:8px}
+.case-next{border-top:1.5px solid var(--border);padding:60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.case-next-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.case-next-title{font-family:var(--fd);font-size:28px;font-weight:400;letter-spacing:-.03em;color:var(--ink);text-decoration:none;display:block;transition:color .2s}
+.case-next-title:hover{color:var(--accent)}
+.btn-secondary{font-family:var(--fb);font-size:15px;font-weight:400;color:var(--ink-2);background:var(--bg);border:1.5px solid var(--border);border-radius:100px;padding:14px 28px;text-decoration:none;cursor:none;transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-secondary:hover{border-color:var(--ink-3);background:var(--bg-2)}
+.r{opacity:0;transform:translateY(24px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.r.on{opacity:1;transform:translateY(0)}
+.r[data-d="1"]{transition-delay:.1s}.r[data-d="2"]{transition-delay:.2s}.r[data-d="3"]{transition-delay:.3s}
+footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;background:var(--bg-2)}
+.footer-name{font-family:var(--fd);font-size:20px;font-weight:400;letter-spacing:-.03em;color:var(--ink)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-link{font-size:13px;font-weight:400;color:var(--ink-3);text-decoration:none;transition:color .2s}
+.footer-link:hover{color:var(--ink)}
+.footer-credit{font-size:12px;color:var(--ink-4)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){
+  nav{padding:8px 8px 8px 14px}
+  .chapter-nav{padding:0 24px}
+  .case-hero{padding:120px 24px 48px}
+  .case-meta-item{padding:20px 24px;min-width:120px}
+  .case-body{padding:0 24px}
+  .case-stat-grid{grid-template-columns:1fr 1fr}
+  .case-img-grid.col3{grid-template-columns:1fr}
+  .case-next{padding:40px 24px}
+  footer{padding:40px 24px;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div id="prog"></div>
+<nav>
+  <a href="../index.html" class="nav-logo">Liting Sun</a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <span class="nav-dd-label">Product Design <span class="nav-dd-arrow">▾</span></span>
+      <div class="nav-dd-menu">
+        <div class="sub-group">AWS Libra</div>
+        <a class="sub-link" href="aws.html">Overview</a>
+        <a class="sub-link" href="aws-agent.html">AI Meeting Agent</a>
+        <a class="sub-link" href="aws-impact.html">Impact & System</a>
+        <div class="sub-group">LivePerson</div>
+        <a class="sub-link" href="liveperson.html">Overview</a>
+        <a class="sub-link" href="liveperson-strategy.html">Strategy Deep Dive</a>
+        <a class="sub-link" href="liveperson-impact.html">Shipped & Impact</a>
+        <div class="sub-group">Joyrun</div>
+        <a class="sub-link" href="joyrun.html">Overview</a>
+        <a class="sub-link" href="joyrun-competition.html">Competition System</a>
+      </div>
+    </li>
+    <li class="nav-dd">
+      <span class="nav-dd-label">AI Products <span class="nav-dd-arrow">▾</span></span>
+      <div class="nav-dd-menu">
+        <div class="sub-group">Mind Flux</div>
+        <a class="sub-link" href="mindflux.html">V1, Swipe System</a>
+        <a class="sub-link" href="mindflux-v2.html">V2, Evolution</a>
+        <div class="sub-group">ReferLink</div>
+        <a class="sub-link" href="referlink.html">Marketplace</a>
+        <a class="sub-link" href="referlink-agent.html">AI Agent</a>
+        <div class="sub-group">Tiny Closet</div>
+        <a class="sub-link" href="tinycloset.html">Case Study</a>
+      </div>
+    </li>
+    <li><a href="art.html">Art</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="mailto:litingsun312@gmail.com" class="nav-cta">Say hello</a>
+</nav>
+<div class="chapter-nav">
+  <a href="referlink.html">Marketplace</a>
+  <a href="referlink-agent.html" class="active">AI Agent</a>
+</div>
+
+<div class="case-hero r" style="animation:fadeUp .9s .2s var(--ease) forwards;opacity:0">
+  <div class="case-tag">ReferLink · Phase 2, AI Agent</div>
+  <h1 class="case-h1">Autonomous job search that runs while you sleep</h1>
+  <p class="case-sub">Phase 1 solved referral access. Phase 2 solves the hours of daily manual work: checking job boards, tailoring resumes, finding connections, tracking applications.</p>
+</div>
+
+<div class="case-body">
+  <h2 class="r">Why Phase 2 Comes After Phase 1</h2>
+  <p class="r">You can't automate referral discovery without first having a referral network to tap into. Phase 1 creates the infrastructure. Phase 2 adds the intelligence layer on top.</p>
+  <p class="r">There's also a stickiness problem: referrals are episodic. You need one, then you're done until your next job search. <strong>The AI agent solves stickiness</strong>, if it surfaces opportunities daily, people check the dashboard daily. The sequencing isn't just technical, it's business model.</p>
+
+  <h2 class="r">What the Agent Does</h2>
+  <ul class="r">
+    <li><strong>Autonomous job discovery</strong>, continuously scrapes LinkedIn, Greenhouse, Lever, and company career pages. Detects new postings within hours of publication.</li>
+    <li><strong>Semantic matching</strong>, alerts only to high-priority matches based on your actual resume, not keyword overlap.</li>
+    <li><strong>Resume tailoring</strong>, AI adapts your resume language to match each job description automatically, before you review.</li>
+    <li><strong>Referral path finding</strong>, identifies employees at target companies who can refer you, cross-referenced with Phase 1 network.</li>
+    <li><strong>Application tracking</strong>, unified dashboard with status, follow-up reminders, and response rates.</li>
+  </ul>
+</div>
+
+<div class="case-img-inset r">
+  <img src="../images/referlink/referlink-06.png" alt="ReferLink AI agent dashboard"/>
+</div>
+
+<div class="case-body">
+  <h2 class="r">Design Principles, Transparency at Every Step</h2>
+  <p class="r">Learning from the LivePerson experience: AI recommendations only work if users trust them. Every match shows a clear explanation, which skills matched, which experience gaps exist, and why this role was surfaced. No black-box recommendations.</p>
+
+  <h3 class="r">For candidates</h3>
+  <p class="r">See exactly why each job was matched. Control the search parameters. Review and approve before anything is sent. The agent surfaces, you decide.</p>
+
+  <h3 class="r">For referrers</h3>
+  <p class="r">See candidate profile, match score, and why this person was selected for their company, before agreeing to refer. No obligation, full context.</p>
+
+  <div class="case-callout r">
+    <p><strong>Human review at every critical step.</strong> AI does the legwork, humans make the decisions. This isn't automation replacing judgment, it's automation removing drudgery so judgment can focus on what matters.</p>
+  </div>
+
+  <h2 class="r">What I Learned Building This</h2>
+  <ul class="r">
+    <li><strong>Business strategy means thinking beyond features.</strong> Building a two-sided marketplace forced me to think about retention, not just functionality. This insight shaped the entire Phase 2 strategy.</li>
+    <li><strong>Rapid prototyping ≠ shipping a real product.</strong> Getting to a working prototype took days. Building the actual deployed product took weeks. I learned when to prototype (test unclear assumptions) vs. when to just build (requirements are clear, execution matters).</li>
+    <li><strong>Build, ship, learn, iterate beats plan, plan, plan.</strong> Actually putting something in front of users teaches you things interviews can't. Speed to learning matters more than speed to perfection.</li>
+  </ul>
+</div>
+
+<div class="case-next r">
+  <div>
+    <div class="case-next-label">Next project</div>
+    <a href="tinycloset.html" class="case-next-title">Tiny Closet →</a>
+  </div>
+  <a href="referlink.html" class="btn-secondary">← Marketplace</a>
+</div>
+
+<footer>
+  <div class="footer-name">Liting Sun</div>
+  <div class="footer-links">
+    <a href="mailto:litingsun312@gmail.com" class="footer-link">litingsun312@gmail.com</a>
+    <a href="https://www.linkedin.com/in/litingsun/" class="footer-link" target="_blank">LinkedIn</a>
+    <a href="art.html" class="footer-link">Art</a>
+    <a href="about.html" class="footer-link">About</a>
+  </div>
+  <div class="footer-credit">© 2025 Liting Sun</div>
+</footer>
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function tick(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hover'));
+});
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+document.querySelectorAll('.nav-dd').forEach(dd=>{
+  const label=dd.querySelector('.nav-dd-label');
+  const menu=dd.querySelector('.nav-dd-menu');
+  label.addEventListener('click',e=>{
+    e.stopPropagation();
+    const isOpen=menu.classList.contains('open');
+    document.querySelectorAll('.nav-dd-menu').forEach(m=>m.classList.remove('open'));
+    document.querySelectorAll('.nav-dd').forEach(d=>d.classList.remove('open'));
+    if(!isOpen){menu.classList.add('open');dd.classList.add('open');}
+  });
+});
+document.addEventListener('click',()=>{
+  document.querySelectorAll('.nav-dd-menu').forEach(m=>m.classList.remove('open'));
+  document.querySelectorAll('.nav-dd').forEach(d=>d.classList.remove('open'));
+});
+</script>
+</body>
+</html>
