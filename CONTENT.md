@@ -86,7 +86,7 @@ I'm particularly interested in companies where design has a real seat at the tab
 ## Header
 - **Label:** Product Design · Amazon Web Services · 3 Years
 - **Title:** AWS Project Libra
-- **Subtitle:** Libra is an AWS-developed conferencing (AV/VC) system designed to bridge the gap between remote and in-person participants. As a UX Designer on the team, I responsible for design decisions impacting how participants join the meeting, experience during the meeting, and how they leave the room.
+- **Subtitle:** Libra is an AWS-developed conferencing (AV/VC) system designed to bridge the gap between remote and in-person participants. As a UX Designer on the team, I was responsible for design decisions impacting how participants join the meeting, experience during the meeting, and how they leave the room.
 
 ## Meta
 - **Role:** Product Designer
