@@ -233,6 +233,25 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
   .section-sm{padding:48px 24px}
   footer{padding:40px 24px;flex-direction:column;align-items:flex-start}
 }
+
+/* Accessibility: reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .r{opacity:1;transform:none;transition:none}
+  .r[data-d="1"],.r[data-d="2"],.r[data-d="3"],.r[data-d="4"]{transition-delay:0s}
+  .case-hero{animation:none!important;opacity:1!important}
+  *{transition-duration:0s!important;animation-duration:0s!important}
+}
+
+/* Accessibility: focus-visible for keyboard nav */
+a:focus-visible,button:focus-visible,.nav-dd-label:focus-visible,.btn-primary:focus-visible,.btn-secondary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* Accessibility: skip link */
+.skip-link{position:absolute;top:-100%;left:16px;background:var(--accent);color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:500;z-index:1001;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:16px}
+
+/* Accessibility: show system cursor on touch and keyboard */
+@media(pointer:coarse){body{cursor:auto}#cur,#cur-ring{display:none}}
+@media(hover:none){body{cursor:auto}#cur,#cur-ring{display:none}}
 </style>
 </head>
 <body>
@@ -240,6 +259,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 <div id="cur-ring"></div>
 <div id="prog"></div>
 
+<a href="#main" class="skip-link">Skip to content</a>
 <nav>
   <a href="../index.html" class="nav-logo">Liting Sun</a>
   <ul class="nav-links">
@@ -286,7 +306,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 </div>
 
 <!-- BODY -->
-<div class="case-body">
+<div id="main" class="case-body">
 
   <!-- Impact metrics -->
   <div class="case-stat-grid r">
@@ -589,6 +609,11 @@ document.addEventListener('click', () => {
   document.querySelectorAll('.nav-dd-menu').forEach(m => m.classList.remove('open'));
   document.querySelectorAll('.nav-dd').forEach(d => d.classList.remove('open'));
 });
+
+// Pause video for reduced-motion users
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.querySelectorAll('video[autoplay]').forEach(v=>{v.pause();v.removeAttribute('autoplay')});
+}
 </script>
 </body>
 </html>
