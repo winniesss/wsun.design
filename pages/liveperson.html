@@ -37,6 +37,19 @@
 .case-next-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
 .case-next-title{font-family:var(--fd);font-size:28px;font-weight:400;letter-spacing:-.03em;color:var(--ink);text-decoration:none;display:block;transition:color .2s}
 .case-next-title:hover{color:var(--accent)}
+
+/* Annotated screenshots */
+.annotated-section{margin:48px 0}
+.annotated-context{font-size:15px;color:var(--ink-3);line-height:1.7;margin-bottom:20px}
+.annotated-view-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.annotated-img-wrap{border-radius:12px;overflow:hidden;border:1.5px solid var(--border);margin-bottom:20px;background:var(--bg-2)}
+.annotated-img-wrap img{width:100%;display:block}
+.annotation-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
+.annotation-item{display:flex;gap:10px;align-items:baseline}
+.annotation-num{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.annotation-text{font-size:14px;line-height:1.6;color:var(--ink-3);margin:0}
+.annotation-text strong{color:var(--ink);font-weight:500}
+
 @media(max-width:700px){
   .case-hero{padding:120px 24px 48px}
   .case-meta-item{padding:20px 24px;min-width:120px}
@@ -44,6 +57,7 @@
   .case-img{padding:24px}
   .case-stat-grid{grid-template-columns:1fr 1fr}
   .case-next{padding:40px 24px}
+  .annotation-grid{grid-template-columns:1fr}
 }
 </style>
 <style>
@@ -119,7 +133,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
   <a href="../index.html" class="nav-logo">Liting Sun</a>
   <ul class="nav-links">
     <li class="nav-dd">
-      <span class="nav-dd-label">Product Design <span class="nav-dd-arrow">▾</span></span>
+      <span class="nav-dd-label">Product Design <span class="nav-dd-arrow">&#9662;</span></span>
       <div class="nav-dd-menu">
         <a href="aws.html">AWS Libra</a>
         <a href="liveperson.html">LivePerson</a>
@@ -127,7 +141,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
       </div>
     </li>
     <li class="nav-dd">
-      <span class="nav-dd-label">AI Products <span class="nav-dd-arrow">▾</span></span>
+      <span class="nav-dd-label">AI Products <span class="nav-dd-arrow">&#9662;</span></span>
       <div class="nav-dd-menu">
         <a href="mindflux.html">Mind Flux</a>
         <a href="referlink.html">ReferLink</a>
@@ -141,13 +155,13 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 </nav>
 
 <div class="case-hero r" style="animation:fadeUp .9s .2s var(--ease) forwards;opacity:0">
-  <div class="case-tag">Product Design · LivePerson · May 2021 – Sep 2022</div>
+  <div class="case-tag">Product Design &middot; LivePerson &middot; May 2021 &ndash; Sep 2022</div>
   <h1 class="case-h1">AI-Enabled Career Site & Recruiting Dashboard</h1>
   <p class="case-sub">Resume-based AI matching + analytics dashboard that reduced candidate screening time by 71% and drove 97% recruiter advancement of AI-matched candidates.</p>
 </div>
 <div class="case-meta r">
-  <div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-val">Design Lead</div></div>
-  <div class="case-meta-item"><div class="case-meta-label">Timeline</div><div class="case-meta-val">May 2021 – Sep 2022</div></div>
+  <div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-val">Sole Product Designer</div></div>
+  <div class="case-meta-item"><div class="case-meta-label">Timeline</div><div class="case-meta-val">May 2021 &ndash; Sep 2022</div></div>
   <div class="case-meta-item"><div class="case-meta-label">Impact</div><div class="case-meta-val">25K+ monthly traffic</div></div>
   <div class="case-meta-item"><div class="case-meta-label">NPS</div><div class="case-meta-val">+80</div></div>
 </div>
@@ -162,16 +176,21 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     <div class="case-stat"><div class="case-stat-num">94<span>%</span></div><div class="case-stat-label">Bot engagement rate<br/>among Smart Apply users</div></div>
   </div>
 
+  <h2 class="r">My Role</h2>
+  <p class="r">I was the sole designer on this project, owning all product design from strategy through delivery. I worked directly with PM and Engineering to define features, work through implementation constraints, manage hand-off, and run final validation.</p>
+  <p class="r">On the research side, I interviewed hiring managers and recruiters across teams and shadowed their screening workflows to understand where time was actually being lost.</p>
+
   <h2 class="r">The Challenge</h2>
-  <p class="r">The brief was straightforward: "Design a better career site that uses our conversational AI technology." But that framing missed the real problem.</p>
+  <p class="r">Hiring is slow, and slow is expensive. Candidates spend hours searching job boards for roles that might not fit. Recruiters spend days manually screening hundreds of applications. With a 26% startup churn rate, LivePerson couldn't afford any of that.</p>
+  <p class="r">The core problem: <strong>how do we save time for both candidates and the company?</strong></p>
   <ul class="r">
-    <li><strong>Candidates:</strong> Spent hours searching job boards but couldn't find roles that matched their background</li>
-    <li><strong>Recruiters:</strong> Manually screened hundreds of applications, 71% of poorly-scored candidates sat in queue for 6+ days</li>
-    <li><strong>Business:</strong> Startup churn of 26% meant constant hiring pressure, with each bad hire costing 6-9 months' salary</li>
+    <li><strong>Candidates:</strong> Couldn't find roles that matched their background. Job descriptions were vague, and search alone didn't surface the right fits</li>
+    <li><strong>Recruiters:</strong> Manually screened hundreds of applications; 71% of poorly-scored candidates sat in queue for 6+ days</li>
+    <li><strong>Business:</strong> Each bad hire cost 6&ndash;9 months' salary. The bot we were building was designed as a commercial product. LivePerson's career site was the first deployment, with plans to sell externally</li>
   </ul>
 
   <div class="case-callout r">
-    <p><strong>The insight that changed the strategy:</strong> AI matching only works if candidates trust the recommendations. And they won't trust recommendations unless they understand <em>why</em> those roles match their background. This meant we couldn't just build "submit resume, get matches", we needed to design for <strong>transparency and control</strong>.</p>
+    <p><strong>The insight that changed the strategy:</strong> AI matching only works if candidates trust the recommendations. And they won't trust recommendations unless they understand <em>why</em> those roles match their background. This meant we couldn't just build "submit resume, get matches." We needed to design for <strong>transparency and control</strong>. Get this right internally, and it becomes a sellable product.</p>
   </div>
 
   <h2 class="r">One Deep Dive, Resume Upload First, Search Second</h2>
@@ -185,7 +204,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     <li>After upload, show <em>why</em> each role matched, skills highlighted, experience level match explained</li>
   </ul>
 
-  
+
 <div class="r" style="margin:32px 0;border-radius:12px;overflow:hidden;border:1.5px solid var(--border)">
   <img src="../images/liveperson-screen1.png" alt="LivePerson career site design" style="width:100%;display:block"/>
 </div>
@@ -197,7 +216,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     <p><strong>The data that convinced leadership:</strong> Users who uploaded resumes first applied at <strong>18% conversion</strong>. Users who searched first applied at <strong>7% conversion</strong>. AI recommendations worked, but only if users engaged with them before forming search habits.</p>
   </div>
 
-  
+
 <div class="r" style="margin:32px 0;border-radius:12px;overflow:hidden;border:1.5px solid var(--border)">
   <img src="../images/liveperson-screen2.png" alt="LivePerson recruiter dashboard" style="width:100%;display:block"/>
 </div>
@@ -217,6 +236,60 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     <li>Sort by "Last Contact" to reduce response wait time</li>
   </ul>
 
+  <!-- Recruiting Dashboard: Annotated -->
+  <h3 class="r">Recruiting Dashboard</h3>
+  <p class="r annotated-context">Recruiters worked in two modes: triaging across all open roles, and evaluating candidates within a single role. I structured the dashboard around that split: an overview for pipeline health, and a job-level view for individual decisions.</p>
+
+  <div class="annotated-section r">
+    <div class="annotated-view-label">Overview: Cross-Role Triage</div>
+    <div class="annotated-img-wrap">
+      <img src="../images/liveperson-dashboard-overview.png" alt="Recruiting dashboard overview showing pipeline metrics, application trends, and job table" loading="lazy"/>
+    </div>
+    <div class="annotation-grid">
+      <div class="annotation-item">
+        <span class="annotation-num">1</span>
+        <p class="annotation-text"><strong>Urgency-first layout:</strong> "Awaiting Review" sits top-left because reducing response lag was the #1 recruiter pain point</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">2</span>
+        <p class="annotation-text"><strong>Smart Apply vs Direct:</strong> Trend chart separates AI-matched from organic applicants, so leads can see how well AI matching is performing</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">3</span>
+        <p class="annotation-text"><strong>Source attribution:</strong> Channel breakdown (Career Page 70%, Referral 15%, LinkedIn 9%) helps recruiting ops optimize spend</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">4</span>
+        <p class="annotation-text"><strong>"Last Activity" sort:</strong> Flags stale candidates in the job table. Directly tied to the 71% faster-action metric</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotated-section r">
+    <div class="annotated-view-label">Job View: Candidate Evaluation</div>
+    <div class="annotated-img-wrap">
+      <img src="../images/liveperson-dashboard-job.jpg" alt="Job-level dashboard showing screening funnel, quality grades, and candidate management table" loading="lazy"/>
+    </div>
+    <div class="annotation-grid">
+      <div class="annotation-item">
+        <span class="annotation-num">1</span>
+        <p class="annotation-text"><strong>Screening funnel:</strong> Gauge shows pipeline health at a glance: auto-screened vs awaiting review vs manual</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">2</span>
+        <p class="annotation-text"><strong>Grade distribution:</strong> A/B/C/D quality bars let managers instantly read talent pool shape per role</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">3</span>
+        <p class="annotation-text"><strong>Smart Matched tab:</strong> One-click filter to isolate AI candidates from direct applicants. This was the main thing recruiters asked for</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">4</span>
+        <p class="annotation-text"><strong>Auto-advance logic:</strong> When AI confidence exceeds a threshold, candidates advance automatically. This cut manual screening time by 71%</p>
+      </div>
+    </div>
+  </div>
+
   <h2 class="r">Business Impact</h2>
   <ul class="r">
     <li>25K+ monthly traffic to career site, +80 NPS</li>
@@ -231,9 +304,9 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 <div class="case-next r">
   <div>
     <div class="case-next-label">Next project</div>
-    <a href="joyrun.html" class="case-next-title">Joyrun Social Fitness App →</a>
+    <a href="joyrun.html" class="case-next-title">Joyrun Social Fitness App &rarr;</a>
   </div>
-  <a href="../index.html" class="btn-secondary">← All work</a>
+  <a href="../index.html" class="btn-secondary">&larr; All work</a>
 </div>
 
 
@@ -245,7 +318,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     <a href="art.html" class="footer-link">Art</a>
     <a href="about.html" class="footer-link">About</a>
   </div>
-  <div class="footer-credit">© 2025 Liting Sun</div>
+  <div class="footer-credit">&copy; 2025 Liting Sun</div>
 </footer>
 <script>
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
