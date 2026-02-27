@@ -114,6 +114,31 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
   .cs-next-item:first-child{border-right:none;border-bottom:1.5px solid var(--border)}
   .cs-next-item{padding:32px 24px}
 }
+/* Callout box */
+.case-callout{background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.2);border-radius:12px;padding:28px 32px;margin:28px 0}
+.case-callout p{color:var(--ink-2);margin-bottom:0;font-size:15px;line-height:1.75}
+/* Learning cards */
+.learnings-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin:28px 0 40px}
+.learning-card{padding:24px;border-radius:12px;background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.15)}
+.learning-num{font-family:var(--fd);font-size:28px;font-weight:200;color:var(--accent);line-height:1;margin-bottom:12px}
+.learning-title{font-family:var(--fd);font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.learning-card p{font-size:14px;line-height:1.7;color:var(--ink-3);margin:0}
+/* Annotated screenshots */
+.annotated-section{margin:36px 0}
+.annotated-img-wrap{border-radius:12px;overflow:hidden;border:1.5px solid var(--border);margin-bottom:20px;background:#0d1117;display:flex;justify-content:center}
+.annotated-img-wrap img{max-height:520px;width:auto;display:block}
+.annotated-img-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.annotated-img-2col .annotated-img-wrap{margin-bottom:0}
+.annotation-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
+.annotation-item{display:flex;gap:10px;align-items:baseline}
+.annotation-num{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.annotation-text{font-size:14px;line-height:1.6;color:var(--ink-3);margin:0}
+.annotation-text strong{color:var(--ink);font-weight:500}
+@media(max-width:700px){
+  .learnings-grid{grid-template-columns:1fr}
+  .annotation-grid{grid-template-columns:1fr}
+  .annotated-img-2col{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -146,11 +171,12 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 </nav>
 
 <div class="cs-hero r" style="animation:fadeUp .9s .2s var(--ease) forwards;opacity:0">
-  <div class="cs-tag">AI Product · Solo Designer &amp; Builder</div>
+  <div class="cs-tag">AI Product · Designer &amp; Creator</div>
   <h1 class="cs-h1">ReferLink ,<br/>AI Job Hunting Platform</h1>
-  <p class="cs-intro">A two-phase system solving the job search problem: a referral marketplace connecting job seekers with employees, layered with an AI agent that autonomously scrapes jobs, matches semantically, tailors resumes, and runs your search 24/7.</p>
+  <p class="cs-intro">You've applied to 200 jobs. You've heard back from 3. The market is brutal, and the only thing that actually moves the needle is a referral from someone on the inside. ReferLink makes that possible at scale.</p>
   <div class="cs-meta">
-    <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Solo Designer &amp; Builder</span></div>
+    <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Designer &amp; Product Creator</span></div>
+    <div class="cs-meta-item"><span class="cs-meta-label">Team</span><span class="cs-meta-val">2 Engineers (Backend)</span></div>
     <div class="cs-meta-item"><span class="cs-meta-label">Status</span><span class="cs-meta-val">In development</span></div>
     <div class="cs-meta-item"><span class="cs-meta-label">Tools</span><span class="cs-meta-val">Cursor, Claude Code</span></div>
   </div>
@@ -162,32 +188,37 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 
 <div class="cs-body">
 
+  <div class="case-callout r" style="margin-bottom:0;border-bottom:none;border-radius:12px 12px 0 0">
+    <p><strong>Designer-led, engineer-supported:</strong> I lead product vision, UX strategy, and all design decisions. Two backend engineers collaborate with me on infrastructure and data systems. This case study focuses on the product thinking and design rationale.</p>
+  </div>
+
   <div class="cs-section r">
-    <div class="cs-section-label">The Research</div>
-    <h2 class="cs-h2">Two universal frustrations revealed a bigger opportunity</h2>
-    <p class="cs-p">While job searching myself, I talked to others going through the same process to understand if my frustrations were universal or just mine.</p>
+    <div class="cs-section-label">The Problem</div>
+    <h2 class="cs-h2">The job market is brutal. Applications go nowhere.</h2>
+    <p class="cs-p">I experienced it firsthand, and so did everyone I talked to. You spend hours customizing resumes, writing cover letters, clicking "Easy Apply" hundreds of times. And you hear nothing back. The market is saturated, recruiters are overwhelmed, and your application is one of 500 in their inbox.</p>
+    <p class="cs-p">But when someone refers you? Your resume goes to the top of the pile. <strong>Referrals account for 30-50% of all hires, yet most job seekers don't have the right connections.</strong> The problem isn't effort. It's access.</p>
     <div class="cs-2col">
       <div>
-        <p class="cs-p">The phrase <strong>"hard to find referral opportunities"</strong> came up repeatedly. People knew referrals were important, 70% of jobs are filled that way, but their networks didn't overlap with the companies they wanted to work for.</p>
-        <p class="cs-p">The deeper pattern: job searching takes an enormous amount of time. Most of it is repetitive work: checking job boards, tailoring resumes, searching for connections, tracking applications.</p>
-      </div>
-      <div>
         <div class="cs-card" style="margin-bottom:16px">
-          <div class="cs-card-label">What job seekers said</div>
-          <div class="cs-card-body">"I feel weird asking strangers for help"<br><br>"I lose track of where I applied"<br><br>"I just want someone to tell me the 3 roles to apply to today"</div>
+          <div class="cs-card-label">What job seekers told me</div>
+          <div class="cs-card-body">"I've sent 200+ applications and gotten 3 responses"<br><br>"I know referrals work, but I don't know anyone at these companies"<br><br>"I feel weird cold-messaging strangers on LinkedIn for help"</div>
         </div>
         <div class="cs-card">
-          <div class="cs-card-label">What referrers said</div>
-          <div class="cs-card-body">They'll help strangers, but only with enough candidate info, shaped two-way visibility<br><br>They're worried about spam, influenced limiting simultaneous requests</div>
+          <div class="cs-card-label">What referrers told me</div>
+          <div class="cs-card-body">"I'd love to help people, I get a bonus too, but random LinkedIn DMs feel sketchy"<br><br>"If I could see their full profile and why they're a fit, I'd refer more people"</div>
         </div>
+      </div>
+      <div>
+        <p class="cs-p">The deeper insight: <strong>both sides want the same outcome.</strong> Job seekers need introductions. Employees want to earn referral bonuses. The friction isn't motivation, it's trust and access.</p>
+        <p class="cs-p">The second insight: even with a referral, job searching still eats hours every day. Checking boards, tailoring resumes, tracking applications. The manual work never stops. I saw two problems that needed solving, in the right order.</p>
       </div>
     </div>
   </div>
 
   <div class="cs-section r">
     <div class="cs-section-label">The Strategy</div>
-    <h2 class="cs-h2">Solve both problems, but in sequence</h2>
-    <p class="cs-p">The strategic insight: you need to solve referral access AND search automation, but the order matters.</p>
+    <h2 class="cs-h2">Two problems. One sequence. The order matters.</h2>
+    <p class="cs-p">You can't automate referral discovery without first having a referral network. So I designed a two-phase approach: build the infrastructure first, then add intelligence on top.</p>
     <div class="cs-3col">
       <div class="cs-card">
         <div class="cs-card-label">Phase 1</div>
@@ -207,14 +238,34 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     </div>
   </div>
 
-  <div style="margin:32px 0;text-align:center">
-    <img src="../images/referlink/referlink-03.png" alt="ReferLink problem research" style="max-width:680px;width:100%;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+  <div class="annotated-section r">
+    <div class="annotated-img-wrap" style="background:var(--bg-2)">
+      <img src="../images/referlink/referlink-02.png" alt="ReferLink marketplace - Find Referrers dashboard" loading="lazy" style="max-height:none;width:100%"/>
+    </div>
+    <div class="annotation-grid">
+      <div class="annotation-item">
+        <span class="annotation-num">1</span>
+        <p class="annotation-text"><strong>Explore referrers:</strong> Browse employees at top companies willing to refer, filterable by role, company, and location</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">2</span>
+        <p class="annotation-text"><strong>One-click request:</strong> "Request Referral" removes the friction of cold outreach. No awkward LinkedIn DMs needed</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">3</span>
+        <p class="annotation-text"><strong>Profile completeness:</strong> Seekers build trust through verified LinkedIn, uploaded resume, and target role clarity</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">4</span>
+        <p class="annotation-text"><strong>Role switching:</strong> Users toggle between Referrer and Job Seeker modes, both sides of the marketplace in one account</p>
+      </div>
+    </div>
   </div>
 
   <div class="cs-section r">
     <div class="cs-section-label">Phase 1, The Marketplace</div>
-    <h2 class="cs-h2">This isn't a networking problem. It's a matching problem.</h2>
-    <p class="cs-p">Employees would love to help people finding new jobs, and earn referral bonuses. Job seekers need introductions. Both sides want the same outcome. The platform matches them efficiently without requiring months of relationship-building first.</p>
+    <h2 class="cs-h2">Stop networking. Start matching.</h2>
+    <p class="cs-p">You shouldn't need to spend months building relationships just to get your resume seen. Employees earn referral bonuses and want to help. Job seekers need introductions. The platform removes the awkwardness and matches them directly.</p>
     <div class="cs-2col">
       <div>
         <h3 class="cs-h3">For job seekers</h3>
@@ -241,8 +292,8 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 
   <div class="cs-section r">
     <div class="cs-section-label">Phase 2, The AI Agent</div>
-    <h2 class="cs-h2">Autonomous job search that runs while you sleep</h2>
-    <p class="cs-p">Phase 1 solves referral access and tracking. But job searching still requires hours of daily manual work: searching across 50+ sources, reading descriptions, tailoring resumes, finding connections.</p>
+    <h2 class="cs-h2">Your job search runs 24/7. You don't.</h2>
+    <p class="cs-p">Even with referral access solved, the daily grind remains: scanning 50+ job boards, reading descriptions, tailoring resumes, tracking applications. That's hours of repetitive work every single day. The AI agent takes over.</p>
     <div class="cs-2col">
       <div>
         <h3 class="cs-h3">What the agent does</h3>
@@ -261,14 +312,19 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     </div>
   </div>
 
-  <div style="margin:32px 0;text-align:center">
-    <img src="../images/referlink/referlink-06.png" alt="ReferLink AI agent" style="max-width:800px;width:100%;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+  <div style="margin:32px 0;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div style="background:var(--bg-2);border:1.5px solid var(--border);border-radius:12px;padding:40px;display:flex;align-items:center;justify-content:center">
+      <img src="../images/referlink/referlink-06.png" alt="AI agent runs while you sleep" style="max-width:100%;border-radius:8px"/>
+    </div>
+    <div style="background:var(--bg-2);border:1.5px solid var(--border);border-radius:12px;padding:40px;display:flex;align-items:center;justify-content:center">
+      <img src="../images/referlink/referlink-07.png" alt="Overwhelmed by manual job search" style="max-width:100%;border-radius:8px"/>
+    </div>
   </div>
 
   <div class="cs-section r">
     <div class="cs-section-label">Design Principles</div>
-    <h2 class="cs-h2">Transparency at every step</h2>
-    <p class="cs-p">Learning from the LivePerson experience: AI recommendations only work if users trust them. Every match shows a clear explanation, which skills matched, which experience gaps exist, and why this role was surfaced. No black-box recommendations.</p>
+    <h2 class="cs-h2">If users can't see why, they won't trust it.</h2>
+    <p class="cs-p">A lesson I carried from my LivePerson work: AI recommendations only work if users understand them. Every match in ReferLink shows a clear explanation: which skills matched, which experience gaps exist, and why this role was surfaced. No black boxes.</p>
     <div class="cs-3col">
       <div class="cs-card"><div class="cs-card-label">For candidates</div><div class="cs-card-body">See exactly why each job was matched. Control the search parameters. Review and approve before anything is sent.</div></div>
       <div class="cs-card"><div class="cs-card-label">For referrers</div><div class="cs-card-body">See candidate profile, match score, and why this person was selected for their company, before agreeing to refer.</div></div>
@@ -278,19 +334,23 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 
   <div class="cs-section r">
     <div class="cs-section-label">What I Learned</div>
-    <h2 class="cs-h2">Key learnings from building a two-sided marketplace</h2>
-    <div class="cs-2col">
-      <div>
-        <h3 class="cs-h3">Business strategy means thinking beyond features</h3>
-        <p class="cs-p">Building a two-sided marketplace forced me to think about retention, not just functionality. This insight shaped the entire Phase 2 strategy.</p>
-        <h3 class="cs-h3">Rapid prototyping ≠ shipping a real product</h3>
-        <p class="cs-p">Lovable got me to a working prototype in days. Building the actual deployed product took weeks. I learned when to prototype (test unclear assumptions) versus when to just build (requirements are clear, execution matters).</p>
+    <h2 class="cs-h2">Building a marketplace teaches you things features can't</h2>
+
+    <div class="learnings-grid r">
+      <div class="learning-card">
+        <div class="learning-num">01</div>
+        <div class="learning-title">Retention is the real design problem</div>
+        <p>Referrals are episodic: you need one, then you're done. A two-sided marketplace forced me to think about daily engagement, not just functionality. That insight shaped the entire Phase 2 strategy.</p>
       </div>
-      <div>
-        <div class="cs-card">
-          <div class="cs-card-label">The biggest learning</div>
-          <div class="cs-card-body">Build, ship, learn, iterate beats plan, plan, plan.<br><br>Actually putting something in front of users teaches you things interviews can't. Speed to learning matters more than speed to perfection.</div>
-        </div>
+      <div class="learning-card">
+        <div class="learning-num">02</div>
+        <div class="learning-title">Prototype to learn, build to ship</div>
+        <p>Lovable got me to a working prototype in days. Shipping the real product took weeks. I learned when to prototype (test unclear assumptions) versus when to just build (requirements are clear, execution matters).</p>
+      </div>
+      <div class="learning-card">
+        <div class="learning-num">03</div>
+        <div class="learning-title">Speed to learning beats speed to perfection</div>
+        <p>Putting something in front of users teaches you things interviews can't. Build, ship, learn, iterate. The product got meaningfully better after every round of real feedback.</p>
       </div>
     </div>
   </div>
@@ -315,10 +375,10 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
   <div class="footer-links">
     <a href="mailto:litingsun312@gmail.com" class="footer-link">litingsun312@gmail.com</a>
     <a href="https://www.linkedin.com/in/litingsun/" class="footer-link" target="_blank">LinkedIn</a>
-    <a href="../index.html" class="footer-link">Home</a>
+    <a href="art.html" class="footer-link">Art</a>
     <a href="about.html" class="footer-link">About</a>
   </div>
-  <div class="footer-credit">© 2025 Liting Sun</div>
+  <div class="footer-credit">© 2026 Liting Sun</div>
 </footer>
 <script>
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
@@ -349,39 +409,5 @@ document.addEventListener('click', () => {
   document.querySelectorAll('.nav-dd').forEach(d => d.classList.remove('open'));
 });
 </script>
-
-<script>
-const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-(function tick(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})();
-document.querySelectorAll('a,button,.proj,.hover-target').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hover'));
-});
-const prog=document.getElementById('prog');
-window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
-const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.08});
-document.querySelectorAll('.r').forEach(el=>io.observe(el));
-
-// Dropdown click toggle
-document.querySelectorAll('.nav-dd').forEach(dd => {
-  const label = dd.querySelector('.nav-dd-label');
-  const menu = dd.querySelector('.nav-dd-menu');
-  label.addEventListener('click', e => {
-    e.stopPropagation();
-    const isOpen = menu.classList.contains('open');
-    document.querySelectorAll('.nav-dd-menu').forEach(m => m.classList.remove('open'));
-    document.querySelectorAll('.nav-dd').forEach(d => d.classList.remove('open'));
-    if (!isOpen) { menu.classList.add('open'); dd.classList.add('open'); }
-  });
-});
-document.addEventListener('click', () => {
-  document.querySelectorAll('.nav-dd-menu').forEach(m => m.classList.remove('open'));
-  document.querySelectorAll('.nav-dd').forEach(d => d.classList.remove('open'));
-});
-
-</script>
 </body>
-</html>
 </html>
