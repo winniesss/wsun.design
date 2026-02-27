@@ -20,10 +20,11 @@
     body.hover #cur-ring { width:48px; height:48px; border-color:var(--accent); }
     #prog { position:fixed; top:0; left:0; height:2px; background:var(--accent); z-index:1000; width:0%; transition:width .1s linear; }
 
-    nav { position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:900; display:flex; align-items:center; background:rgba(249,247,244,0.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1.5px solid var(--border); border-radius:100px; padding:8px 8px 8px 20px; white-space:nowrap; box-shadow:0 2px 16px rgba(0,0,0,0.06); gap:0; }
-    .nav-logo { font-family:var(--font-display); font-size:13px; font-weight:600; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; margin-right:8px; }
-    .nav-links { display:flex; gap:2px; list-style:none; margin-right:10px; }
-    .nav-links a { font-size:13px; font-weight:400; color:var(--ink-3); text-decoration:none; padding:6px 12px; border-radius:100px; transition:color .2s,background .2s; }
+    nav { position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:900; display:flex; align-items:center; background:rgba(249,247,244,0.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1.5px solid var(--border); border-radius:100px; padding:8px 8px 8px 20px; white-space:nowrap; box-shadow:0 2px 20px rgba(0,0,0,.07); }
+    .nav-logo { font-family:var(--font-display); font-size:13px; font-weight:600; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; margin-right:20px; }
+    .nav-links { display:flex; gap:2px; list-style:none; margin-right:10px; align-items:center; }
+    .nav-links li { display:flex; align-items:center; height:32px; }
+    .nav-links a { font-size:13px; font-weight:400; color:var(--ink-3); text-decoration:none; padding:0 12px; border-radius:100px; transition:color .2s,background .2s; display:flex; align-items:center; height:32px; line-height:1; }
     .nav-links a:hover,.nav-links a.active { color:var(--ink); background:rgba(0,0,0,0.05); }
     .nav-sep { width:1px; height:16px; background:var(--border); margin:0 6px; align-self:center; }
     .nav-cta { font-size:13px; font-weight:500; color:#fff; background:var(--accent); text-decoration:none; padding:8px 18px; border-radius:100px; transition:opacity .2s; }
@@ -106,6 +107,15 @@
       nav { padding:8px 8px 8px 14px; }
       .nav-sep,.nav-links li:nth-child(n+4) { display:none; }
     }
+    .nav-dd{position:relative}
+    .nav-dd-label{font-size:13px;font-weight:400;color:var(--ink-3);padding:0 12px;border-radius:100px;cursor:none;transition:color .2s,background .2s;display:flex;align-items:center;height:32px;gap:4px;user-select:none;line-height:1}
+    .nav-dd-label:hover{color:var(--ink);background:rgba(0,0,0,.05)}
+    .nav-dd-arrow{font-size:9px;transition:transform .2s}
+    .nav-dd-menu{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);background:rgba(249,247,244,.98);border:1.5px solid var(--border);border-radius:14px;padding:6px;min-width:160px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+    .nav-dd-menu.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+    .nav-dd.open .nav-dd-arrow{transform:rotate(180deg)}
+    .nav-dd-menu a{display:block;font-size:12px;color:var(--ink-3);text-decoration:none;padding:8px 12px;border-radius:8px;transition:background .15s,color .15s}
+    .nav-dd-menu a:hover{background:rgba(0,0,0,.05);color:var(--ink)}
 </style>
 </head>
 <body>
@@ -113,14 +123,26 @@
   <nav>
     <a href="../index.html" class="nav-logo">Liting Sun</a>
     <ul class="nav-links">
-      <li><a href="../index.html#work">Work</a></li>
-      <li><a href="ux-aws.html">AWS</a></li>
-      <li><a href="ux-liveperson.html">LivePerson</a></li>
-      <div class="nav-sep"></div>
-      <li><a href="mindflux.html">MindFlux</a></li>
-      <li><a href="referlink.html">ReferLink</a></li>
+      <li class="nav-dd">
+        <span class="nav-dd-label">Product Design <span class="nav-dd-arrow">▾</span></span>
+        <div class="nav-dd-menu">
+          <a href="ux-aws.html">AWS Libra</a>
+          <a href="ux-liveperson.html">LivePerson</a>
+          <a href="joyrun.html">Joyrun</a>
+        </div>
+      </li>
+      <li class="nav-dd">
+        <span class="nav-dd-label">AI Products <span class="nav-dd-arrow">▾</span></span>
+        <div class="nav-dd-menu">
+          <a href="mindflux.html">Mind Flux</a>
+          <a href="referlink.html">ReferLink</a>
+          <a href="tinycloset.html">Tiny Closet</a>
+        </div>
+      </li>
+      <li><a href="art.html">Art</a></li>
+      <li><a href="about.html" class="active">About</a></li>
     </ul>
-    <a href="mailto:litingsun312@gmail.com" class="nav-cta">Get in touch</a>
+    <a href="mailto:litingsun312@gmail.com" class="nav-cta">Say hello</a>
   </nav>
   <div class="page">
 
@@ -217,6 +239,21 @@
     const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.07});
     document.querySelectorAll('.r').forEach(el=>io.observe(el));
 
+    document.querySelectorAll('.nav-dd').forEach(dd => {
+      const label = dd.querySelector('.nav-dd-label');
+      const menu = dd.querySelector('.nav-dd-menu');
+      label.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('open');
+        document.querySelectorAll('.nav-dd-menu').forEach(m => m.classList.remove('open'));
+        document.querySelectorAll('.nav-dd').forEach(d => d.classList.remove('open'));
+        if (!isOpen) { menu.classList.add('open'); dd.classList.add('open'); }
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav-dd-menu').forEach(m => m.classList.remove('open'));
+      document.querySelectorAll('.nav-dd').forEach(d => d.classList.remove('open'));
+    });
 </script>
 </body>
 </html>
