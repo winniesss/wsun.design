@@ -27,12 +27,6 @@
 .case-body em{font-style:italic;color:var(--ink-3)}
 .case-callout{background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.2);border-radius:12px;padding:28px 32px;margin:40px 0}
 .case-callout p{color:var(--ink-2);margin-bottom:0}
-.case-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin:40px 0}
-.case-stat{padding:28px 24px;border-right:1.5px solid var(--border);text-align:center}
-.case-stat:last-child{border-right:none}
-.case-stat-num{font-family:var(--fd);font-size:36px;font-weight:300;letter-spacing:-.04em;color:var(--accent);line-height:1;margin-bottom:6px}
-.case-stat-num span{font-size:22px}
-.case-stat-label{font-size:13px;color:var(--ink-4);line-height:1.4}
 .case-next{border-top:1.5px solid var(--border);padding:60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
 .case-next-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
 .case-next-title{font-family:var(--fd);font-size:28px;font-weight:400;letter-spacing:-.03em;color:var(--ink);text-decoration:none;display:block;transition:color .2s}
@@ -42,7 +36,6 @@
   .case-meta-item{padding:20px 24px;min-width:120px}
   .case-body{padding:0 24px}
   .case-img{padding:24px}
-  .case-stat-grid{grid-template-columns:1fr 1fr}
   .case-next{padding:40px 24px}
 }
 </style>
@@ -83,15 +76,11 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;disp
 .btn-primary:hover{opacity:.85}
 .btn-secondary{font-family:var(--fb);font-size:15px;font-weight:400;color:var(--ink-2);background:var(--bg);border:1.5px solid var(--border);border-radius:100px;padding:14px 28px;text-decoration:none;cursor:none;transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:6px}
 .btn-secondary:hover{border-color:var(--ink-3);background:var(--bg-2)}
-.btn-ghost{font-family:var(--fb);font-size:14px;font-weight:400;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
-.btn-ghost:hover{gap:10px}
 .r{opacity:0;transform:translateY(24px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
 .r.on{opacity:1;transform:translateY(0)}
 .r[data-d="1"]{transition-delay:.1s}.r[data-d="2"]{transition-delay:.2s}.r[data-d="3"]{transition-delay:.3s}.r[data-d="4"]{transition-delay:.4s}
 .section{padding:100px 60px}
 .section-sm{padding:64px 60px}
-.section-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:48px;display:flex;align-items:center;gap:14px}
-.section-label::before{content:'';width:20px;height:1.5px;background:var(--accent)}
 .divider{border:none;border-top:1.5px solid var(--border)}
 footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;background:var(--bg-2)}
 .footer-name{font-family:var(--fd);font-size:20px;font-weight:400;letter-spacing:-.03em;color:var(--ink)}
@@ -100,10 +89,8 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 .footer-link:hover{color:var(--ink)}
 .footer-credit{font-size:12px;color:var(--ink-4)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 @media(max-width:700px){
   nav{padding:8px 8px 8px 14px}
-  .nav-sep{display:none}
   .section{padding:64px 24px}
   .section-sm{padding:48px 24px}
   footer{padding:40px 24px;flex-direction:column;align-items:flex-start}
@@ -119,7 +106,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
   <a href="../index.html" class="nav-logo">Liting Sun</a>
   <ul class="nav-links">
     <li class="nav-dd">
-      <span class="nav-dd-label">Product Design <span class="nav-dd-arrow">▾</span></span>
+      <span class="nav-dd-label">Product Design <span class="nav-dd-arrow">&#9662;</span></span>
       <div class="nav-dd-menu">
         <a href="aws.html">AWS Libra</a>
         <a href="liveperson.html">LivePerson</a>
@@ -127,125 +114,92 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
       </div>
     </li>
     <li class="nav-dd">
-      <span class="nav-dd-label">AI Products <span class="nav-dd-arrow">▾</span></span>
+      <span class="nav-dd-label">AI Products <span class="nav-dd-arrow">&#9662;</span></span>
       <div class="nav-dd-menu">
         <a href="mindflux.html">Mind Flux</a>
         <a href="referlink.html">ReferLink</a>
         <a href="tinycloset.html">Tiny Closet</a>
       </div>
     </li>
-    <li><a href="art.html" >Art</a></li>
-    <li><a href="about.html" >About</a></li>
+    <li><a href="art.html">Art</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
   <a href="mailto:litingsun312@gmail.com" class="nav-cta">Say hello</a>
 </nav>
 
-<div class="case-hero r" style="animation:fadeUp .9s .2s var(--ease) forwards;opacity:0;padding:160px 60px 80px">
-  <div class="case-tag">Product Design · Joyrun</div>
-  <h1 class="case-h1">Social Fitness &<br/>Gamification Design</h1>
-  <p class="case-sub">Redesigning engagement for Joyrun, a social running platform with 80M+ users across 2,100 cities. Built real-time PvP competition, ranking systems, and gamified motivation loops to drive retention.</p>
+<div class="case-hero r" style="animation:fadeUp .9s .2s var(--ease) forwards;opacity:0">
+  <div class="case-tag">Product Design &middot; Joyrun</div>
+  <h1 class="case-h1">Social Fitness &amp;<br/>Gamification Design</h1>
+  <p class="case-sub">Designed a real-time PvP competition system for Joyrun, a social running platform with 80M+ users. I led the interaction design for the Ranking Run feature across a team of five.</p>
 </div>
 
-<div class="case-meta">
-  <div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-val">Product Designer, User Researcher</div></div>
+<div class="case-meta r">
+  <div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-val">Interaction Design Lead</div></div>
   <div class="case-meta-item"><div class="case-meta-label">Timeline</div><div class="case-meta-val">4 months</div></div>
   <div class="case-meta-item"><div class="case-meta-label">Team</div><div class="case-meta-val">3 UX + 2 UI designers</div></div>
-  <div class="case-meta-item"><div class="case-meta-label">Tools</div><div class="case-meta-val">Sketch, Figma, Protopie</div></div>
+  <div class="case-meta-item"><div class="case-meta-label">Platform</div><div class="case-meta-val">iOS &amp; Android</div></div>
 </div>
 
 <div class="case-img">
-  <img src="../images/joyrun/joyrun-01.png" alt="Joyrun hero" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+  <img src="../images/joyrun/joyrun-01.png" alt="Joyrun Ranking Run feature overview" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
 </div>
 
 <div class="case-body">
-  <h2>The Challenge</h2>
-  <p>Joyrun's PM identified declining user engagement, runners were completing runs but not returning. Market research surfaced three root causes: lack of competitive motivation, no social accountability, and missing real-time feedback during runs.</p>
-  <p>Our brief: design a gamification system that would increase stickiness without alienating casual users.</p>
+  <h2 class="r">The Problem</h2>
+  <p class="r">Runners were completing runs but not coming back. Joyrun's retention was declining because there was no reason to return after a solo run. The PM wanted us to explore gamification as a retention lever.</p>
+  <p class="r">We surveyed 20+ users and interviewed 5 across different running levels. The gap was clear: beginners needed low-stakes motivation, experienced runners wanted competition. We needed a system that served both without alienating either.</p>
 
-  <h2>Understanding Users</h2>
-  <p>We conducted 20+ quantitative surveys and 5+ qualitative interviews, synthesizing three distinct runner personas:</p>
+  <h2 class="r">The Solution: Ranking Run</h2>
+  <p class="r">We explored three feature concepts (Ranking Run, Challenge Run, Quick Run) and scored them against motivation, social accountability, and retention. Ranking Run, a real-time PvP competition using recorded runs, scored highest and became our focus.</p>
 </div>
 
-<div class="case-img" style="padding:40px 60px;text-align:center">
-  <img src="../images/joyrun/joyrun-02.png" alt="User personas" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
-</div>
-
-<div class="case-body">
-  <ul>
-    <li><strong>Alice, Beginner Runner:</strong> Struggles with finding motivation to start. Needs encouragement and low-stakes entry points.</li>
-    <li><strong>Jack, Intermediate Runner:</strong> Goes to the gym 2–3x/week. Motivated by personal records and friendly competition.</li>
-    <li><strong>Chloe, Advanced Runner:</strong> Runs 40+ miles/week. Driven by performance data, rankings, and external challenges.</li>
-  </ul>
-
-  <h2>The Solution: Competition Mechanism</h2>
-  <p>After mapping user pain points to design opportunities, we narrowed to three feature concepts, and used a gamification value matrix to prioritize them:</p>
-  <ul>
-    <li><strong>Ranking Run</strong>, Real-time PvP: challenge other users using your recorded runs</li>
-    <li><strong>Challenge Run</strong>, Daily system-generated challenges and limited-time events</li>
-    <li><strong>Quick Run</strong>, A lightweight portal to encourage spontaneous runs</li>
-  </ul>
-  <p>Ranking Run emerged as Priority 1, highest impact across motivation, social accountability, and retention.</p>
-</div>
-
-<div class="case-img" style="padding:40px 60px;text-align:center">
-  <img src="../images/joyrun/joyrun-03.png" alt="Feature prioritization" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+<div class="case-img r" style="padding:40px 60px;text-align:center">
+  <img src="../images/joyrun/joyrun-03.png" alt="Feature prioritization matrix" style="max-width:460px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
 </div>
 
 <div class="case-body">
-  <h2>Ranking Run: 3-Step Flow</h2>
-  <h3>Step 1, Preparing</h3>
-  <p>Users choose to <strong>attack</strong> (challenge others using their best records) or <strong>defend</strong> (stay open to incoming challenges). Modal popup screens keep focus on the task. Clear attack/defend framing makes the competitive stakes legible at a glance.</p>
+  <p class="r">I owned the end-to-end interaction design for Ranking Run. The flow has three steps:</p>
+
+  <h3 class="r">1. Preparing</h3>
+  <p class="r">Users choose to <strong>attack</strong> (challenge someone using their best record) or <strong>defend</strong> (stay open to challenges). The attack/defend framing makes the competitive stakes clear immediately.</p>
 </div>
 
-<div class="case-img" style="padding:40px 60px;text-align:center">
-  <img src="../images/joyrun/joyrun-04.png" alt="Preparing step" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
-</div>
-
-<div class="case-body">
-  <h3>Step 2, Matching</h3>
-  <p>The system auto-matches competitors of similar rank within the selected time window. Users have 5 seconds to accept or decline, creating urgency without pressure. Seasonal resets (every 8 weeks) give all players a fresh chance to climb the ladder.</p>
-</div>
-
-<div class="case-img" style="padding:40px 60px;text-align:center">
-  <img src="../images/joyrun/joyrun-09.png" alt="Matching step" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+<div class="case-img r" style="padding:40px 60px;text-align:center">
+  <img src="../images/joyrun/joyrun-04.png" alt="Preparing step: attack and defend modes" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
 </div>
 
 <div class="case-body">
-  <h3>Step 3, Warm-up & Running</h3>
-  <p>Safety first: warm-up is required before competition begins. During the run, users see competitor positions in real-time. Red/green color coding signals whether they're ahead or behind. One-handed lock and pass buttons keep interaction minimal while running.</p>
+  <h3 class="r">2. Matching</h3>
+  <p class="r">The system matches competitors of similar rank within the selected time window. A 5-second accept/decline window creates urgency without pressure. Seasonal resets every 8 weeks give all players a fresh start.</p>
 </div>
 
-<div class="case-img" style="padding:40px 60px;text-align:center">
-  <img src="../images/joyrun/joyrun-11.png" alt="Running step" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
-</div>
-
-<div class="case-body">
-  <h2>Final Designs</h2>
-</div>
-
-<div class="case-img" style="padding:40px 60px;background:var(--bg-2);text-align:center">
-  <img src="../images/joyrun/joyrun-12.png" alt="Final screens" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
-</div>
-
-<div class="case-img" style="padding:40px 60px;text-align:center">
-  <img src="../images/joyrun/joyrun-14.png" alt="Final screens 2" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+<div class="case-img r" style="padding:40px 60px;text-align:center">
+  <img src="../images/joyrun/joyrun-09.png" alt="Matching step: competitor pairing" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
 </div>
 
 <div class="case-body">
-  <h2>Impact</h2>
-  <div class="case-stat-grid">
-    <div class="case-stat"><div class="case-stat-num">80M<span>+</span></div><div class="case-stat-label">Users on platform</div></div>
-    <div class="case-stat"><div class="case-stat-num">2.1K<span>+</span></div><div class="case-stat-label">Cities worldwide</div></div>
-    <div class="case-stat"><div class="case-stat-num">20K<span>+</span></div><div class="case-stat-label">Registered running groups</div></div>
-  </div>
+  <h3 class="r">3. Running</h3>
+  <p class="r">During the run, users see competitor positions in real-time. Red/green color coding signals whether they're ahead or behind. Lock and pass buttons are designed for one-handed use while running.</p>
+</div>
+
+<div class="case-img r" style="padding:40px 60px;text-align:center">
+  <img src="../images/joyrun/joyrun-11.png" alt="Running step: real-time competition view" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+</div>
+
+<div class="case-img r" style="padding:40px 60px;background:var(--bg-2);text-align:center">
+  <img src="../images/joyrun/joyrun-12.png" alt="Final screens showing complete flow" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+</div>
+
+<div class="case-img r" style="padding:40px 60px;text-align:center">
+  <img src="../images/joyrun/joyrun-14.png" alt="Additional final screens" style="max-width:700px;width:100%;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
 </div>
 
 <div class="case-next r">
   <div>
     <div class="case-next-label">Next project</div>
-    <a href="mindflux.html" class="case-next-title">Mind Flux →</a>
+    <a href="mindflux.html" class="case-next-title">Mind Flux &rarr;</a>
   </div>
-  <a href="../index.html" class="btn-secondary">← All work</a>
+  <a href="../index.html" class="btn-secondary">&larr; All work</a>
 </div>
 
 <footer>
@@ -256,7 +210,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     <a href="art.html" class="footer-link">Art</a>
     <a href="about.html" class="footer-link">About</a>
   </div>
-  <div class="footer-credit">© 2025 Liting Sun</div>
+  <div class="footer-credit">&copy; 2025 Liting Sun</div>
 </footer>
 <script>
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
