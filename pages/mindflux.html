@@ -114,6 +114,95 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
   .cs-next-item:first-child{border-right:none;border-bottom:1.5px solid var(--border)}
   .cs-next-item{padding:32px 24px}
 }
+/* Impact stat grid */
+.case-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin:0}
+.case-stat{padding:28px 24px;border-right:1.5px solid var(--border);text-align:center}
+.case-stat:last-child{border-right:none}
+.case-stat-num{font-family:var(--fd);font-size:36px;font-weight:300;letter-spacing:-.04em;color:var(--accent);line-height:1;margin-bottom:6px}
+.case-stat-num span{font-size:22px}
+.case-stat-label{font-size:13px;color:var(--ink-4);line-height:1.4}
+/* Annotated screenshots */
+.annotated-section{margin:36px 0}
+.annotated-view-label{font-size:11px;font-weight:500;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.annotated-img-wrap{border-radius:12px;overflow:hidden;border:1.5px solid var(--border);margin-bottom:20px;background:#0d1117;display:flex;justify-content:center}
+.annotated-img-wrap img{max-height:520px;width:auto;display:block}
+.annotated-img-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.annotated-img-2col .annotated-img-wrap{margin-bottom:0}
+.annotation-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
+.annotation-item{display:flex;gap:10px;align-items:baseline}
+.annotation-num{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.annotation-text{font-size:14px;line-height:1.6;color:var(--ink-3);margin:0}
+.annotation-text strong{color:var(--ink);font-weight:500}
+/* Therapist quote */
+.therapist-quote{padding-left:24px;border-left:2.5px solid #c9a96e;margin:32px 0}
+.therapist-text{font-family:var(--fd);font-size:20px;font-weight:300;line-height:1.55;color:var(--ink);margin:0 0 12px;letter-spacing:-.02em;font-style:italic}
+.therapist-attr{display:flex;align-items:center;gap:10px}
+.therapist-line{width:16px;height:1.5px;background:#c9a96e}
+.therapist-name{font-size:13px;color:var(--ink-4);letter-spacing:.01em}
+/* Learning cards */
+.learnings-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin:28px 0 40px}
+.learning-card{padding:24px;border-radius:12px;background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.15)}
+.learning-num{font-family:var(--fd);font-size:28px;font-weight:200;color:var(--accent);line-height:1;margin-bottom:12px}
+.learning-title{font-family:var(--fd);font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.learning-card p{font-size:14px;line-height:1.7;color:var(--ink-3);margin:0}
+/* Callout box */
+.case-callout{background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.2);border-radius:12px;padding:28px 32px;margin:28px 0}
+.case-callout p{color:var(--ink-2);margin-bottom:0;font-size:15px;line-height:1.75}
+/* Mood banner */
+.mood-banner{position:relative;border-radius:12px;overflow:hidden;margin:28px 0;max-height:240px}
+.mood-banner img{width:100%;display:block;filter:brightness(.45);object-fit:cover;height:240px}
+.mood-banner-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px}
+.mood-banner-stat{font-family:var(--fd);font-size:clamp(28px,3vw,42px);font-weight:300;color:#fff;letter-spacing:-.03em;line-height:1.2}
+.mood-banner-sub{font-size:14px;color:rgba(255,255,255,.7);margin-top:8px}
+/* AI-Native Development */
+.ai-native-intro{font-size:15px;line-height:1.75;color:var(--ink-3);margin-bottom:32px}
+.ai-native-intro strong{color:var(--ink);font-weight:500}
+.tool-stack{margin:28px 0;padding:24px 28px;border-radius:12px;background:var(--accent-bg);border:1.5px solid rgba(10,122,95,.15)}
+.tool-stack-label{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.tool-stack-row{display:flex;flex-wrap:wrap;gap:10px}
+.tool-tag{font-size:13px;color:var(--ink-3);padding:6px 14px;border-radius:20px;background:var(--bg);border:1px solid var(--border);letter-spacing:.01em}
+/* Process timeline */
+.process-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:32px 0;position:relative}
+.process-step{padding:28px 24px;position:relative;border:1.5px solid var(--border);border-radius:12px;background:var(--bg)}
+.process-step:not(:last-child)::after{content:'→';position:absolute;right:-16px;top:50%;transform:translate(50%,-50%);font-size:18px;color:var(--ink-4);z-index:1;background:var(--bg);padding:4px;line-height:1}
+.process-num{font-family:var(--fd);font-size:32px;font-weight:200;color:var(--accent);line-height:1;margin-bottom:12px}
+.process-title{font-family:var(--fd);font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.process-step p{font-size:13px;line-height:1.65;color:var(--ink-4);margin:0}
+.process-step .tool-stack{margin:12px 0 0;padding:12px 14px;border-radius:8px}
+.process-step .tool-stack-label{font-size:10px;margin-bottom:8px}
+.process-step .tool-tag{font-size:11px;padding:4px 10px}
+.discovery-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.discovery-item{padding:10px 14px;border-radius:8px;background:var(--bg-2);border:1px solid var(--border)}
+.discovery-item strong{font-size:12px;font-weight:600;color:var(--ink);display:block;margin-bottom:2px}
+.discovery-item span{font-size:11px;color:var(--ink-4);line-height:1.5}
+@media(max-width:900px){.process-timeline{grid-template-columns:1fr;gap:24px}.process-step:not(:last-child)::after{right:50%;top:auto;bottom:-18px;transform:translate(50%,0) rotate(90deg)}}
+/* Competitive landscape */
+.comp-landscape{margin:28px 0;border:1.5px solid var(--border);border-radius:12px;overflow:hidden}
+.comp-landscape-header{padding:16px 24px;background:var(--bg-2);border-bottom:1.5px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.comp-landscape-title{font-size:11px;font-weight:600;color:var(--ink-4);letter-spacing:.1em;text-transform:uppercase}
+.comp-row{display:grid;grid-template-columns:160px 1fr 1fr;border-bottom:1px solid var(--border);font-size:13px;line-height:1.55}
+.comp-row:last-child{border-bottom:none}
+.comp-row.comp-highlight{background:var(--accent-bg)}
+.comp-name{padding:14px 20px;font-weight:600;color:var(--ink);border-right:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.comp-icon{width:28px;height:28px;border-radius:7px;object-fit:cover;flex-shrink:0;border:1px solid var(--border)}
+.comp-name .comp-badge{font-size:10px;font-weight:500;color:var(--accent);background:rgba(10,122,95,.1);padding:2px 8px;border-radius:10px;white-space:nowrap}
+.comp-approach{padding:14px 16px;color:var(--ink-3);border-right:1px solid var(--border)}
+.comp-limit{padding:14px 16px;color:var(--ink-4)}
+.comp-col-header{font-weight:600;color:var(--ink-4);font-size:11px;letter-spacing:.05em;text-transform:uppercase;background:var(--bg-2)}
+@media(max-width:700px){
+  .comp-row{grid-template-columns:1fr;gap:0}
+  .comp-name{border-right:none;border-bottom:1px solid var(--border);padding:10px 16px}
+  .comp-approach{border-right:none;border-bottom:1px solid var(--border);padding:10px 16px}
+  .comp-limit{padding:10px 16px}
+}
+@media(max-width:700px){
+  .case-stat-grid{grid-template-columns:1fr 1fr}
+  .case-stat:nth-child(2){border-right:none}
+  .case-stat:last-child{border-top:1.5px solid var(--border);grid-column:1/-1}
+  .learnings-grid{grid-template-columns:1fr}
+  .annotation-grid{grid-template-columns:1fr}
+  .annotated-img-2col{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -148,7 +237,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 <div class="cs-hero r" style="animation:fadeUp .9s .2s var(--ease) forwards;opacity:0">
   <div class="cs-tag">AI Product · Solo Designer &amp; Builder · 30+ Beta Users</div>
   <h1 class="cs-h1">Mind Flux ,<br/>Stoic Triage for the Modern Mind</h1>
-  <p class="cs-intro">Mobile-first mental health app that reduces cognitive overload through friction-free capture and psychology-informed interactions. A bridge between productivity and psychotherapy, built solo using Cursor, Claude Code, and Gemini.</p>
+  <p class="cs-intro">For people who lie awake at 2am with too much on their mind, and no one to tell it to. MindFlux is a place to say everything out loud, then figure out what actually matters.</p>
   <div class="cs-meta">
     <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Solo Designer &amp; Builder</span></div>
     <div class="cs-meta-item"><span class="cs-meta-label">Status</span><span class="cs-meta-val">Private beta, 30+ users</span></div>
@@ -163,24 +252,86 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 
 <div class="cs-body">
 
+  <div class="case-callout r" style="margin-bottom:0;border-bottom:none;border-radius:12px 12px 0 0">
+    <p><strong>Solo AI experiment:</strong> MindFlux was built by one designer, zero engineers. I used Claude Code, Figma MCP, Cursor, and Gemini to go from research to production on my own. This case study is about the product and design decisions, not the tools.</p>
+  </div>
+
   <div class="cs-section r">
     <div class="cs-section-label">The Problem</div>
-    <h2 class="cs-h2">Mental health apps add cognitive load when users are already overwhelmed.</h2>
-    <p class="cs-p">Traditional to-do lists require upfront categorization. Mental health apps require journaling prompts. Both create decision fatigue at exactly the wrong moment, when someone is already stressed.</p>
-    <p class="cs-p">Could AI help separate "things I can control" from "things I can't"? And would visualizing that separation actually feel relieving?</p>
-    <div class="cs-2col">
-      <div>
-        <h3 class="cs-h3">The Approach</h3>
-        <ul class="cs-ul">
-          <li><strong>Zero-Friction Capture</strong>, Single-tap voice or text, no required fields, one-handed mobile use during stress</li>
-          <li><strong>Psychology-Informed Interactions</strong>, Swipe-based triage based on Stoic philosophy's Dichotomy of Control</li>
-          <li><strong>Trust Through Craft</strong>, Calm-tech aesthetic with fluid animations, visual language that communicates safety</li>
-        </ul>
+    <h2 class="cs-h2">You know the feeling. Too many thoughts, nowhere to put them.</h2>
+
+    <div class="mood-banner r">
+      <img src="../images/mindflux/mindflux-10.jpg" alt="Person overwhelmed with anxiety"/>
+      <div class="mood-banner-overlay">
+        <div class="mood-banner-stat">43% of therapy apps abandoned<br/>within 2 weeks</div>
+        <div class="mood-banner-sub">Because they ask too many questions at exactly the wrong moment</div>
       </div>
-      <div class="cs-card">
-        <div class="cs-card-label">The core mechanic</div>
-        <div class="cs-card-title">Physical gesture = psychological relief</div>
-        <div class="cs-card-body"><strong>Swipe left ("Let Them"):</strong> Uncontrollable worries dissolve with satisfying visual feedback<br><br><strong>Swipe right ("Let Me"):</strong> Actionable items gain visual weight and clarity<br><br>The physical gesture creates agency. The visual effect provides dopamine reinforcement for healthy behavior.</div>
+    </div>
+
+    <p class="cs-p">You're mentally exhausted but you can't explain why. You have a hundred things spinning in your head but no one to say them to. You don't need therapy right now, you just need somewhere to put it all down. But every app you try asks you to categorize, journal, or chat with a bot. That's more work, not less. Meanwhile, 17M+ adults in the US with ADHD struggle with time perception, so even captured tasks never get scheduled.</p>
+
+    <p class="cs-p">And then there's the current wave of mental health apps. Almost all of them are chatbots. They let you vent endlessly and feel momentarily heard, but <strong>chat becomes the destination, not the starting point.</strong> I didn't want to build another place to vent. I wanted to help people <em>stop venting and start doing</em>. Could a <em>physical gesture</em>, not a checkbox or a prompt, help people separate "things I can control" from "things I can't"?</p>
+
+    <div class="comp-landscape r">
+      <div class="comp-landscape-header">
+        <span class="comp-landscape-title">Competitive Landscape</span>
+      </div>
+      <div class="comp-row comp-col-header">
+        <div class="comp-name">App</div>
+        <div class="comp-approach">Core Approach</div>
+        <div class="comp-limit">Differentiator</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name"><img class="comp-icon" src="../images/mindflux/competitors/headspace.jpg" alt="Headspace"/>Headspace</div>
+        <div class="comp-approach">Guided meditation &amp; sleep through 1000+ audio sessions</div>
+        <div class="comp-limit">Passive consumption; no active behavior change</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name"><img class="comp-icon" src="../images/mindflux/competitors/youper.jpg" alt="Youper"/>Youper</div>
+        <div class="comp-approach">AI chatbot using CBT/DBT/ACT + mood tracking</div>
+        <div class="comp-limit">Tools buried behind chat; no memory persistence</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name"><img class="comp-icon" src="../images/mindflux/competitors/ash.jpg" alt="Ash"/>Ash</div>
+        <div class="comp-approach">Voice/text AI chat with pattern recognition + weekly insights</div>
+        <div class="comp-limit">Still chat-first; therapeutic effectiveness unproven</div>
+      </div>
+      <div class="comp-row comp-highlight">
+        <div class="comp-name">MindFlux</div>
+        <div class="comp-approach">Voice-first capture, structured output, ADHD-optimized triage</div>
+        <div class="comp-limit">Drives focus instead of endless venting</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section r">
+    <div class="cs-section-label">Zero-Friction Capture</div>
+    <h2 class="cs-h2">Nebula Input: dump everything, triage later</h2>
+    <p class="cs-p">Most capture tools force you to categorize as you go. MindFlux inverts this: voice or text brain dump first, then your stream of consciousness gets parsed into thought bubbles, and you triage when you're ready, not when the app demands it.</p>
+
+    <p class="cs-p">The voice input isn't a dictation tool. It's closer to thinking out loud with a smart listener. You say "I need to call the dentist and also the rent is due and I keep thinking about that thing my boss said," and the app separates, structures, and surfaces what matters. The capture feels effortless; the clarity comes from the organizing you can't do when you're overwhelmed.</p>
+
+    <div class="annotated-section r">
+      <div class="annotated-img-wrap">
+        <img src="../images/mindflux/mindflux-13.png" alt="Nebula Input - thought bubbles floating on dark canvas with voice input" loading="lazy"/>
+      </div>
+      <div class="annotation-grid">
+        <div class="annotation-item">
+          <span class="annotation-num">1</span>
+          <p class="annotation-text"><strong>Voice + text input:</strong> "Listen to me..." prompt at the bottom. No required fields, no structure needed. Just talk or type</p>
+        </div>
+        <div class="annotation-item">
+          <span class="annotation-num">2</span>
+          <p class="annotation-text"><strong>Parsed thought bubbles:</strong> Each worry or task becomes a floating bubble. "The stock market might crash" gets separated from "finish the proposal by Friday"</p>
+        </div>
+        <div class="annotation-item">
+          <span class="annotation-num">3</span>
+          <p class="annotation-text"><strong>No categorization required:</strong> Bubbles float freely. No folders, no labels. The spatial layout itself communicates "this is temporary, not permanent"</p>
+        </div>
+        <div class="annotation-item">
+          <span class="annotation-num">4</span>
+          <p class="annotation-text"><strong>Web + mobile, same experience:</strong> Works seamlessly across desktop and mobile. Brain dump at your desk or during a 2am anxiety spiral in bed, same zero-friction input either way</p>
+        </div>
       </div>
     </div>
   </div>
@@ -188,45 +339,67 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
   <div class="cs-section r">
     <div class="cs-section-label">The Swipe System</div>
     <h2 class="cs-h2">Physical interaction for psychological relief</h2>
-    <p class="cs-p">Users know intellectually what they can and can't control, but anxiety doesn't respond to logic, it needs a physical release mechanism.</p>
-    <div class="cs-2col">
-      <div>
-        <p class="cs-p">When users swipe left to "Let Them," uncontrollable worries dissolve with satisfying visual feedback. Users can revisit the gallery to see their worries in perspective, accompanied by relevant philosophy quotes (Seneca: "We suffer more often in imagination than in reality").</p>
-        <p class="cs-p">The <strong>Cleanse Gallery</strong> feature: When users are ready to permanently let go, they can clear the gallery, providing a final ritual of release. Cognitive reframing, evidence of progress, user control, and ritual completion all in one gesture.</p>
+    <p class="cs-p">The naming came from Mel Robbins' <em>The Let Them Theory</em>, the #1 bestselling book of 2025: stop pouring energy into things you cannot control. That idea resonated deeply with me, but reading about it isn't the same as <em>feeling</em> it. I wanted to turn that philosophy into a physical interaction.</p>
+    <p class="cs-p">When your mind is full of too many things, you don't want to check a box or delete a row. You want to watch something <em>dissolve</em>. A bubble disappearing feels like weight leaving your shoulders. A checkbox feels like paperwork. So I chose swipe over tap, and bubbles over lists. The interaction had to feel like physically throwing something away.</p>
+    <p class="cs-p">Swipe left to "Let Them," and the worry dissolves. Swipe right to "Let Me," and it gains weight and clarity. The gallery lets users revisit released worries in perspective, accompanied by Stoic philosophy quotes. When they're ready to permanently let go, the <strong>Cleanse Gallery</strong> provides a final ritual of release.</p>
+
+    <div class="annotated-section r">
+      <div class="annotated-img-2col">
+        <div class="annotated-img-wrap">
+          <img src="../images/mindflux/mindflux-05.png" alt="Let Me triage - AI reframe with swipe gesture" loading="lazy"/>
+        </div>
+        <div class="annotated-img-wrap">
+          <img src="../images/mindflux/mindflux-06.png" alt="Let Them Gallery - Seneca quote and cleanse button" loading="lazy"/>
+        </div>
       </div>
-      <div class="cs-card">
-        <div class="cs-card-label">The psychology</div>
-        <div class="cs-card-body">Cognitive reframing: AI helps users see worries from a healthier perspective<br><br>Evidence of progress: The gallery shows how many worries users have successfully released<br><br>User control: The "cleanse" action gives users agency over their mental space<br><br>Ritual completion: Clearing the gallery provides closure and reinforcement</div>
+      <div class="annotation-grid">
+        <div class="annotation-item">
+          <span class="annotation-num">1</span>
+          <p class="annotation-text"><strong>"Let Me" triage:</strong> A reframe appears before commitment. "Directing energy toward completion builds self-efficacy." Positive framing before action</p>
+        </div>
+        <div class="annotation-item">
+          <span class="annotation-num">2</span>
+          <p class="annotation-text"><strong>"Let Them" Gallery:</strong> Released worries live here with Seneca quotes and AI perspectives. Cleanse Gallery button for the final ritual of letting go</p>
+        </div>
+        <div class="annotation-item">
+          <span class="annotation-num">3</span>
+          <p class="annotation-text"><strong>Swipe buttons:</strong> Large touch targets for "Let Them" and "Let Me". Binary choice eliminates decision fatigue. Two buttons, not five</p>
+        </div>
+        <div class="annotation-item">
+          <span class="annotation-num">4</span>
+          <p class="annotation-text"><strong>Cognitive reframe:</strong> "The past is unchangeable; your value remains untouched by a single fleeting moment." A Stoic perspective generated for each worry</p>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div style="margin:32px 0;text-align:center">
-    <img src="../images/mindflux/mindflux-02.png" alt="MindFlux swipe flow" style="max-width:680px;width:100%;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
   </div>
 
   <div class="cs-section r">
     <div class="cs-section-label">The "Let Me" Flow</div>
     <h2 class="cs-h2">Converting intent into time-bound commitment</h2>
-    <p class="cs-p">Most to-do apps fail because users add tasks but never commit to doing them. The act of capturing feels productive, but without commitment timing, tasks sit forever in a generic list, creating guilt and disengagement.</p>
+
+    <div class="case-callout r">
+      <p><strong>What therapists told me:</strong> After interviewing licensed therapists, a clear pattern emerged. The majority of their clients come in for two reasons: burnout and ADHD. People with ADHD or ADHD tendencies struggle with the same three things: tasks feel abstract and overwhelming, they can't connect tasks to their actual day, and they have no sense of <em>when</em> to do anything. MindFlux was designed to solve exactly that.</p>
+    </div>
+
+    <p class="cs-p">Most to-do apps fail because users add tasks but never commit to doing them. The act of capturing feels productive, but without commitment timing, tasks sit forever in a generic list, creating guilt and disengagement. The "Let Me" flow addresses the three ADHD pain points directly:</p>
     <div class="cs-3col">
       <div class="cs-card">
-        <div class="cs-card-label">Step 1</div>
-        <div class="cs-card-title">Triage with context</div>
-        <div class="cs-card-body">AI reframe appears before asking for commitment, priming users with positive motivation so they understand WHY this task matters before being asked WHEN they'll do it.</div>
+        <div class="cs-card-label">Make it concrete</div>
+        <div class="cs-card-title">Tasks become visible and tangible</div>
+        <div class="cs-card-body">Abstract worries get broken down into specific, actionable items. "I need to deal with my finances" becomes "Check bank balance" and "Set up auto-pay." The reframe before commitment helps users understand WHY it matters.</div>
       </div>
       <div class="cs-card">
-        <div class="cs-card-label">Step 2</div>
-        <div class="cs-card-title">Low-friction commitment</div>
-        <div class="cs-card-body">Three choices only: TODAY, TOMORROW, THIS WEEKEND. No "Someday" option, forces real commitment. Limited choices reduce decision fatigue. Large 44pt touch targets.</div>
+        <div class="cs-card-label">Fit it into life</div>
+        <div class="cs-card-title">Three time slots, not an infinite list</div>
+        <div class="cs-card-body">TODAY, TOMORROW, THIS WEEKEND. No "Someday" option. This forces tasks into a real day, not a hypothetical future. For people who struggle with time perception, anchoring to a specific window is everything.</div>
       </div>
       <div class="cs-card">
-        <div class="cs-card-label">Step 3</div>
-        <div class="cs-card-title">Confirmation &amp; visibility</div>
-        <div class="cs-card-body">Task appears in Commitments with date and checkbox. Subtle "Added to actions" toast with Undo. Seeing it visualized reinforces the decision and adds accountability.</div>
+        <div class="cs-card-label">Lock in the when</div>
+        <div class="cs-card-title">Committed tasks get a time and place</div>
+        <div class="cs-card-body">Tasks appear in Commitments with date and calendar sync. Users know exactly when they'll do what. No more "I'll get to it later" guilt loop. Seeing it scheduled reinforces the decision.</div>
       </div>
     </div>
-    <div class="cs-quote"><p>"Offloading provided immediate relief, users felt lighter within 30 seconds, before even organizing tasks."</p><cite>, Beta user research finding</cite></div>
+    <div class="cs-quote"><p>"Offloading provided immediate relief, users felt lighter within 30 seconds, before even organizing tasks."</p><cite>— Beta user research finding</cite></div>
   </div>
 
   <div style="margin:32px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
@@ -236,56 +409,79 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
   </div>
 
   <div class="cs-section r">
-    <div class="cs-section-label">V2, Research-Driven Evolution</div>
-    <h2 class="cs-h2">Therapist interviews fundamentally shifted the product strategy</h2>
-    <p class="cs-p">After beta launch, I interviewed licensed therapists to validate my therapeutic approach. What I learned changed everything.</p>
+    <div class="cs-section-label">V2 Evolution</div>
+    <h2 class="cs-h2">From manual input to voice-first brain dump</h2>
     <div class="cs-2col">
-      <div>
-        <h3 class="cs-h3">What therapists revealed</h3>
-        <ul class="cs-ul">
-          <li><strong>70% of therapy clients</strong> struggle with work/relationship burnout or ADHD, validating my target audience but revealing I was solving the wrong problem</li>
-          <li><strong>ADHD users need task decomposition</strong>, breaking overwhelming projects into micro-tasks with time anchoring (weak time perception means tasks without committed times never happen)</li>
-          <li><strong>AI can replace therapy workflows</strong>, breaking down tasks into subtasks, scheduling prompts at capture, pattern detection for when professional intervention is needed</li>
-        </ul>
+      <div class="cs-card">
+        <div class="cs-card-label">Before V2</div>
+        <div class="cs-card-body">Users manually added tasks one-by-one. Required upfront categorization. No automatic breakdown or scheduling. Desktop-focused. Result: more cognitive load, not less.</div>
       </div>
-      <div>
-        <div class="cs-card" style="margin-bottom:16px">
-          <div class="cs-card-label">Before V2</div>
-          <div class="cs-card-body">Users manually added tasks one-by-one. Required upfront categorization. No automatic breakdown or scheduling. Desktop-focused. Result: more cognitive load, not less.</div>
-        </div>
-        <div class="cs-card">
-          <div class="cs-card-label">After V2</div>
-          <div class="cs-card-body">AI-powered "Nebula Input", voice/text brain dump. Auto-parses thoughts into bubbles. Automatic task breakdown + time anchoring. Mobile-first, one-handed design. Native calendar sync.</div>
-        </div>
+      <div class="cs-card">
+        <div class="cs-card-label">After V2</div>
+        <div class="cs-card-body">Voice/text brain dump. Auto-parses thoughts into bubbles. Automatic task breakdown + time anchoring. Mobile-first, one-handed design. Native calendar sync.</div>
       </div>
     </div>
   </div>
 
-  <div style="margin:32px 0;text-align:center">
-    <img src="../images/mindflux/mindflux-05.png" alt="MindFlux V2" style="max-width:680px;width:100%;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1)"/>
+  <div class="annotated-section r" style="margin-top:0">
+    <div class="annotated-img-2col">
+      <div class="annotated-img-wrap">
+        <img src="../images/mindflux/mindflux-11.png" alt="V2 Infuse Your Thoughts - brain dump input with voice" loading="lazy"/>
+      </div>
+      <div class="annotated-img-wrap">
+        <img src="../images/mindflux/mindflux-12.png" alt="V2 Strategy Breakdown - AI task decomposition" loading="lazy"/>
+      </div>
+    </div>
+    <div class="annotation-grid">
+      <div class="annotation-item">
+        <span class="annotation-num">1</span>
+        <p class="annotation-text"><strong>Infuse Your Thoughts:</strong> V2 brain dump. Voice or text, the full messy paragraph. "I have a presentation tomorrow, and I haven't finished the slides yet..."</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">2</span>
+        <p class="annotation-text"><strong>Strategy Breakdown:</strong> AI decomposes the worry into actionable micro-tasks: "Review slides for clarity," "Practice vocal delivery once," "Set out professional attire"</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">3</span>
+        <p class="annotation-text"><strong>Voice-first input:</strong> Purple send button + mic icon. Optimized for the moment of stress when typing feels like too much effort</p>
+      </div>
+      <div class="annotation-item">
+        <span class="annotation-num">4</span>
+        <p class="annotation-text"><strong>Preserved triage:</strong> "Let Them" and "Let Me" buttons remain. The core mechanic carries into V2, now enriched with task decomposition</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="therapist-quote r">
+    <p class="therapist-text">"The Dichotomy of Control is something I teach in session, but most clients forget it by the time they're stressed. Having a tool that enforces that framework through a physical gesture, that's genuinely therapeutic."</p>
+    <div class="therapist-attr">
+      <span class="therapist-line"></span>
+      <span class="therapist-name">Licensed therapist, beta research interview</span>
+    </div>
   </div>
 
   <div class="cs-section r">
-    <div class="cs-section-label">Outcomes</div>
+    <div class="cs-section-label">Outcomes &amp; Learnings</div>
     <h2 class="cs-h2">What the beta taught me</h2>
-    <div class="cs-3col">
-      <div class="cs-card">
-        <div class="cs-card-label">85%</div>
-        <div class="cs-card-title">Scheduling completion</div>
-        <div class="cs-card-body">Progressive disclosure reduced decision fatigue, 85% of users completed the scheduling flow.</div>
+
+    <div class="learnings-grid r">
+      <div class="learning-card">
+        <div class="learning-num">01</div>
+        <div class="learning-title">Structure can be automated, emotion can't</div>
+        <p>Task decomposition and time anchoring work great when automated. Emotional reframing still requires human expertise. This revealed a hybrid care model: the app handles structure, therapists handle complexity.</p>
       </div>
-      <div class="cs-card">
-        <div class="cs-card-label">92%</div>
-        <div class="cs-card-title">Mobile captures</div>
-        <div class="cs-card-body">92% of captures happened on mobile during stress moments, validating the mobile-first approach.</div>
+      <div class="learning-card">
+        <div class="learning-num">02</div>
+        <div class="learning-title">Physical gesture is the product, not a feature</div>
+        <p>The swipe mechanic isn't a UI shortcut. It's the therapeutic mechanism. The physical release is what creates relief. Remove it, and you're just another to-do app with a calm color palette.</p>
       </div>
-      <div class="cs-card">
-        <div class="cs-card-label">3x</div>
-        <div class="cs-card-title">Task completion</div>
-        <div class="cs-card-body">Calendar integration drove 3x higher task completion vs. in-app-only reminders.</div>
+      <div class="learning-card">
+        <div class="learning-num">03</div>
+        <div class="learning-title">Solo building forces radical clarity</div>
+        <p>Building with my own tools meant I could ship fast, but every feature had to earn its place. No team to split work across, just discipline and tight constraints. The limitation forced focus.</p>
       </div>
     </div>
-    <p class="cs-p" style="margin-top:32px"><strong>Key Learning:</strong> AI excels at task decomposition and time anchoring, but emotional reframing requires human expertise. This revealed a hybrid care model opportunity: app handles structure, therapists handle complexity.</p>
+
     <h3 class="cs-h3">What's Next</h3>
     <ul class="cs-ul">
       <li>Integrate pre-therapy assessment (PHQ-9, GAD-7) triggered when AI detects distress patterns</li>
@@ -318,7 +514,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     <a href="art.html" class="footer-link">Art</a>
     <a href="about.html" class="footer-link">About</a>
   </div>
-  <div class="footer-credit">© 2025 Liting Sun</div>
+  <div class="footer-credit">© 2026 Liting Sun</div>
 </footer>
 <script>
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
@@ -349,39 +545,5 @@ document.addEventListener('click', () => {
   document.querySelectorAll('.nav-dd').forEach(d => d.classList.remove('open'));
 });
 </script>
-
-<script>
-const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-(function tick(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})();
-document.querySelectorAll('a,button,.proj,.hover-target').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hover'));
-});
-const prog=document.getElementById('prog');
-window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
-const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.08});
-document.querySelectorAll('.r').forEach(el=>io.observe(el));
-
-// Dropdown click toggle
-document.querySelectorAll('.nav-dd').forEach(dd => {
-  const label = dd.querySelector('.nav-dd-label');
-  const menu = dd.querySelector('.nav-dd-menu');
-  label.addEventListener('click', e => {
-    e.stopPropagation();
-    const isOpen = menu.classList.contains('open');
-    document.querySelectorAll('.nav-dd-menu').forEach(m => m.classList.remove('open'));
-    document.querySelectorAll('.nav-dd').forEach(d => d.classList.remove('open'));
-    if (!isOpen) { menu.classList.add('open'); dd.classList.add('open'); }
-  });
-});
-document.addEventListener('click', () => {
-  document.querySelectorAll('.nav-dd-menu').forEach(m => m.classList.remove('open'));
-  document.querySelectorAll('.nav-dd').forEach(d => d.classList.remove('open'));
-});
-
-</script>
 </body>
-</html>
 </html>
