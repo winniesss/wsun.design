@@ -5,7 +5,7 @@
   <title>Joyrun Gamification Design, Liting Sun</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 18px; scroll-behavior: smooth; }
+    html { font-size: 18px; scroll-behavior: smooth; overflow-x: hidden; }
     :root {
       --bg:#f9f7f4; --bg-2:#f2efe9; --bg-3:#eae7e0;
       --ink:#111111; --ink-2:#333333; --ink-3:#555555; --ink-4:#767676;
@@ -20,12 +20,21 @@
     body.hover #cur-ring { width:48px; height:48px; border-color:var(--accent); }
     #prog { position:fixed; top:0; left:0; height:2px; background:var(--accent); z-index:1000; width:0%; transition:width .1s linear; }
 
-    nav { position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:900; display:flex; align-items:center; background:rgba(249,247,244,0.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1.5px solid var(--border); border-radius:100px; padding:8px 8px 8px 20px; white-space:nowrap; box-shadow:0 2px 16px rgba(0,0,0,0.06); gap:0; }
-    .nav-logo { font-family:var(--font-display); font-size:13px; font-weight:600; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; margin-right:8px; }
-    .nav-links { display:flex; gap:2px; list-style:none; margin-right:10px; }
-    .nav-links a { font-size:13px; font-weight:400; color:var(--ink-3); text-decoration:none; padding:6px 12px; border-radius:100px; transition:color .2s,background .2s; }
+    nav { position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:900; display:flex; align-items:center; background:rgba(249,247,244,0.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1.5px solid var(--border); border-radius:100px; padding:8px 8px 8px 20px; white-space:nowrap; box-shadow:0 2px 20px rgba(0,0,0,.07); }
+    .nav-logo { font-family:var(--fd); font-size:13px; font-weight:600; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; margin-right:20px; }
+    .nav-links { display:flex; gap:2px; list-style:none; margin-right:10px; align-items:center; }
+    .nav-links li { display:flex; align-items:center; height:32px; }
+    .nav-links a { font-size:13px; font-weight:400; color:var(--ink-3); text-decoration:none; padding:0 12px; border-radius:100px; transition:color .2s,background .2s; display:flex; align-items:center; height:32px; line-height:1; }
     .nav-links a:hover,.nav-links a.active { color:var(--ink); background:rgba(0,0,0,0.05); }
-    .nav-sep { width:1px; height:16px; background:var(--border); margin:0 6px; align-self:center; }
+    .nav-dd { position:relative; }
+    .nav-dd-label { font-size:13px; font-weight:400; color:var(--ink-3); padding:0 12px; border-radius:100px; cursor:none; transition:color .2s,background .2s; display:flex; align-items:center; height:32px; gap:4px; user-select:none; line-height:1; }
+    .nav-dd-label:hover { color:var(--ink); background:rgba(0,0,0,.05); }
+    .nav-dd-arrow { font-size:9px; transition:transform .2s; }
+    .nav-dd-menu { position:absolute; top:calc(100% + 4px); left:50%; transform:translateX(-50%); background:rgba(249,247,244,.98); border:1.5px solid var(--border); border-radius:14px; padding:6px; min-width:160px; opacity:0; pointer-events:none; transition:opacity .2s,transform .2s; transform:translateX(-50%) translateY(-4px); box-shadow:0 8px 32px rgba(0,0,0,.1); }
+    .nav-dd-menu.open { opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+    .nav-dd.open .nav-dd-arrow { transform:rotate(180deg); }
+    .nav-dd-menu a { display:block; font-size:12px; color:var(--ink-3); text-decoration:none; padding:8px 12px; border-radius:8px; transition:background .15s,color .15s; }
+    .nav-dd-menu a:hover { background:rgba(0,0,0,.05); color:var(--ink); }
     .nav-cta { font-size:13px; font-weight:500; color:#fff; background:var(--accent); text-decoration:none; padding:8px 18px; border-radius:100px; transition:opacity .2s; }
     .nav-cta:hover { opacity:.85; }
 
@@ -96,6 +105,14 @@
     .r.on { opacity:1; transform:translateY(0); }
     .r[data-d="1"]{transition-delay:.1s} .r[data-d="2"]{transition-delay:.2s} .r[data-d="3"]{transition-delay:.3s}
 
+    @media (max-width:960px) {
+      nav { padding:8px 10px; width:fit-content; max-width:calc(100% - 32px); left:0; right:0; margin:0 auto; transform:none; }
+      .nav-links li:not(.nav-dd) { display:none; }
+      .nav-logo { font-size:12px; margin-right:8px; }
+      .nav-dd-label { font-size:11px; padding:0 6px; }
+      .nav-cta { font-size:11px; padding:6px 10px; }
+      .nav-links { margin-right:4px; }
+    }
     @media (max-width:900px) {
       .cs-hero,.cs-body { padding-left:24px; padding-right:24px; }
       .cs-2col,.cs-3col { grid-template-columns:1fr; }
@@ -103,8 +120,6 @@
       .cs-next-item:first-child { border-right:none; border-bottom:1.5px solid var(--border); }
       .cs-next-item { padding:32px 24px; }
       footer { padding:32px 24px; flex-direction:column; align-items:flex-start; }
-      nav { padding:8px 8px 8px 14px; }
-      .nav-sep,.nav-links li:nth-child(n+4) { display:none; }
     }
 </style>
 </head>
@@ -113,14 +128,26 @@
   <nav>
     <a href="../index.html" class="nav-logo">Liting Sun</a>
     <ul class="nav-links">
-      <li><a href="../index.html#work">Work</a></li>
-      <li><a href="ux-aws.html">AWS</a></li>
-      <li><a href="ux-liveperson.html">LivePerson</a></li>
-      <div class="nav-sep"></div>
-      <li><a href="mindflux.html">MindFlux</a></li>
-      <li><a href="referlink.html">ReferLink</a></li>
+      <li class="nav-dd">
+        <span class="nav-dd-label">Product Design <span class="nav-dd-arrow">&#9662;</span></span>
+        <div class="nav-dd-menu">
+          <a href="aws.html">AWS Libra</a>
+          <a href="liveperson.html">LivePerson</a>
+          <a href="joyrun.html">Joyrun</a>
+        </div>
+      </li>
+      <li class="nav-dd">
+        <span class="nav-dd-label">AI Products <span class="nav-dd-arrow">&#9662;</span></span>
+        <div class="nav-dd-menu">
+          <a href="mindflux.html">Mind Flux</a>
+          <a href="referlink.html">ReferLink</a>
+          <a href="tinycloset.html">Tiny Closet</a>
+        </div>
+      </li>
+      <li><a href="art.html">Art</a></li>
+      <li><a href="about.html">About</a></li>
     </ul>
-    <a href="mailto:litingsun312@gmail.com" class="nav-cta">Get in touch</a>
+    <a href="mailto:litingsun312@gmail.com" class="nav-cta">Say hello</a>
   </nav>
   <div class="page">
 
@@ -194,7 +221,7 @@
       <a href="../index.html" class="footer-link">Home</a>
       <a href="about.html" class="footer-link">About</a>
     </div>
-    <div class="footer-credit">© 2025 Liting Sun</div>
+    <div class="footer-credit">© 2026 Liting Sun</div>
   </footer>
   <script>
     const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');

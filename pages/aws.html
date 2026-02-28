@@ -6,7 +6,9 @@
 <title>AWS Project Libra, Liting Sun</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
-.case-hero{padding:160px 60px 80px;max-width:900px}
+.hero-img{max-height:480px;object-fit:cover}
+.wide-media{margin:40px -80px 48px}
+.case-hero{padding:160px 60px 80px;max-width:900px;margin:0 auto}
 .case-tag{font-size:11px;font-weight:500;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
 .case-h1{font-family:var(--fd);font-size:clamp(36px,5vw,72px);font-weight:300;letter-spacing:-.04em;line-height:1.05;margin-bottom:24px;color:var(--ink)}
 .case-sub{font-size:clamp(17px,1.6vw,21px);font-weight:400;color:var(--ink-2);line-height:1.7;max-width:620px}
@@ -151,11 +153,19 @@
 .learning-card p{font-size:14px;line-height:1.7;color:var(--ink-3);margin:0}
 
 @media(max-width:700px){
+  .hero-img{max-height:none;object-fit:contain}
+  .wide-media{margin:40px 0 48px}
   .case-hero{padding:120px 24px 48px}
-  .case-meta-item{padding:20px 24px;min-width:120px}
+  .case-meta{display:grid;grid-template-columns:1fr 1fr}
+  .case-meta-item{padding:20px 24px;min-width:0;border-right:none;border-bottom:1.5px solid var(--border)}
+  .case-meta-item:nth-child(odd){border-right:1.5px solid var(--border)}
+  .case-meta-item:nth-last-child(-n+2){border-bottom:none}
   .case-body{padding:0 24px}
   .case-img{padding:24px}
   .case-stat-grid{grid-template-columns:1fr 1fr}
+  .case-stat{border-bottom:1.5px solid var(--border);border-right:none}
+  .case-stat:nth-child(odd):not(:last-child){border-right:1.5px solid var(--border)}
+  .case-stat:last-child{border-bottom:none;grid-column:1/-1}
   .case-next{padding:40px 24px}
   .workstream-grid{grid-template-columns:1fr}
   .tension-grid{grid-template-columns:1fr}
@@ -170,12 +180,15 @@
   .impact-item{border-right:none;border-bottom:1.5px solid rgba(10,122,95,.2)}
   .impact-item:last-child{border-bottom:none}
   .direction-grid{grid-template-columns:1fr}
+  .direction-img{aspect-ratio:auto}
+  .direction-img img{height:auto;object-fit:contain}
   .learnings-grid{grid-template-columns:1fr}
+  .case-img img{max-height:none}
 }
 </style>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:17px;scroll-behavior:smooth}
+html{font-size:17px;scroll-behavior:smooth;overflow-x:hidden}
 :root{
   --bg:#f9f7f4;--bg-2:#f2efe9;--bg-3:#e8e4dc;
   --ink:#111111;--ink-2:#333333;--ink-3:#555555;--ink-4:#767676;
@@ -226,8 +239,8 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 .footer-credit{font-size:12px;color:var(--ink-4)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@media(max-width:960px){nav{padding:8px 10px;width:fit-content;max-width:calc(100% - 32px);left:0;right:0;margin:0 auto;transform:none}.nav-links li:not(.nav-dd){display:none}.nav-logo{font-size:12px;margin-right:8px}.nav-dd-label{font-size:11px;padding:0 6px}.nav-cta{font-size:11px;padding:6px 10px}.nav-links{margin-right:4px}}
 @media(max-width:700px){
-  nav{padding:8px 8px 8px 14px}
   .nav-sep{display:none}
   .section{padding:64px 24px}
   .section-sm{padding:48px 24px}
@@ -302,7 +315,7 @@ a:focus-visible,button:focus-visible,.nav-dd-label:focus-visible,.btn-primary:fo
 
 <!-- HERO IMAGE -->
 <div style="background:#eef3f0;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);overflow:hidden">
-  <img src="../images/aws-hero.png" alt="AWS Project Libra" style="width:100%;max-height:480px;object-fit:cover;display:block"/>
+  <img class="hero-img" src="../images/aws-hero.png" alt="AWS Project Libra" style="width:100%;display:block"/>
 </div>
 
 <!-- BODY -->
@@ -452,7 +465,7 @@ a:focus-visible,button:focus-visible,.nav-dd-label:focus-visible,.btn-primary:fo
   </div>
 
   <!-- Hero image -->
-  <div class="r" style="margin:40px -80px 48px">
+  <div class="r wide-media">
     <img src="../images/aws-ai-hero.png" alt="AI Meeting Assistant floating overlay on meeting view" style="width:100%;border-radius:12px;display:block;box-shadow:0 16px 64px rgba(0,0,0,.12)"/>
   </div>
 
@@ -522,7 +535,7 @@ a:focus-visible,button:focus-visible,.nav-dd-label:focus-visible,.btn-primary:fo
   <h3 class="r">Final Design</h3>
   <p class="r">After two rounds of iteration addressing clutter and video occlusion, the final version shipped to beta with catch-up insights, toggle controls, and seamless meeting navigation.</p>
 
-  <div class="r" style="margin:28px -80px 48px;border-radius:12px;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,.12)">
+  <div class="r wide-media" style="border-radius:12px;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,.12)">
     <video src="../images/Image 5.mov" poster="../images/aws-ai-final.png" style="width:100%;display:block;background:#1a1a1a" autoplay loop muted playsinline></video>
   </div>
 
@@ -577,7 +590,7 @@ a:focus-visible,button:focus-visible,.nav-dd-label:focus-visible,.btn-primary:fo
     <a href="art.html" class="footer-link">Art</a>
     <a href="about.html" class="footer-link">About</a>
   </div>
-  <div class="footer-credit">© 2025 Liting Sun</div>
+  <div class="footer-credit">© 2026 Liting Sun</div>
 </footer>
 <script>
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');

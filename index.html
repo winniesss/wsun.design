@@ -168,7 +168,7 @@
 </style>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:17px;scroll-behavior:smooth}
+html{font-size:17px;scroll-behavior:smooth;overflow-x:hidden}
 :root{
   --bg:#f9f7f4;--bg-2:#f2efe9;--bg-3:#e8e4dc;
   --ink:#111111;--ink-2:#333333;--ink-3:#555555;--ink-4:#767676;
@@ -222,8 +222,12 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 @media(max-width:960px){
-  nav{padding:8px 8px 8px 14px}
-  .nav-links .nav-dd,.nav-links li:not(:first-child){display:none}
+  nav{padding:8px 10px;width:fit-content;max-width:calc(100% - 32px);left:0;right:0;margin:0 auto;transform:none}
+  .nav-links li:not(.nav-dd){display:none}
+  .nav-logo{font-size:12px;margin-right:8px}
+  .nav-dd-label{font-size:11px;padding:0 6px}
+  .nav-cta{font-size:11px;padding:6px 10px}
+  .nav-links{margin-right:4px}
   .section{padding:64px 24px}
   .section-sm{padding:48px 24px}
   footer{padding:40px 24px;flex-direction:column;align-items:flex-start}
@@ -453,7 +457,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
     <a href="pages/art.html" class="footer-link">Art</a>
     <a href="pages/about.html" class="footer-link">About</a>
   </div>
-  <div class="footer-credit">© 2025 Liting Sun</div>
+  <div class="footer-credit">© 2026 Liting Sun</div>
 </footer>
 <script>
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');

@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:17px;scroll-behavior:smooth}
+html{font-size:17px;scroll-behavior:smooth;overflow-x:hidden}
 :root{
   --bg:#f9f7f4;--bg-2:#f2efe9;--bg-3:#e8e4dc;
   --ink:#111111;--ink-2:#333333;--ink-3:#555555;--ink-4:#767676;
@@ -60,8 +60,8 @@ footer{border-top:1.5px solid var(--border);padding:56px 60px;display:flex;justi
 .footer-credit{font-size:12px;color:var(--ink-4)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@media(max-width:960px){nav{padding:8px 10px;width:fit-content;max-width:calc(100% - 32px);left:0;right:0;margin:0 auto;transform:none}.nav-links li:not(.nav-dd){display:none}.nav-logo{font-size:12px;margin-right:8px}.nav-dd-label{font-size:11px;padding:0 6px}.nav-cta{font-size:11px;padding:6px 10px}.nav-links{margin-right:4px}}
 @media(max-width:700px){
-  nav{padding:8px 8px 8px 14px}
   .nav-sep{display:none}
   .section{padding:64px 24px}
   .section-sm{padding:48px 24px}
