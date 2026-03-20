@@ -91,7 +91,7 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;disp
 .tl-role-title{font-family:var(--fd);font-size:clamp(22px,2.2vw,32px);font-weight:400;letter-spacing:-.025em;color:var(--ink);line-height:1.2;margin-bottom:20px}
 
 /* two-column content */
-.tl-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.tl-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
 
 .tl-company{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-bottom:6px}
 .tl-proj-title{font-family:var(--fd);font-size:16px;font-weight:500;letter-spacing:-.01em;color:var(--ink-2);margin-bottom:8px;line-height:1.3}
@@ -99,7 +99,7 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;disp
 .tl-proj-link:hover{color:var(--accent)}
 .tl-body a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--border);font-weight:500;transition:color .2s,text-decoration-color .2s}
 .tl-body a:hover{color:var(--accent);text-decoration-color:var(--accent)}
-.tl-body{font-size:14px;font-weight:400;color:var(--ink-3);line-height:1.7}
+.tl-body{font-size:18px;font-weight:400;color:var(--ink-3);line-height:1.7}
 .tl-body+.tl-body{margin-top:8px}
 
 .tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
@@ -119,11 +119,10 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;disp
 .tl-images img:hover{transform:scale(1.02)}
 
 /* 2025 stats fill for right col */
-.tl-stats{display:flex;flex-direction:column;gap:16px;padding-top:4px}
-.tl-stat{display:flex;gap:12px;align-items:baseline}
+.tl-stats{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;padding-top:0}
 .tl-stat-num{font-family:var(--fd);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
 .tl-stat-num span{color:var(--accent)}
-.tl-stat-label{font-size:13px;font-weight:400;color:var(--ink-3)}
+.tl-stat-label{font-size:13px;font-weight:400;color:var(--ink-3);align-self:center}
 
 /* ── art slider ── */
 .art-slider{margin-top:32px;overflow:hidden;mask:linear-gradient(90deg,transparent 0%,black 8%,black 92%,transparent 100%);-webkit-mask:linear-gradient(90deg,transparent 0%,black 8%,black 92%,transparent 100%)}
@@ -321,11 +320,12 @@ footer{border-top:1.5px solid var(--border);padding:56px 48px;display:flex;justi
           </div>
         </div>
         <div class="tl-col-right">
+          <div class="tl-company">&nbsp;</div>
           <div class="tl-stats">
-            <div class="tl-stat"><div class="tl-stat-num">E2E</div><div class="tl-stat-label">End-to-end product design ownership</div></div>
-            <div class="tl-stat"><div class="tl-stat-num">AI<span>+</span>HW</div><div class="tl-stat-label">Software × hardware integration</div></div>
-            <div class="tl-stat"><div class="tl-stat-num">5<span>+</span></div><div class="tl-stat-label">Cross-functional teams aligned</div></div>
-            <div class="tl-stat"><div class="tl-stat-num">0→1</div><div class="tl-stat-label">New product from concept to production</div></div>
+            <div class="tl-stat-num">E2E</div><div class="tl-stat-label">End-to-end product design ownership</div>
+            <div class="tl-stat-num">AI<span>+</span>HW</div><div class="tl-stat-label">Software × hardware integration</div>
+            <div class="tl-stat-num">5<span>+</span></div><div class="tl-stat-label">Cross-functional teams aligned</div>
+            <div class="tl-stat-num">0→1</div><div class="tl-stat-label">New product from concept to production</div>
           </div>
         </div>
       </div>
