@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>wsun.design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ease:cubic-bezier(0.22,1,0.36,1);--fd:'Sora',sans-serif;--fb:'DM Sans',sans-serif}
+html,body{height:100%;overflow:hidden}
+body{font-family:var(--fb);background:#0a0a0a;color:#e8e6e1}
+
+/* ── layout ── */
+.page{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .5s var(--ease);z-index:1}
+.page.hidden{opacity:0;pointer-events:none}
+
+/* ── corner text ── */
+.corner{position:fixed;z-index:10;font-family:var(--fd);opacity:0;animation:fadeIn .8s .2s var(--ease) forwards}
+.corner-tl{top:36px;left:40px}
+.corner-name{font-size:22px;font-weight:600;letter-spacing:.04em;color:#e8e6e1;line-height:1}
+.corner-role{font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(232,230,225,.45);margin-top:8px}
+.corner-tr{top:36px;right:40px;text-align:right}
+.corner-tr a{font-size:12px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,230,225,.45);text-decoration:none;display:block;line-height:2;transition:color .25s}
+.corner-tr a:hover{color:#e8e6e1}
+.corner-bl{bottom:36px;left:40px;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,230,225,.4);line-height:1.8}
+.corner-br{bottom:36px;right:40px;text-align:right;font-size:11px;font-weight:400;letter-spacing:.08em;color:rgba(232,230,225,.35);line-height:1.8}
+.corner-br a{color:rgba(232,230,225,.45);text-decoration:none;transition:color .25s;display:block}
+.corner-br a:hover{color:#e8e6e1}
+
+/* ── strips container ── */
+.strips{display:flex;align-items:center;gap:6px;height:55vh;max-height:480px;opacity:0;animation:stripIn .9s .4s var(--ease) forwards}
+
+/* ── single strip ── */
+.strip{position:relative;height:100%;width:110px;overflow:hidden;cursor:pointer;transition:width .5s var(--ease),opacity .4s var(--ease);will-change:width}
+.strip img{height:100%;width:100%;object-fit:cover;object-position:center;display:block;filter:grayscale(.3);transition:filter .5s var(--ease),transform .5s var(--ease)}
+.strip:hover{width:320px}
+.strip:hover img{filter:grayscale(0);transform:scale(1.03)}
+.strips:has(.strip:hover) .strip:not(:hover){opacity:.4}
+
+/* strip label */
+.strip-label{position:absolute;bottom:0;left:0;right:0;padding:20px 18px;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);opacity:0;transform:translateY(6px);transition:opacity .35s var(--ease),transform .35s var(--ease);pointer-events:none}
+.strip:hover .strip-label{opacity:1;transform:translateY(0)}
+.strip-year{font-family:var(--fd);font-size:10px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:rgba(232,230,225,.5);margin-bottom:4px}
+.strip-title{font-family:var(--fd);font-size:15px;font-weight:500;letter-spacing:-.01em;color:#e8e6e1;line-height:1.3}
+
+/* ── placeholder for strips without screenshots ── */
+.strip-ph{height:100%;width:100%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:40%}
+.strip[data-v="1"] .strip-ph{background:linear-gradient(160deg,#1a2218 0%,#0d0d0d 60%,#111a15 100%)}
+.strip[data-v="2"] .strip-ph{background:linear-gradient(160deg,#121a2e 0%,#0d0d0d 60%,#0f1528 100%)}
+.strip[data-v="3"] .strip-ph{background:linear-gradient(160deg,#1e0f22 0%,#0d0d0d 60%,#1a0c1e 100%)}
+.ph-v{font-family:var(--fd);font-size:48px;font-weight:200;letter-spacing:-.03em;opacity:.08;color:#fff}
+
+/* ── detail view (3 images inside each version) ── */
+.detail{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:20;background:#0a0a0a;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+.detail.active{opacity:1;pointer-events:auto}
+.detail .strips{opacity:1;animation:none}
+
+/* back button */
+.back{position:fixed;top:36px;left:40px;z-index:30;font-family:var(--fd);font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(232,230,225,.5);cursor:pointer;background:none;border:none;padding:6px 0;opacity:0;transition:opacity .3s,color .3s}
+.detail.active .back{opacity:1}
+.back:hover{color:#e8e6e1}
+.back::before{content:'←';margin-right:8px;display:inline-block;transition:transform .2s var(--ease)}
+.back:hover::before{transform:translateX(-3px)}
+
+/* detail title */
+.detail-title{position:fixed;bottom:36px;left:50%;transform:translateX(-50%);z-index:30;font-family:var(--fd);font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,230,225,.3);opacity:0;transition:opacity .3s;white-space:nowrap}
+.detail.active .detail-title{opacity:1}
+
+/* ── keyframes ── */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes stripIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── mobile ── */
+@media(max-width:768px){
+  .corner-tl{top:24px;left:24px}
+  .corner-name{font-size:18px}
+  .corner-role{font-size:10px;margin-top:6px}
+  .corner-tr{top:24px;right:24px}
+  .corner-tr a{font-size:10px}
+  .corner-bl{bottom:24px;left:24px;font-size:10px}
+  .corner-br{bottom:24px;right:24px;font-size:10px}
+  .strips{height:45vh;gap:4px}
+  .strip{width:80px}
+  .strip:hover{width:200px}
+  .back{top:24px;left:24px}
+  .detail-title{bottom:24px;font-size:10px}
+}
+@media(max-width:480px){
+  .strips{height:38vh;gap:3px}
+  .strip{width:60px}
+  .strip:hover{width:160px}
+}
+</style>
+</head>
+<body>
+
+<!-- corner text -->
+<div class="corner corner-tl">
+  <div class="corner-name">Liting Sun</div>
+  <div class="corner-role">Product Designer &amp; Builder</div>
+</div>
+<div class="corner corner-tr">
+  <a href="pages/about.html">About</a>
+  <a href="index.html">Portfolio</a>
+  <a href="pages/art.html">Art</a>
+</div>
+<div class="corner corner-bl">Seattle, WA<br>Available 2026</div>
+<div class="corner corner-br">
+  <a href="mailto:litingsun@outlook.com">Email</a>
+  <a href="https://linkedin.com/in/litingsun" target="_blank">LinkedIn</a>
+</div>
+
+<!-- main: 3 version strips -->
+<div class="page" id="main-page">
+  <div class="strips">
+    <div class="strip" data-v="1" onclick="openDetail(1)">
+      <div class="strip-ph"><span class="ph-v">01</span></div>
+      <div class="strip-label">
+        <div class="strip-year">2024</div>
+        <div class="strip-title">The Foundation</div>
+      </div>
+    </div>
+    <div class="strip" data-v="2" onclick="openDetail(2)">
+      <div class="strip-ph"><span class="ph-v">02</span></div>
+      <div class="strip-label">
+        <div class="strip-year">2025</div>
+        <div class="strip-title">AI-Generated</div>
+      </div>
+    </div>
+    <div class="strip" data-v="3" onclick="openDetail(3)">
+      <div class="strip-ph"><span class="ph-v">03</span></div>
+      <div class="strip-label">
+        <div class="strip-year">2026</div>
+        <div class="strip-title">Design Engineer</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- detail views -->
+<div class="detail" id="detail-1">
+  <button class="back" onclick="closeDetail()">Back</button>
+  <div class="strips">
+    <div class="strip" data-v="1">
+      <div class="strip-ph" style="background:linear-gradient(160deg,#1a2218,#0d0d0d 50%,#162015)"><span class="ph-v">A</span></div>
+      <div class="strip-label"><div class="strip-title">Homepage</div></div>
+    </div>
+    <div class="strip" data-v="1">
+      <div class="strip-ph" style="background:linear-gradient(160deg,#18201a,#0d0d0d 50%,#141c16)"><span class="ph-v">B</span></div>
+      <div class="strip-label"><div class="strip-title">Case Study</div></div>
+    </div>
+    <div class="strip" data-v="1">
+      <div class="strip-ph" style="background:linear-gradient(160deg,#151d14,#0d0d0d 50%,#121a12)"><span class="ph-v">C</span></div>
+      <div class="strip-label"><div class="strip-title">About</div></div>
+    </div>
+  </div>
+  <div class="detail-title">V1 &mdash; The Foundation</div>
+</div>
+
+<div class="detail" id="detail-2">
+  <button class="back" onclick="closeDetail()">Back</button>
+  <div class="strips">
+    <div class="strip" data-v="2">
+      <div class="strip-ph" style="background:linear-gradient(160deg,#121a2e,#0d0d0d 50%,#101828)"><span class="ph-v">A</span></div>
+      <div class="strip-label"><div class="strip-title">Homepage</div></div>
+    </div>
+    <div class="strip" data-v="2">
+      <div class="strip-ph" style="background:linear-gradient(160deg,#10162a,#0d0d0d 50%,#0e1424)"><span class="ph-v">B</span></div>
+      <div class="strip-label"><div class="strip-title">Case Study</div></div>
+    </div>
+    <div class="strip" data-v="2">
+      <div class="strip-ph" style="background:linear-gradient(160deg,#0e1226,#0d0d0d 50%,#0c1020)"><span class="ph-v">C</span></div>
+      <div class="strip-label"><div class="strip-title">About</div></div>
+    </div>
+  </div>
+  <div class="detail-title">V2 &mdash; AI-Generated</div>
+</div>
+
+<div class="detail" id="detail-3">
+  <button class="back" onclick="closeDetail()">Back</button>
+  <div class="strips">
+    <div class="strip" data-v="3">
+      <div class="strip-ph" style="background:linear-gradient(160deg,#1e0f22,#0d0d0d 50%,#1a0c1e)"><span class="ph-v">A</span></div>
+      <div class="strip-label"><div class="strip-title">Homepage</div></div>
+    </div>
+    <div class="strip" data-v="3">
+      <div class="strip-ph" style="background:linear-gradient(160deg,#1a0c1e,#0d0d0d 50%,#160a1a)"><span class="ph-v">B</span></div>
+      <div class="strip-label"><div class="strip-title">Case Study</div></div>
+    </div>
+    <div class="strip" data-v="3">
+      <div class="strip-ph" style="background:linear-gradient(160deg,#160a1a,#0d0d0d 50%,#120816)"><span class="ph-v">C</span></div>
+      <div class="strip-label"><div class="strip-title">About</div></div>
+    </div>
+  </div>
+  <div class="detail-title">V3 &mdash; Design Engineer</div>
+</div>
+
+<script>
+let activeDetail=null;
+
+function openDetail(v){
+  document.getElementById('main-page').classList.add('hidden');
+  document.querySelectorAll('.corner').forEach(c=>c.style.opacity='0');
+  const d=document.getElementById('detail-'+v);
+  d.classList.add('active');
+  activeDetail=d;
+}
+
+function closeDetail(){
+  if(!activeDetail)return;
+  activeDetail.classList.remove('active');
+  activeDetail=null;
+  document.getElementById('main-page').classList.remove('hidden');
+  document.querySelectorAll('.corner').forEach(c=>c.style.opacity='');
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&activeDetail)closeDetail();
+});
+</script>
+</body>
+</html>
