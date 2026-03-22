@@ -50,10 +50,16 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;disp
 .hero-h1 em{font-family:var(--fb);font-style:italic;font-weight:300}
 .hero-desc{font-size:16px;font-weight:300;color:var(--ink-3);line-height:1.75;max-width:380px;text-align:right;opacity:0;animation:fadeUp .8s .4s var(--ease) forwards}
 
-/* ── rain beams ── */
-.rain-canvas{position:absolute;inset:0;pointer-events:none;z-index:1}
-.beam{position:absolute;top:-60px;width:1.5px;border-radius:0 0 2px 2px;background:linear-gradient(to bottom,transparent 0%,rgba(160,170,180,.15) 20%,rgba(140,155,170,.45) 80%,rgba(130,145,165,.6) 100%);animation:beamFall linear infinite}
-@keyframes beamFall{0%{transform:translateY(-60px) scaleY(.8);opacity:0}8%{opacity:1}85%{opacity:.8}100%{transform:translateY(calc(100vh + 60px)) scaleY(1);opacity:0}}
+/* ── beams with collision ── */
+.beam-container{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.beam{position:absolute;left:0;top:-200px;width:2px;border-radius:9999px;background:linear-gradient(to bottom,transparent,rgba(10,122,95,.3),rgba(10,122,95,.6));animation:beamDown linear infinite}
+.beam.h-sm{height:32px}.beam.h-md{height:56px}.beam.h-lg{height:80px}
+@keyframes beamDown{0%{transform:translateY(-200px)}100%{transform:translateY(calc(100vh + 200px))}}
+/* collision floor */
+.beam-floor{position:absolute;bottom:0;left:0;right:0;height:1px;background:transparent;z-index:1}
+/* explosion particles */
+.spark{position:absolute;width:4px;height:4px;border-radius:50%;pointer-events:none;z-index:2}
+.spark-line{position:absolute;width:48px;height:3px;border-radius:9999px;pointer-events:none;z-index:2;filter:blur(2px)}
 
 /* ── flip words ── */
 .flip-wrap{display:inline-block;position:relative;vertical-align:baseline;min-width:3ch}
@@ -241,7 +247,7 @@ footer{border-top:1.5px solid var(--border);padding:56px 48px;display:flex;justi
 
 <!-- ─── hero ─── -->
 <section class="hero">
-  <div class="rain-canvas" id="rain"></div>
+  <div class="beam-container" id="beam-container"><div class="beam-floor" id="beam-floor"></div></div>
   <div class="hero-left">
     <div class="hero-badge"><div class="badge-dot"></div>Designer in Seattle</div>
     <h1 class="hero-h1">I design products<br/>people <span class="flip-wrap" id="flip"></span></h1>
@@ -577,27 +583,79 @@ document.addEventListener('click',()=>{
   document.querySelectorAll('.nav-dd').forEach(d=>d.classList.remove('open'));
 });
 
-// rain beams
+// beams with collision
 (function(){
-  const canvas=document.getElementById('rain');
-  if(!canvas)return;
+  const container=document.getElementById('beam-container');
+  if(!container)return;
   const beams=[
-    {x:3,h:18,dur:2.2,delay:0},{x:8,h:28,dur:2.8,delay:1.5},{x:14,h:14,dur:2,delay:0.3},
-    {x:20,h:22,dur:2.5,delay:2.2},{x:25,h:32,dur:3,delay:0.8},{x:31,h:16,dur:2.1,delay:3.5},
-    {x:37,h:24,dur:2.6,delay:1},{x:42,h:20,dur:2.3,delay:4},{x:48,h:30,dur:2.9,delay:0.5},
-    {x:53,h:12,dur:1.8,delay:2.8},{x:58,h:26,dur:2.7,delay:1.2},{x:64,h:18,dur:2.2,delay:3.2},
-    {x:69,h:22,dur:2.4,delay:0.2},{x:74,h:34,dur:3.1,delay:2},{x:79,h:15,dur:2,delay:4.5},
-    {x:84,h:28,dur:2.8,delay:0.7},{x:89,h:20,dur:2.3,delay:3},{x:94,h:24,dur:2.5,delay:1.8},
-    {x:11,h:16,dur:2.1,delay:5},{x:46,h:20,dur:2.4,delay:5.5},{x:71,h:14,dur:1.9,delay:6},{x:33,h:26,dur:2.6,delay:6.5},
+    {x:3,  cls:'h-md',dur:5, delay:0,   rDelay:4},
+    {x:10, cls:'h-sm',dur:7, delay:2,   rDelay:6},
+    {x:20, cls:'h-lg',dur:4, delay:1,   rDelay:5},
+    {x:30, cls:'h-md',dur:6, delay:3,   rDelay:3},
+    {x:42, cls:'h-sm',dur:8, delay:0,   rDelay:7},
+    {x:55, cls:'h-lg',dur:5, delay:4,   rDelay:4},
+    {x:65, cls:'h-md',dur:7, delay:1,   rDelay:5},
+    {x:75, cls:'h-sm',dur:4, delay:2,   rDelay:6},
+    {x:85, cls:'h-lg',dur:6, delay:0,   rDelay:3},
+    {x:95, cls:'h-md',dur:5, delay:3,   rDelay:8},
   ];
+
+  function explode(x,y){
+    // horizontal glow line
+    const line=document.createElement('div');
+    line.className='spark-line';
+    line.style.left=(x-16)+'px';
+    line.style.top=y+'px';
+    line.style.background='linear-gradient(90deg,transparent,rgba(10,122,95,.6),transparent)';
+    line.style.opacity='1';
+    line.style.transition='opacity .8s ease-out';
+    container.appendChild(line);
+    requestAnimationFrame(()=>line.style.opacity='0');
+    setTimeout(()=>line.remove(),800);
+
+    // particles
+    for(let i=0;i<14;i++){
+      const s=document.createElement('div');
+      s.className='spark';
+      s.style.left=x+'px';
+      s.style.top=y+'px';
+      s.style.background='rgba(10,122,95,'+(0.5+Math.random()*0.4)+')';
+      const dx=(Math.random()-0.5)*60;
+      const dy=-(Math.random()*40+8);
+      s.style.transition='all '+(0.4+Math.random()*0.8)+'s ease-out';
+      container.appendChild(s);
+      requestAnimationFrame(()=>{
+        s.style.transform='translate('+dx+'px,'+dy+'px)';
+        s.style.opacity='0';
+      });
+      setTimeout(()=>s.remove(),1200);
+    }
+  }
+
   beams.forEach(b=>{
     const el=document.createElement('div');
-    el.className='beam';
+    el.className='beam '+b.cls;
     el.style.left=b.x+'%';
-    el.style.height=b.h+'px';
     el.style.animationDuration=b.dur+'s';
     el.style.animationDelay=b.delay+'s';
-    canvas.appendChild(el);
+    // collision detection
+    let lastY=-999;
+    function check(){
+      const rect=el.getBoundingClientRect();
+      const pRect=container.getBoundingClientRect();
+      const bottomY=rect.bottom-pRect.top;
+      const floorY=pRect.height;
+      // detect crossing the floor
+      if(lastY<floorY&&bottomY>=floorY){
+        const relX=rect.left-pRect.left+rect.width/2;
+        explode(relX,floorY-2);
+      }
+      lastY=bottomY;
+      requestAnimationFrame(check);
+    }
+    // stagger the checks
+    setTimeout(()=>requestAnimationFrame(check),b.delay*1000);
+    container.appendChild(el);
   });
 })();
 
