@@ -67,6 +67,15 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:900;disp
 /* ── divider ── */
 .div-line{width:100%;height:1px;background:var(--border)}
 
+/* ── stats bar ── */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);background:var(--bg)}
+.stat-item{padding:40px 36px;border-right:1.5px solid var(--border);transition:background .3s}
+.stat-item:last-child{border-right:none}
+.stat-item:hover{background:var(--bg-2)}
+.stat-num{font-family:var(--fd);font-size:42px;font-weight:200;letter-spacing:-.04em;color:var(--ink);line-height:1;margin-bottom:8px;display:block}
+.stat-num span{color:var(--accent)}
+.stat-label{font-size:13px;font-weight:400;color:var(--ink-3);line-height:1.5}
+
 /* ── timeline ── */
 .tl{padding:100px 48px;position:relative}
 .tl-header{margin-bottom:64px}
@@ -181,6 +190,8 @@ footer{border-top:1.5px solid var(--border);padding:56px 48px;display:flex;justi
   .nav-dd-label{font-size:11px;padding:0 6px}
   .nav-cta{font-size:11px;padding:6px 10px}
   .nav-links{margin-right:4px}
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .stat-item{padding:28px 24px}
   .hero{grid-template-columns:1fr;padding:0 24px 60px}
   .hero-right{justify-content:flex-start;padding-top:24px}
   .hero-desc{text-align:left;max-width:100%}
@@ -239,7 +250,12 @@ footer{border-top:1.5px solid var(--border);padding:56px 48px;display:flex;justi
   </div>
 </section>
 
-<div class="div-line"></div>
+<div class="stats-bar rv">
+  <div class="stat-item"><span class="stat-num">13<span>%</span></span><span class="stat-label">SCAT score improvement<br/>at AWS (~$2.8M pipeline)</span></div>
+  <div class="stat-item"><span class="stat-num">97<span>%</span></span><span class="stat-label">AI-matched candidates<br/>advanced at LivePerson</span></div>
+  <div class="stat-item"><span class="stat-num">400<span>+</span></span><span class="stat-label">Design system<br/>components built</span></div>
+  <div class="stat-item"><span class="stat-num">60<span>+</span></span><span class="stat-label">In-person research<br/>sessions conducted</span></div>
+</div>
 
 <!-- ─── timeline ─── -->
 <section class="tl" id="timeline-section">
